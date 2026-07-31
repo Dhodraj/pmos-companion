@@ -1,0 +1,22 @@
+hackathon/form-fill.md
+  s_d0bebf31341a3e::t_186c87c660c79f 83,105,107,109-111,115
+  s_d0bebf31341a3e::t_ca6020b392c1f3 51,53,55-58,60,62,68,74
+hackathon/proposal.md
+  s_d0bebf31341a3e::t_99f0c2cbfa3331 124-128,219-221
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "1af249d9098a0a8eb60c33d9d8ec9160f8e3f5bb",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-opus-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
