@@ -25,9 +25,11 @@ It treats an irregular cycle as **signal, not error**, learns each woman's perso
 | 2 | [product/01-product-definition.md](product/01-product-definition.md) | Positioning, differentiator stack, anti-features, funnel play (superseded by the PRD) |
 | 3 | [product/03-complete-features-spec.md](product/03-complete-features-spec.md) | Full feature catalogue and feasibility rulings (§0) |
 | 4 | [product/04-data-model.md](product/04-data-model.md) | Entity model, design rules, field notes |
-| 5 | **[hackathon/proposal.md](hackathon/proposal.md)** | **Project proposal, due Sat 1 Aug 11:59 PM IST.** Copy-paste sections for the submission form |
-| 6 | [hackathon/registration.md](hackathon/registration.md) | Registration form answers |
-| 7 | [hackathon/track-analysis.md](hackathon/track-analysis.md) | Why this track; all 4 tracks scored |
+| 5 | **[hackathon/proposal-short.md](hackathon/proposal-short.md)** | **THE SUBMISSION.** One page, due Sat 1 Aug 11:59 PM IST |
+| 6 | [hackathon/proposal.md](hackathon/proposal.md) | Full proposal, the appendix behind the short one |
+| 7 | [hackathon/PMOS-clinical-review.pdf](hackathon/PMOS-clinical-review.pdf) | Clinician review pack, with their findings applied |
+| 8 | [hackathon/registration.md](hackathon/registration.md) | Registration form answers |
+| 9 | [hackathon/track-analysis.md](hackathon/track-analysis.md) | Why this track; all 4 tracks scored |
 
 ---
 

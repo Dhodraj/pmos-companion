@@ -1,4 +1,6 @@
-# Project proposal: submission copy
+# Project proposal: full version
+
+> **For submission, use [proposal-short.md](./proposal-short.md).** A first-round jury triaging dozens of teams will skim, and a long document risks reading as over-engineered before it reaches the parts that prove otherwise. This full version is the appendix: the reasoning, the sourcing and the decisions behind the short one.
 
 **Deadline: Saturday 1 August 2026, 11:59 PM IST.**
 
@@ -81,7 +83,7 @@ An app she opens for thirty seconds a day, which turns that into an explanation 
 
 **6. It catches what everyone else misses.** A sentinel prompts review when cycles exceed 90 days, because prolonged anovulation exposes the endometrium to unopposed oestrogen. Its behaviour was specified with a clinician: it says "please discuss this with your healthcare provider", it first asks whether pregnancy is possible, whether she is taking hormonal medication, and whether she is already under treatment for irregular periods, and it reminds again after two to four weeks if no period is logged, with a snooze. Mental-health screening runs monthly and on demand. Sleep apnoea gets a screen-and-refer.
 
-**7. The camera does the typing for her.** Photograph a printed lab report and the values land in her record and flow into the doctor export. Photograph a medicine strip and it identifies what she has been given, logs it, and explains in plain language what it is for and what to expect, which matters in a system where strips are handed over with no explanation. Skin tracking sits here too, off by default.
+**7. The camera does the typing for her.** Photograph a printed lab report and the values land in her record and flow into the doctor export. Photograph a medicine strip and it identifies what she has been given and logs it, so her medication history reaches her doctor instead of living in her memory. Where we show information about a drug, it is the approved patient leaflet, attributed to its source, not our own account of what to expect. We do not counsel her on a medicine another clinician prescribed. Skin tracking sits here too, off by default.
 
 This replaced an earlier plan to measure heart rate from the camera. A clinician reviewing this proposal asked what a resting heart rate would actually tell a woman with PMOS, and the honest answer is nothing that changes her care. We cut it. The camera now removes work rather than generating a number nobody would act on.
 
@@ -126,7 +128,7 @@ Nine modules. The five marked MVP are the build-weekend target.
 | **Cycle view** MVP | Irregular-native timeline, interval distribution, bleeds per year |
 | **Insights** MVP | Weekly pattern reveal with observation counts and confidence, or an honest "still learning" |
 | **Lab report capture** MVP | Photograph a printed report, values extracted on device, confirmed by her before saving, then carried into the doctor export |
-| Medicine strip capture | Photograph a strip, identify the medication, log it, explain what it is for and what to expect |
+| Medicine strip capture | Photograph a strip, identify the medication, log it into her history and the doctor export. Any drug information shown is the approved patient leaflet, attributed, never our own counselling |
 | Doctor exports | One-page summary and full cycle history PDF |
 | Experiments | Pre-declared outcome, baseline, washout, verdict |
 | Safety layer | PHQ-4 and GAD-2 monthly or user-initiated. Immediate escalation on any suicidality or self-harm response, routed to Tele-MANAS, then prompting her to contact a trusted person or her clinician, with a single check-in nudge after 24 hours. Sleep-apnoea screen. 90-day cycle sentinel |
@@ -254,6 +256,22 @@ The workshop made the point that the demo which impresses on Sunday often cannot
 - **CGM integration.** One vendor is not sold in India, the other publishes no legal third-party API, and it costs about ₹8,400 a month regardless.
 - **Multi-device sync and platform health-store integration.** Cut from the MVP on effort-to-value grounds, as above.
 
+### What will actually be running by Sunday
+
+We would rather say this than be asked.
+
+| Module | State on Sunday |
+|---|---|
+| Cycle engine, check-in, cycle view | Working code |
+| Correlation engine | Working, on a reduced scope: lagged correlation with a confidence floor over a fixed symptom set. FDR correction and bootstrap intervals are specified and partially implemented, not finished |
+| Doctor export | Working, one template |
+| Lab report capture | Working on printed reports we have tested. Not robust to every layout |
+| Medicine strip capture | Demonstrated on a small set of common Indian strips, not general |
+| Crisis routing | Real numbers and real scripted flow, but the full protocol our clinician specified, including the 24-hour nudge, is not built |
+| Experiment Mode, support circle, emotional continuity | Specified, not built |
+
+Everything in the second half of the module table is roadmap. We are not going to present a mock as a build.
+
 ### Demo plan and fallback
 
 Camera capture is built and tested on all four team members' phones by Saturday afternoon. Printed-page recognition is far more predictable than the real-time signal processing we originally planned, but lighting and print quality still vary, so we hold a validated device and a pre-captured report as a fallback. Nothing in the demo depends on a single feature working: the check-in, the pattern reveal and the doctor export each stand alone.
@@ -270,7 +288,7 @@ What it gives us is not distribution. It is a live deployment in exactly this do
 
 PMOS Companion is the product. mycyclesafe is the reason we know it needs to exist. If it later becomes a route to early users, any cross-promotion would need fresh purpose-bound consent under DPDP rather than inherited consent.
 
-Before any pilot with real users we will seek a **CDSCO pre-submission classification opinion**. Running validated screening instruments and escalating on a clinical threshold may place this above the wellness-software line, and we would rather establish that before building than during licensing. The mental-health escalation pathway, including cadence, follow-up and named clinical oversight, is a pilot prerequisite we are treating as design work rather than a detail.
+**The load-bearing legal risk is classification, and we want to name it rather than bury it.** Running PHQ-4 and GAD-2 on a cadence, escalating on suicidality, and prompting clinical review at a 90-day cycle threshold are exactly the behaviours that can tip software from wellness into medical device under CDSCO. We do not think our position is obviously wrong, but we do not think it is obviously safe either, and the honest answer is that it is unresolved. Before any pilot with real users we will seek a **CDSCO pre-submission classification opinion** rather than assume. If the answer is medical device, that changes our timeline and our obligations, and we would rather know that in month one than month twelve. The mental-health escalation pathway, including cadence, follow-up and named clinical oversight, is a pilot prerequisite we are treating as design work rather than a detail.
 
 ---
 
@@ -287,6 +305,16 @@ A practising clinician has reviewed this proposal. Their input changed it in fiv
 They also challenged the camera heart-rate feature directly, asking what it would tell a woman with PMOS. We agreed and removed it. The camera now captures lab reports and medicine strips instead, which serves the doctor-advocacy work the same clinician endorsed.
 
 One item remains open. They have not yet formed a view on the CDSCO classification question, so our position stands as stated: we will seek a pre-submission opinion rather than assume the answer.
+
+## How it sustains itself
+
+Free forever: logging, the cycle engine, the doctor export, and every safety path. We will not paywall a crisis flow or a 90-day escalation.
+
+Paid: the personalisation depth, meaning Experiment Mode, the full pattern engine and the richer specialist exports. Anchor around 200 to 500 rupees a month, which sits between supplement subscriptions that sell you pills and coaching programmes that cost ten times more.
+
+We sell no supplements and take no affiliate revenue, which is a deliberate constraint rather than an oversight: it is the only reason we can grade the evidence on inositol honestly. It also means our revenue has to come from the product being useful, which we prefer.
+
+We are not claiming this is proven. It is the model we would test, and the first thing we would want to learn from a pilot is whether she will pay for insight once she has seen it.
 
 ## Supporting documents
 
