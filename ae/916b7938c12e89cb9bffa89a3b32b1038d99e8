@@ -1,0 +1,125 @@
+.gitignore
+  s_d0bebf31341a3e::t_27ebefa48db55a 1-17
+README.md
+  s_d0bebf31341a3e::t_26d3b5d0463217 1-79
+archive/civic-track/KAAVAL-spec.md
+  s_d0bebf31341a3e::t_d5ec948ccae6ca 1-190
+archive/civic-track/one-pagers/1-theervu.md
+  s_d0bebf31341a3e::t_9d7b63cadfed08 1-28
+archive/civic-track/one-pagers/2-orukural.md
+  s_d0bebf31341a3e::t_dd042dd2f219ab 1-26
+archive/civic-track/one-pagers/3-sollu.md
+  s_d0bebf31341a3e::t_5ea63151bfb496 1-27
+archive/civic-track/one-pagers/4-nilai-dho-review-copilot.md
+  s_d0bebf31341a3e::t_30a5ba4fcc2624 1-29
+archive/civic-track/one-pagers/5-kanakku.md
+  s_d0bebf31341a3e::t_5ab63c050b4eb1 1-27
+archive/frontier-bets/PulseSight-spec.md
+  s_d0bebf31341a3e::t_d6564d879c47e4 1-99
+archive/frontier-bets/StethoPhone-spec.md
+  s_d0bebf31341a3e::t_7629e0fce4cfd0 1-102
+archive/idea-reports/four-track-portfolio.md
+  s_d0bebf31341a3e::t_0e04bf2af65f52 1-46
+archive/idea-reports/health-india-complex-unsolved.md
+  s_d0bebf31341a3e::t_2e16373e6ef1c4 1-194
+archive/idea-reports/health-india-pain-breadth.md
+  s_d0bebf31341a3e::t_f120821424bb82 1-330
+hackathon/clinician-review-brief.md
+  s_d0bebf31341a3e::t_c4850a68656134 1-91
+hackathon/package-lock.json
+  s_d0bebf31341a3e::t_dfcbe58e081451 1-2696
+hackathon/package.json
+  s_d0bebf31341a3e::t_4a39dee353111e 1-5
+hackathon/proposal.md
+  s_dc7a28e43ff5c6::t_9b70420d9e2b44 1-321
+hackathon/pull-metrics.mjs
+  s_99bddccb576770::t_80d1731e96be1d 1-226
+hackathon/track-analysis.md
+  s_d0bebf31341a3e::t_711f55e1211d31 1-30
+product/.build/README.md
+  s_d0bebf31341a3e::t_118bb20ae47ece 1-19
+product/.build/build-prd.py
+  s_d0bebf31341a3e::t_e2057ad86fecfd 1-290
+product/00-PRD.md
+  s_d0bebf31341a3e::t_16017a2d5ff04e 1-865
+product/01-product-definition.md
+  s_d0bebf31341a3e::t_7746d05c1ae1f6 1-153
+product/02-build-spec.md
+  s_d0bebf31341a3e::t_05c51d78ab83bc 1-136
+product/03-complete-features-spec.md
+  s_d0bebf31341a3e::t_5c51016d430853 1-1143
+product/04-data-model.md
+  s_d0bebf31341a3e::t_f1abca232e4ad5 1-98
+product/PMOS-PRD.pdf
+  s_d0bebf31341a3e::t_b99de0eb35117f 1-33692
+research/01-persona-tracks/journal.jsonl
+  s_d0bebf31341a3e::t_3a35399b8708e9 1-54
+research/01-persona-tracks/output.json
+  s_d0bebf31341a3e::t_22dce5a6ae36e2 1-640
+research/01-persona-tracks/workflow.mjs
+  s_d0bebf31341a3e::t_582dc390276337 1-287
+research/02-portfolio/journal.jsonl
+  s_d0bebf31341a3e::t_eb74c7a3e296ab 1-97
+research/02-portfolio/output.json
+  s_d0bebf31341a3e::t_cf984f70a8dbbc 1-1054
+research/02-portfolio/workflow.mjs
+  s_d0bebf31341a3e::t_47f3070d0bc450 1-284
+research/03-product-ideas/journal.jsonl
+  s_d0bebf31341a3e::t_478b01253659a2 1-22
+research/03-product-ideas/output-complex.json
+  s_d0bebf31341a3e::t_1ce5336808faf5 1-373
+research/03-product-ideas/output-pain-breadth.json
+  s_d0bebf31341a3e::t_482a4b83c387d5 1-438
+research/03-product-ideas/workflow.mjs
+  s_d0bebf31341a3e::t_cd440a799b56d1 1-159
+research/04-pmos-curation/journal.jsonl
+  s_d0bebf31341a3e::t_f27f3998b56c74 1-16
+research/04-pmos-curation/output.json
+  s_d0bebf31341a3e::t_01bc69c98c2325 1-209
+research/04-pmos-curation/workflow.mjs
+  s_d0bebf31341a3e::t_cd93dc6b72cd39 1-178
+research/05-feasibility-audit/README.md
+  s_d0bebf31341a3e::t_3f9ea746f74e61 1-79
+research/05-feasibility-audit/audit-findings.json
+  s_d0bebf31341a3e::t_bf1a13b841df7d 1-442
+research/05-feasibility-audit/journal.jsonl
+  s_d0bebf31341a3e::t_c704dc5bf26f71 1-47
+research/05-feasibility-audit/workflow.mjs
+  s_d0bebf31341a3e::t_57ebb0addc70bf 1-254
+archive/README.md
+  s_d0bebf31341a3e::t_8da1752c084219 1-13
+hackathon/registration.md
+  s_d0bebf31341a3e::t_cb1addeddf4813 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ae916b7938c12e89cb9bffa89a3b32b1038d99e8",
+  "prompts": {},
+  "sessions": {
+    "s_99bddccb576770": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f632fba-5ebe-4e86-8122-662c23e7cce6",
+        "model": "claude-opus-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    },
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-opus-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    },
+    "s_dc7a28e43ff5c6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "509bee6c-4008-4659-ac7b-da952c6d19b1",
+        "model": "claude-opus-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
