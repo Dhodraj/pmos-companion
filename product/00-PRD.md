@@ -8,7 +8,7 @@ Version 1.0, July 2026. Single source of truth.
 | Team | War Room |
 | Owners | Dhodraj, Belson, Rahul, Satheesh Kumar |
 | Launch vehicle | Tech for Good 2026, GDG Coimbatore, 8 to 9 August |
-| Distribution | mycyclesafe.ai (500,000+ users, 120 countries) |
+| Distribution | mycyclesafe.ai (an existing cycle tracker, unmarketed) |
 
 This document supersedes the product definition, build spec, and complete-features spec. Where those conflict with this one, this one governs.
 
@@ -40,7 +40,7 @@ Three things converged inside eighteen months.
 | Date | What happened |
 |---|---|
 | 2023 | International Guideline establishes the metabolic framing |
-| **May 2026** | **Monash-led global consensus renames PCOS to PMOS, published in The Lancet.** An 11-year global consensus involving 22,000 people, explicitly rejecting the cysts-and-fertility framing |
+| **May 2026** | **Monash-led global consensus renames PCOS to PMOS, published in The Lancet.** A 14-year global consensus across 56 organisations, surveying over 14,300 people with the condition, explicitly rejecting the cysts-and-fertility framing |
 | Jul 2026 | NICE draft guideline adopts PMOS. Consultation open 1 July to 11 August |
 | Aug 2026 | Tech for Good hackathon. We build |
 | Dec 2026 | NICE publishes. Three-year global rollout begins |
@@ -58,7 +58,7 @@ Six positions survived a competitive audit against products that already ship.
 | 3 | Clinical safety depth | Mental-health crisis routing, OSA screen-and-refer, guideline screening ledger. Absent across the category |
 | 4 | India-native | Vernacular, Indian cuisine, Tele-MANAS, rupee pricing. The closest competitor ships iPhone-only |
 | 5 | Zero-commerce evidence grading | We can grade evidence honestly because we never sell the supplements. Rivals funded by product sales cannot copy this |
-| 6 | The mycyclesafe funnel | 500k users, and the irregular-cycle segment is by definition this audience |
+| 6 | The mycyclesafe funnel | its existing user base, and the irregular-cycle segment is by definition this audience |
 
 ---
 
@@ -793,7 +793,7 @@ Five beats, in order.
 2. Fingertip PPG live. A judge places a finger on the camera and the pulse waveform draws itself in real time.
 3. The reveal. Your skin flares two to three days after nights under six hours. Not your face wash, your sleep.
 4. The export. One tap produces an 18-month doctor-ready PDF.
-5. Close on distribution. A ₹10,000 phone, no watch, no strips, nothing to buy. One in eight women, and we already reach 500,000 of them.
+5. Close on distribution. A ₹10,000 phone, no watch, no strips, nothing to buy. One in eight women, and we already reach a live product in this domain.
 
 ---
 

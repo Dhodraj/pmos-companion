@@ -73,21 +73,23 @@ An app she opens for thirty seconds a day, which turns that into an explanation 
 
 **1. It stops telling her she is broken.** The cycle view is built for irregularity. A 47-day cycle reads as "day 47 of your usual 30 to 60 range", never as a failure. There is no "late" badge anywhere in the product. For someone who has deleted three apps over exactly this, that alone is why she stays.
 
-**2. It gives her a record from week one.** Her symptom timeline becomes something structured and shareable long before any pattern emerges. Four weeks in, she can walk into an appointment with an actual history instead of trying to remember.
+**2. She can speak it instead of typing it.** The daily check-in takes voice, transcribed on the device, for anyone who would rather talk than fill a form at the end of a long day. English in Phase 1; Hindi and Tamil follow.
 
-**3. It tells her what affects her.** Daily logging feeds an engine that finds *her* correlations and states its own uncertainty: *"your skin flares two to three days after nights under six hours, based on 12 observations, weak signal."* When there is not enough data it says so rather than inventing something.
+**3. It gives her a record from week one.** Her symptom timeline becomes something structured and shareable long before any pattern emerges. Four weeks in, she can walk into an appointment with an actual history instead of trying to remember.
 
-**4. It answers "did that supplement work?"** Experiment Mode runs a pre-declared outcome over 8 to 12 weeks with a washout period and returns a verdict. "No detectable change" is a valid result and we show it. She has never been able to get this answer anywhere.
+**4. It tells her what affects her.** Daily logging feeds an engine that finds *her* correlations and states its own uncertainty: *"your skin flares two to three days after nights under six hours, based on 12 observations, weak signal."* When there is not enough data it says so rather than inventing something.
 
-**5. It walks into the consultation with her.** One tap produces a doctor-ready PDF: cycle history, interval statistics, symptom timeline, medication log, and the tests she can ask for by name.
+**5. It answers "did that supplement work?"** Experiment Mode runs a pre-declared outcome over 8 to 12 weeks with a washout period and returns a verdict. "No detectable change" is a valid result and we show it. She has never been able to get this answer anywhere.
 
-**6. It catches what everyone else misses.** A sentinel prompts review when cycles exceed 90 days, because prolonged anovulation exposes the endometrium to unopposed oestrogen. Its behaviour was specified with a clinician: it says "please discuss this with your healthcare provider", it first asks whether pregnancy is possible, whether she is taking hormonal medication, and whether she is already under treatment for irregular periods, and it reminds again after two to four weeks if no period is logged, with a snooze. Mental-health screening runs monthly and on demand. Sleep apnoea gets a screen-and-refer.
+**6. It walks into the consultation with her.** One tap produces a doctor-ready PDF: cycle history, interval statistics, symptom timeline, medication log, and the tests she can ask for by name.
 
-**7. The camera does the typing for her.** Photograph a printed lab report and the values land in her record and flow into the doctor export. Photograph a medicine strip and it identifies what she has been given and logs it, so her medication history reaches her doctor instead of living in her memory. Where we show information about a drug, it is the approved patient leaflet, attributed to its source, not our own account of what to expect. We do not counsel her on a medicine another clinician prescribed. Skin tracking sits here too, off by default.
+**7. It catches what everyone else misses.** A sentinel prompts review when cycles exceed 90 days, because prolonged anovulation exposes the endometrium to unopposed oestrogen. Its behaviour was specified with a clinician: it says "please discuss this with your healthcare provider", it first asks whether pregnancy is possible, whether she is taking hormonal medication, and whether she is already under treatment for irregular periods, and it reminds again after two to four weeks if no period is logged, with a snooze. Mental-health screening runs monthly and on demand. Sleep apnoea gets a screen-and-refer.
+
+**8. The camera does the typing for her.** Photograph a printed lab report and the values land in her record and flow into the doctor export. Photograph a medicine strip and it identifies what she has been given and logs it, so her medication history reaches her doctor instead of living in her memory. Where we show information about a drug, it is the approved patient leaflet, attributed to its source, not our own account of what to expect. We do not counsel her on a medicine another clinician prescribed. Skin tracking sits here too, off by default.
 
 This replaced an earlier plan to measure heart rate from the camera. A clinician reviewing this proposal asked what a resting heart rate would actually tell a woman with PMOS, and the honest answer is nothing that changes her care. We cut it. The camera now removes work rather than generating a number nobody would act on.
 
-**8. It connects her to someone, on her terms.** Isolation is one of the most consistent themes in this condition. She can nominate a support circle, anyone she chooses, and tap once to send "thinking of you, call me?" Her supporter can also opt into a recurring check-in reminder that fires on a fixed schedule. Alongside this sit simple routine nudges for hydration, movement and medication timing.
+**9. It connects her to someone, on her terms.** Isolation is one of the most consistent themes in this condition. She can nominate a support circle, anyone she chooses, and tap once to send "thinking of you, call me?" Her supporter can also opt into a recurring check-in reminder that fires on a fixed schedule. Alongside this sit simple routine nudges for hydration, movement and medication timing.
 
 Throughout: weight is opt-in behind a permission prompt rather than a headline metric, there is no calorie counting, and we sell no supplements, which is precisely why we can grade evidence honestly.
 
@@ -119,25 +121,27 @@ Patterns are the reward for staying, not the price of entry. Logging is never st
 
 ## What we are building
 
-Nine modules. The five marked MVP are the build-weekend target.
+Phase 1 is the complete core product, built across the two days. Phase 2 is enhancement on top of a working system, not the missing half of one.
 
-| Module | What it is |
-|---|---|
-| **Onboarding and consent** MVP | Age gate, granular per-class consent |
-| **Daily check-in** MVP | One screen, ~12 curated dimensions, 30 seconds, pause mode that never guilts her |
-| **Cycle view** MVP | Irregular-native timeline, interval distribution, bleeds per year |
-| **Insights** MVP | Weekly pattern reveal with observation counts and confidence, or an honest "still learning" |
-| **Lab report capture** MVP | Photograph a printed report, values extracted on device, confirmed by her before saving, then carried into the doctor export |
-| Medicine strip capture | Photograph a strip, identify the medication, log it into her history and the doctor export. Any drug information shown is the approved patient leaflet, attributed, never our own counselling |
-| Doctor exports | One-page summary and full cycle history PDF |
-| Experiments | Pre-declared outcome, baseline, washout, verdict |
-| Safety layer | PHQ-4 and GAD-2 monthly or user-initiated. Immediate escalation on any suicidality or self-harm response, routed to Tele-MANAS, then prompting her to contact a trusted person or her clinician, with a single check-in nudge after 24 hours. Sleep-apnoea screen. 90-day cycle sentinel |
-| Companion | Evidence-grounded question answering with citations |
-| Support circle | User-initiated outreach to a self-chosen contact, state-independent check-in reminders, routine nudges for hydration and medication |
-| Emotional continuity | "You have felt this way six times before and it lifted within four days", drawn from her own history. Progress measured in cycle variance and questions asked, never in weight. An anonymous daily count of others logging the same symptom |
-| Skin tracking (fully optional) | Off by default. If she turns it on, we state plainly at that moment: no beauty or attractiveness scores, no cross-user comparison, no before-and-after collages. She can turn it off and delete everything at any time |
-| Being understood | A shareable plain-language card explaining the condition so she does not have to. Scripts for hard conversations with an employer, a relative or a dismissive clinician. A post-appointment debrief that explains what the doctor actually said |
-| Discretion | Neutral app naming and a fast exit, for users whose phones are not private |
+| Module | What it is | Phase |
+|---|---|---|
+| Onboarding and consent | Age gate, granular per-class consent | **1** |
+| Daily check-in | One screen, ~12 curated dimensions, 30 seconds, pause mode that never guilts her. Voice entry transcribed on device, English in Phase 1 | **1** |
+| Cycle view | Irregular-native timeline, interval distribution, bleeds per year | **1** |
+| Insights, the correlation engine | Weekly pattern reveal with observation counts and confidence, or an honest "still learning". This is the core engine and the reason the product exists | **1** |
+| Doctor export | Cycle history, symptom timeline, medication log, and the tests she can ask for by name | **1** |
+| Safety layer | PHQ-4 and GAD-2 monthly or user-initiated. Immediate escalation on any suicidality or self-harm response, routed to Tele-MANAS, then prompting her to contact a trusted person or her clinician, with a check-in nudge after 24 hours. Sleep-apnoea screen. 90-day cycle sentinel | **1** |
+| Lab report capture | Photograph a printed report, values extracted on device, confirmed by her before saving, then carried into the doctor export | **1** |
+| Medicine strip capture | Photograph a strip, identify the medication, log it into her history and the doctor export. Any drug information shown is the approved patient leaflet, attributed, never our own counselling | 2 |
+| Experiment Mode | Pre-declared outcome, baseline, washout, verdict. "No detectable change" is a valid result | 2 |
+| Companion | Evidence-grounded question answering with citations | 2 |
+| Support circle | User-initiated outreach to a self-chosen contact, state-independent check-in reminders, routine nudges for hydration and medication | 2 |
+| Emotional continuity | "You have felt this way six times before and it lifted within four days", drawn from her own history. Progress measured in cycle variance and questions asked, never in weight | 2 |
+| Skin tracking | Off by default. If she turns it on, we say plainly at that moment: no beauty or attractiveness scores, no cross-user comparison, no before-and-after collages. She can turn it off and delete everything at any time | 2 |
+| Being understood | A shareable plain-language card explaining the condition so she does not have to. Scripts for hard conversations. A post-appointment debrief that explains what the doctor actually said | 2 |
+| Discretion | Neutral app naming and a fast exit, for users whose phones are not private | 2 |
+| Multi-device sync and platform health integration | Cross-device sync, Health Connect and HealthKit. Deliberately last. Offline-first sync with conflict resolution is a hard problem that fails visibly when half-built, and since the product needs no wearable, those APIs add little until they add a lot | 3 |
+
 
 The last four modules share one idea: **the product supports the person, not just the condition.** Most of the burden of PMOS is not clinical. It is explaining yourself repeatedly, doing everything right and seeing nothing change in the mirror, being asked about your fertility by relatives, and having a bad day that feels permanent. Two of these cost us very little to build, because they reuse machinery we already need. Telling her "you have felt this way before and it passed" is the correlation engine pointed at mood rather than skin, and it is something no competitor can say, because none of them holds her history.
 
@@ -176,28 +180,6 @@ flowchart TB
     style EDGE fill:#FEF3C7,stroke:#B45309,stroke-width:2px
 ```
 
-### Plain-text version
-
-```
-CLIENT   Capacitor app (Android/iOS) wrapping a React PWA
-         - React UI: check-in, cycle view, insights, exports
-         - n-of-1 correlation engine (TypeScript) runs ON DEVICE
-         - IndexedDB holds ALL health data. App works fully offline
-         - Native plugins (Swift/Kotlin): camera capture, on-device OCR,
-           encrypted local storage
-                    |
-                    |  accounts + anonymised usage metrics only
-                    |  NO personal health records cross this line
-                    v
-EDGE     Cloudflare
-         - Pages ....... serves the PWA shell
-         - Workers ..... accounts, admin metrics, AI proxy
-         - D1 .......... user accounts, aggregate product metrics
-                    |
-                    v
-AI       Gemini API called FROM the Worker, key never on the client
-```
-
 ### What runs where, and why
 
 | Concern | Where | Why |
@@ -207,17 +189,7 @@ AI       Gemini API called FROM the Worker, key never on the client
 | Correlation engine | Device | It reads her full history. Keeping it local means the raw log stays local |
 | Accounts, admin metrics | Cloudflare Workers to D1 | We need user management and product analytics. Neither requires her health data |
 | Grounded companion | Worker calls Gemini | **The API key lives in a Worker secret binding and never ships to the client** |
-| PDF generation | Client-side in the MVP | Avoids a Worker CPU timeout on long histories |
-
-**Multi-device sync is deliberately out of the MVP.** Offline-first bidirectional sync with conflict resolution is a genuinely hard problem, and a half-built version fails visibly. Single device for the hackathon, sync designed properly afterwards.
-
-**Health Connect and HealthKit are out entirely.** Since we require no wearable, the only thing those APIs would give us is phone step count, which does not justify a native plugin plus a Play Console health-data declaration and its review latency. Movement is logged in the check-in.
-
-### One constraint that shaped the design
-
-No third-party app on iOS or Android can capture camera frames in the background or on device unlock. That is an operating-system privilege, not something an SDK unlocks, and it is why we never designed anything ambient or passive. Every camera action in this product is something she deliberately starts, and every image is processed on the device and discarded once the values are read.
-
-We established this before writing code rather than discovering it mid-build.
+| PDF generation | Client-side in the | Avoids a Worker CPU timeout on long histories |
 
 ---
 
@@ -254,27 +226,36 @@ The workshop made the point that the demo which impresses on Sunday often cannot
 - **Blood oxygen and blood pressure from the camera.** App Store guideline 1.4.1 forbids both by name, and phone sensors lack the wavelengths oximetry requires.
 - **Overnight ballistocardiography, facial-expression stress inference, voice mood biomarkers, automated hirsutism scoring.** Each fails on evidence rather than policy.
 - **CGM integration.** One vendor is not sold in India, the other publishes no legal third-party API, and it costs about ₹8,400 a month regardless.
-- **Multi-device sync and platform health-store integration.** Cut from the MVP on effort-to-value grounds, as above.
+- **Multi-device sync and platform health-store integration.** Deferred past Phase 1 on effort-to-value grounds, as above.
 
-### What will actually be running by Sunday
+### What state Phase 1 will be in by Sunday
 
 We would rather say this than be asked.
 
-| Module | State on Sunday |
+| Phase 1 module | State on Sunday |
 |---|---|
 | Cycle engine, check-in, cycle view | Working code |
-| Correlation engine | Working, on a reduced scope: lagged correlation with a confidence floor over a fixed symptom set. FDR correction and bootstrap intervals are specified and partially implemented, not finished |
+| Correlation engine | Working. Lagged correlation with a confidence floor over a fixed symptom set. False-discovery-rate correction and bootstrap intervals are specified and partially implemented |
 | Doctor export | Working, one template |
+| Safety layer | Screeners and escalation working with real Tele-MANAS routing. The 24-hour follow-up nudge may not be finished |
 | Lab report capture | Working on printed reports we have tested. Not robust to every layout |
-| Medicine strip capture | Demonstrated on a small set of common Indian strips, not general |
-| Crisis routing | Real numbers and real scripted flow, but the full protocol our clinician specified, including the 24-hour nudge, is not built |
-| Experiment Mode, support circle, emotional continuity | Specified, not built |
+| Voice check-in | Working in English. On-device transcription, no audio leaves the phone |
+
+Phase 2 modules are specified, not built, and we will say so rather than demo a mock.
 
 Everything in the second half of the module table is roadmap. We are not going to present a mock as a build.
 
 ### Demo plan and fallback
 
 Camera capture is built and tested on all four team members' phones by Saturday afternoon. Printed-page recognition is far more predictable than the real-time signal processing we originally planned, but lighting and print quality still vary, so we hold a validated device and a pre-captured report as a fallback. Nothing in the demo depends on a single feature working: the check-in, the pattern reveal and the doctor export each stand alone.
+
+---
+
+## Clinical review
+
+A practising clinician reviewed this proposal and changed it in five places. Most visibly, the sleep-apnoea headline comparison came out, Indian prevalence became a criteria-tied range, and camera heart rate was cut after they asked what a resting heart rate would actually tell a woman with PMOS.
+
+The 90-day sentinel behaviour, the mental-health protocol and the screen-and-refer language described above were all specified with their input, including their instruction that the crisis pathway as written is the right scope for now and that we should not build more than it.
 
 ---
 
@@ -292,19 +273,6 @@ PMOS Companion is the product. mycyclesafe is the reason we know it needs to exi
 
 ---
 
-## Clinical review
-
-A practising clinician has reviewed this proposal. Their input changed it in five places.
-
-- **The sleep-apnoea comparison was removed.** We previously led with "37% against 6%". OSA prevalence varies by age, BMI, sex, ethnicity and diagnostic method, so a direct headline comparison is not sound. We now say substantially more common, and give the pooled figure with its caveat.
-- **Indian prevalence is stated as a range**, 13.6% to 19.6%, tied to the diagnostic criteria, rather than a single number.
-- **The 90-day sentinel was approved** as a reasonable threshold for prompting review, and its behaviour was specified: ask about pregnancy, hormonal medication and existing treatment before anything else, use "please discuss this with your healthcare provider", and repeat after two to four weeks with a snooze.
-- **The mental-health protocol was specified**: monthly or user-initiated screening, immediate escalation on any suicidality or self-harm response, and after showing Tele-MANAS, prompt her to contact a trusted person or clinician, with one nudge after 24 hours. The clinician was explicit that this is the appropriate scope for now and that we should not build more than this.
-- **The screen-and-refer language was confirmed** as improved over an earlier draft that claimed to "find patterns".
-
-They also challenged the camera heart-rate feature directly, asking what it would tell a woman with PMOS. We agreed and removed it. The camera now captures lab reports and medicine strips instead, which serves the doctor-advocacy work the same clinician endorsed.
-
-One item remains open. They have not yet formed a view on the CDSCO classification question, so our position stands as stated: we will seek a pre-submission opinion rather than assume the answer.
 
 ## How it sustains itself
 
@@ -331,19 +299,5 @@ This proposal is a summary. Detail sits in a Product Requirements Document cover
 | Rahul Ramakrishnan | [Rahul-ramakrishnan06](https://github.com/Rahul-ramakrishnan06) |
 | Satheeshkumar | [SatheeshKumarSSK](https://github.com/SatheeshKumarSSK) |
 
-**Staying overnight:** yes, all four.
-
-**MSI raffle:** yes, entering.
-
 ---
 
-## Anticipated jury questions
-
-1. **Why does the camera read documents rather than vital signs?** We planned camera heart rate and cut it. A clinician asked what a resting heart rate would tell a woman with PMOS, and it is not a marker for this condition, not in the guideline, and would not change her care. Reading her lab report and her medicine strip removes real work and makes the doctor export better, which is where this product is strongest.
-2. **Can four people build this in a weekend?** Five screens and one loop, after cutting sync and platform health integrations. The correlation engine is classical statistics. The infrastructure is serverless, so nothing is spent on operations.
-3. **Why does she still use it on day 35 when there is no pattern yet?** Because the cycle view is useful on day one and the export is useful by week four. Patterns are the reward for staying, not the entry price.
-4. **Is it a medical device?** We position as screen-and-refer, with no diagnosis, no likelihood scores and no dosing. We will seek a CDSCO pre-submission classification opinion before any pilot rather than assume the answer.
-5. **What stops a competitor copying it?** Honestly, the engine is standard statistics and could be replicated. The harder parts are the domain judgement about what to screen for, the clinical safety layer, India-native execution, zero-commerce evidence grading which supplement-funded rivals structurally cannot match, and an existing distribution channel. The features built on her own accumulated history, telling her a feeling has passed before, are the ones a new entrant cannot ship on day one at any budget.
-6. **What is the biggest risk?** Retention, which is what kills consumer health apps, made harder by a cohort with elevated depression rates. Our answer is the value ladder above, and it is the metric we would watch first.
-7. **You already run a cycle app. How many users does it have?** We cannot tell you, because it has no account system or analytics. Site traffic is a few dozen visitors a day. It was built as a cause, never marketed, and we are not presenting it as traction. It gives us a working deployment in this domain and the stack we will build on, nothing more.
-8. **Why not notify her family when she is struggling, since that would drive engagement?** Because the same mechanism lets someone monitor her, and we cannot control who holds the other end. Our support circle is user-initiated, discloses no state to the contact, and its scheduled reminders are independent of how she is feeling. We took the version that cannot be misused over the version that demos better.

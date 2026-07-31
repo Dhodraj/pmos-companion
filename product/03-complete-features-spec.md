@@ -948,7 +948,7 @@ Claims: 50+ PCOS symptoms across 8 categories, pattern recognition across cycle/
 | **Guideline screening ledger** | ❌ | ❌ | ❌ | Partial | **✅ genuinely unique** |
 | **India vernacular (Hindi/Tamil)** | ❌ | ❌ | ❌ | Partial | **✅ genuinely unique** |
 | **Evidence grades + zero commerce** | ❌ | ❌ | ❌ | ❌ | **✅ genuinely unique** |
-| **mycyclesafe funnel (500k users)** | ❌ | ❌ | ❌ | ❌ | **✅ structurally unique** |
+| **mycyclesafe funnel (its existing user base)** | ❌ | ❌ | ❌ | ❌ | **✅ structurally unique** |
 
 ### 7.3 What this actually means
 
@@ -960,7 +960,7 @@ Claims: 50+ PCOS symptoms across 8 categories, pattern recognition across cycle/
 3. **Clinical safety depth** — mental-health screening + scripted crisis path, OSA screen-and-refer, guideline screening ledger. All absent everywhere.
 4. **India-native** — vernacular, Indian cuisine coaching, Tele-MANAS, local referral pathways, ₹-appropriate pricing. Both competitors are Western and English-only; PMOS Vera is *iPhone-only*, which excludes most of the Indian market outright.
 5. **Zero commerce + evidence grades** — a structural position competitors funded by supplements cannot copy.
-6. **The mycyclesafe funnel** — 500k users, and the irregular-cycle segment is by definition this audience. Neither competitor has distribution; Josie is still collecting a waitlist.
+6. **The mycyclesafe funnel** — its existing user base, and the irregular-cycle segment is by definition this audience. Neither competitor has distribution; Josie is still collecting a waitlist.
 
 **Two warnings:**
 - **Close the privacy gap or stop claiming it.** PMOS Vera has *no servers at all*. Our cloud-sync + LLM architecture cannot honestly claim to be more private — reframe our claim as "on-device processing for camera and images, encrypted sync for what needs it," and never position privacy as a lead differentiator against Vera.

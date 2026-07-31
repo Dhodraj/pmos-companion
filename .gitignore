@@ -15,3 +15,7 @@ secrets/
 *.bak
 *.bak.*
 .DS_Store
+
+# local ops tooling, not part of the product
+hackathon/pull-metrics.mjs
+hackathon/package*.json

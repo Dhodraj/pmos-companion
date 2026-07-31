@@ -2,10 +2,10 @@
 """PMOS PRD -> premium PDF.  markdown -> styled HTML (mermaid) -> Chrome print-to-PDF."""
 import re, subprocess, pathlib, base64, html, sys
 
-SRC = pathlib.Path("~/Documents/Personal/t4g-hackathon-2026/product/00-PRD.md")
+SRC = pathlib.Path(__file__).resolve().parents[1] / "00-PRD.md"
 BUILD = pathlib.Path("/tmp/prd-build")
 OUT_HTML = BUILD / "prd.html"
-OUT_PDF = pathlib.Path("~/Documents/Personal/t4g-hackathon-2026/product/PMOS-PRD.pdf")
+OUT_PDF = pathlib.Path(__file__).resolve().parents[1] / "PMOS-PRD.pdf"
 
 md = SRC.read_text(encoding="utf-8")
 
@@ -235,7 +235,7 @@ TPL = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     <div><dt>Version</dt><dd>1.0, July 2026</dd></div>
     <div><dt>Owners</dt><dd>Dhodraj, Belson, Rahul, Satheesh Kumar</dd></div>
     <div><dt>Launch vehicle</dt><dd>Tech for Good 2026, GDG Coimbatore</dd></div>
-    <div><dt>Distribution</dt><dd>mycyclesafe.ai, 500,000+ users</dd></div>
+    <div><dt>Distribution</dt><dd>mycyclesafe.ai</dd></div>
   </div>
   <div class="cover-foot">
     <span>102 functional, 48 non-functional and 14 regulatory requirements</span>
