@@ -1,0 +1,26 @@
+hackathon/proposal-short.md
+  s_d0bebf31341a3e::t_6ce82a3c791360 1-92
+hackathon/proposal.md
+  s_d0bebf31341a3e::t_67854859fe2382 86,131
+  s_d0bebf31341a3e::t_4731a53b76707f 259-274,291,309-317
+  s_d0bebf31341a3e::t_00a34a1088b46e 1-3
+  s_d0bebf31341a3e::t_94868dd8d16da6 318
+README.md
+  s_d0bebf31341a3e::t_907da70a927941 28-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "8262d44fcab705220b068b1c2ceb1a40538e0dfc",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-opus-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
