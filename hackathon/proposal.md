@@ -121,7 +121,11 @@ Patterns are the reward for staying, not the price of entry. Logging is never st
 
 ## What we are building
 
-Phase 1 is the complete core product, built across the two days. Phase 2 is enhancement on top of a working system, not the missing half of one.
+Phase 1 has a core that ships first and a set of additions that follow only once it works.
+
+**The core loop, and the first thing we build:** the 30-second check-in, the irregular-native cycle view, the correlation engine, and the doctor export. Four things that stand alone. Log, see herself honestly, learn something, hand it to a doctor.
+
+**Then, in order:** lab report capture, the safety layer, and the rest below. We would rather cut these live than demo them half-built.
 
 | Module | What it is | Phase |
 |---|---|---|
@@ -212,7 +216,9 @@ Chosen for what four people can ship in a weekend and still run afterwards.
 | Correlation engine | Interpretable time-series statistics in TypeScript: per-user baselines, lagged cross-correlation, bootstrap confidence intervals, false-discovery-rate correction | Explainable to her and defensible to her doctor |
 | Testing | Unit tests on the correlation engine against synthetic series with known correlations and known noise; OCR checked against a fixed set of real Indian lab reports and medicine strips, measuring both extraction accuracy and how often it wrongly claims confidence | An engine that finds patterns in pure noise is worse than useless, and an OCR that misreads a dose is worse than one that admits it cannot read |
 
-**On the two AI decisions.** The LLM handles language, not inference about her body. Gemini answers questions and explains evidence; it never computes a pattern, scores a risk or suggests a dose. The correlation engine is deterministic statistics precisely because every insight must survive "how do you know that?"
+**What Gemini actually does.** It is a fair question when the correlation engine is deterministic statistics and the OCR runs on device. Gemini handles language, not inference about her body. The engine finds the association numerically; Gemini turns it into "your skin flares two to three days after nights under six hours" while preserving the uncertainty, and writes the doctor-facing summary from structured data. It never computes a pattern, scores a risk, or suggests a dose. One job, done well, rather than sprinkled across the product.
+
+The correlation engine is deterministic precisely because every insight must survive "how do you know that?"
 
 **On statistical honesty.** Testing many lag-and-symptom pairs will surface spurious correlations by chance, so the engine applies false-discovery-rate correction and reports observation counts alongside every claim. We would rather show "still learning" than a confident result that is noise.
 
