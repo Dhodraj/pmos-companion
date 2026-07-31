@@ -1,0 +1,373 @@
+{
+  "summary": "Product Idea Researcher — ranked AI health product ideas for India (consumer-pain-breadth, scalable), YC-framework scored",
+  "agentCount": 11,
+  "logs": [
+    "Research done: 6/6 dimensions",
+    "Generated 14 candidate ideas",
+    "Scored 14; kept 12 after wrapper + tarpit filter"
+  ],
+  "result": {
+    "topNames": [
+      "MetaTwin",
+      "ShelfSense",
+      "ResistNet",
+      "PolyGuard",
+      "CareGraph",
+      "ClaimPilot",
+      "OdysseyAI"
+    ],
+    "ranked": [
+      {
+        "name": "MetaTwin",
+        "novelty": 5,
+        "technicalDepth": 5,
+        "wowFactor": 4,
+        "defensibility": 4,
+        "feasibility36hr": 2,
+        "marketPull": "strong",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: physiological state estimation under sparse/noisy inputs has no ground truth to calibrate against without CGM — you cannot PROVE the glucose curve is right, and dose suggestions are a regulatory/safety landmine. Way past is genuinely missing in a 36hr window: every 2025 twin paper (PhysioSeq2Seq, simulation-based inference twins) still relies on CGM streams or simulators for validation. The hard core exists but is unprovable in a hackathon — real tarpit.",
+        "kept": true,
+        "verdict": "KEEP but flagged as the highest-risk, most-novel entry. It is the only idea nobody has shipped (CGM-free sparse-data twin for India's ~90M price-sensitive diabetics; Twin Health mandates a CGM + human coaches at premium price). Technical insight is real: probabilistic physiological state estimation under heavy missingness from finger-pricks + meal photos. BUT feasibility is the killer — in 36hr you can render a simulated curve and a hypo alert, yet cannot demonstrate accuracy, and 'dose/diet suggestion' invites the judge question 'how do you know it won't harm someone?' with no answer. Frame strictly as decision-support. Win-potential is high novelty/wow but the demo cannot close the credibility loop; treat as moonshot, not the safe hackathon bet.",
+        "sources": [
+          "https://arxiv.org/pdf/2605.16860",
+          "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11615876/",
+          "https://usa.twinhealth.com/"
+        ]
+      },
+      {
+        "name": "ShelfSense",
+        "novelty": 4,
+        "technicalDepth": 5,
+        "wowFactor": 5,
+        "defensibility": 4,
+        "feasibility36hr": 3,
+        "marketPull": "strong",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: robust OCR of Indian pharma packaging under glare foil, curled strips, tiny mixed-script fonts, on-device and offline. Existing products (PharmaStok, MedLens, ElySpace) side-step this by reading DISTRIBUTOR INVOICES/PDFs, not the physical shelf — the govt QR scheme covers only ~top-300 brands and needs a printed code. Reading ANY strip visually off a shelf-sweep is genuinely unsolved. Real way past exists (mobile CV / Gemini-Nano-class OCR matured), BUT a second structural friction is physical layout: chemists stack strips in drawers/bins, not camera-facing shelves, so a clean 'sweep' capture is not guaranteed — MVP must handle tray/drawer capture, not assume a supermarket shelf.",
+        "kept": true,
+        "verdict": "KEEP — deepest pure-engineering core and the widest, most concrete pain (₹20k-50k/month expired-stock bleed for the unorganized-pharmacy majority that has never owned software). Winning insight: read the DRUG ITSELF visually (name+batch+expiry) with zero barcode, zero invoice, on a low-end offline Android — a real CV problem a fast-follower can't clone in a weekend, and the field-captured strip corpus becomes a data moat. Honest risks that cap feasibility at 3: (1) glare-foil/curled-strip OCR robustness is exactly where demos cherry-pick a curated tray while real shelves generalize poorly; (2) the 'sweep across a shelf' framing may not match how kirana chemists physically store stock. De-risk by demoing on a messy real tray (not a flat lineup) and showing batch+expiry+reorder alerts live. Incumbent invoice-OCR is the fallback baseline to beat, not a competitor doing the same thing.",
+        "sources": [
+          "https://pharmastok.com/",
+          "https://medlens.in/blog-medical-shop-software-india.html",
+          "https://blog.roboflow.com/ocr-lot-code-and-expiry-date-verification/",
+          "https://www.nature.com/articles/s41598-026-38215-1"
+        ]
+      },
+      {
+        "name": "ResistNet",
+        "novelty": 4,
+        "technicalDepth": 5,
+        "wowFactor": 3,
+        "defensibility": 5,
+        "feasibility36hr": 3,
+        "marketPull": "weak",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: classic data-network cold-start — a federated antibiogram is worthless until many labs join, and ICMR's i-AMRSS already occupies the centralized-surveillance slot with automated antibiogram generation. Way past is thin: the privacy-preserving angle (raw isolates never leave the lab) could unlock labs that refuse central pooling, but a hackathon team cannot bootstrap the lab network, so the value only exists on paper. Real structural barrier, weak escape.",
+        "kept": true,
+        "verdict": "KEEP but as the B2B outlier, not the breadth play. Genuine technical depth (federated learning + differential privacy + Bayesian spatiotemporal resistance modeling) and the strongest defensibility of the five. BUT: (1) it is a clinician/lab tool — it resolves almost no direct patient pain, contradicting the 'largest number of consumers' brief; (2) ICMR i-AMRSS already does real-time reporting + automated antibiograms, so the only novel wedge is federated+hyperlocal-pincode; (3) in 36hr you can only SIMULATE five labs, so the 'how?!' moment is abstract math, not visceral. The privacy-preserving federation is the real insight, but wow-in-a-demo is its weakness.",
+        "sources": [
+          "https://iamrsn.icmr.org.in/",
+          "https://www.medrxiv.org/content/10.64898/2025.12.27.25343078.full.pdf"
+        ]
+      },
+      {
+        "name": "PolyGuard",
+        "novelty": 4,
+        "technicalDepth": 4,
+        "wowFactor": 4,
+        "defensibility": 4,
+        "feasibility36hr": 5,
+        "marketPull": "strong",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: every DDI checker (Micromedex, Medscape, drugs.com) assumes a CLEAN molecule list — the unsolved 90% is reconstructing the real Indian patient's list from brand-named, code-switched, handwritten, multi-doctor + OTC + AYUSH reality. Way past IS real: multimodal LLM OCR now reads cluttered strips, and a curated Indian brand→molecule + AYUSH normalization corpus is the actual unlock the interaction table can't supply. Genuine.",
+        "kept": true,
+        "verdict": "Strongest all-rounder and best hackathon fit. The winning insight is that the value is NOT the public interaction graph (commodity) but the upstream brand→molecule normalization + same-molecule-different-brand dedup across fragmented multi-specialist + OTC + AYUSH inputs — a problem even Indian physicians fail at (>50% don't recognize herb-drug interactions per the literature). Broadest consumer pain of the five: elderly polypharmacy is documented at ~50%+ in 70-79yr Indians, and the 'four specialists who never talk' fragmentation is universal. Demoable HARD CORE in 36hr (photo pile → molecules → duplicate/interaction/renal flags → substitute) over a curated common-brand set. Defensibility = the tens-of-thousands-SKU + AYUSH corpus, a curation slog a weekend clone can't assemble. Only risk: if built lazily it collapses into a Gemini wrapper — the corpus and real-world-list reconstruction are what keep it real.",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893539/",
+          "https://www.business-standard.com/health/is-it-safe-to-mix-ayurveda-with-modern-medicine-here-s-what-doctors-say-125091800324_1.html",
+          "https://www.researchgate.net/publication/381339956_DRUG_INTERACTIONS_BETWEEN_AYURVEDIC_DRUGS_AND_ALLOPATHIC_DRUGS",
+          "https://intuitionlabs.ai/articles/drug-interaction-checkers-comparison-lexicomp-medscape"
+        ]
+      },
+      {
+        "name": "CareGraph",
+        "novelty": 3,
+        "technicalDepth": 5,
+        "wowFactor": 4,
+        "defensibility": 4,
+        "feasibility36hr": 4,
+        "marketPull": "strong",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: incumbents (Eka Care/BODHI) already structure longitudinal records + run clinician-curated KGs, so 'we build a graph' is not the moat. Way past: the un-shipped layer is cross-PROVIDER entity resolution + temporal contradiction/decay detection over messy handwritten Indian scripts — display-and-store apps do none of this. That is a real unlock, not a dead tarpit.",
+        "kept": true,
+        "verdict": "KEEP — top pick on builder-fit + consumer breadth. The winning technical insight is temporal-contradiction detection with confidence decay across provenance-stamped multi-provider sources (catching a stale/duplicate/conflicting order), which no Indian consumer app ships — Eka structures and displays, it does not reason over time. Beats global temporal-KG research by being tuned to genuinely messy Indian records (brand→molecule→ATC, LOINC unit harmonization, handwritten OCR). Risk: Eka's BODHI KG means novelty is dented — the demo MUST show the caught contradiction, not just a pretty timeline, or a judge sees a nicer Eka. 36hr slice is realistic and directly in the builder's telemedicine wheelhouse.",
+        "sources": [
+          "https://www.eka.care/services/leveraging-ontologies-in-health-care",
+          "https://yourstory.com/2025/11/healthtech-startup-eka-care-ai-standardise-medical-records-doctor-patient",
+          "https://arxiv.org/pdf/2602.12828"
+        ]
+      },
+      {
+        "name": "ClaimPilot",
+        "novelty": 4,
+        "technicalDepth": 4,
+        "wowFactor": 4,
+        "defensibility": 4,
+        "feasibility36hr": 4,
+        "marketPull": "strong",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: US revenue-cycle denial-prediction is solved but India lacked the rail; the denial-pattern ML needs a labeled denial dataset that does not yet exist, so the pure-ML core is partly aspirational. Way past: NHCX went live 2024 making claims API-addressable for the FIRST time, and the demoable core (policy-clause reasoning + NHCX-compliant bundle assembly + IRDAI cashless-timer) is real integration engineering, not the missing dataset. Genuine unlock.",
+        "kept": true,
+        "verdict": "KEEP — co-top pick with CareGraph on consumer-pain breadth. Claim rejection runs 11-15% repudiation and 15-30% first-submission rejection across India, making this one of the largest, angriest consumer pain surfaces in Indian health. No patient- or hospital-side denial-PREVENTION agent exists on NHCX. Winning insight: pre-submission denial scoring with itemized policy-clause reasons + auto-assembled NHCX bundle + the IRDAI T+1h/T+3h cashless clock as a live escalation engine — an integration+data moat that compounds with usage. Watch the wrapper edge: if 'prediction' is just an LLM reading the policy, it thins; the NHCX bundle assembly + timer are what make it real engineering. Strongest feasibility + market combo.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/National_Health_Claims_Exchange",
+          "https://caladriushealth.ai/what-is-nhcx/",
+          "https://righttoinformation.wiki/health-insurance-claim-rejected-irdai-complaint-india"
+        ]
+      },
+      {
+        "name": "OdysseyAI",
+        "novelty": 3,
+        "technicalDepth": 5,
+        "wowFactor": 4,
+        "defensibility": 4,
+        "feasibility36hr": 4,
+        "marketPull": "weak",
+        "isWrapper": false,
+        "tarpitRisk": "Barrier: rare-disease phenotype AI is heavily worked globally — PhenoBrain (top-10 recall 0.813, beats 50 specialists), AMELIE, and a Nature npj 2025 phenotype pipeline that outperforms human experts already exist; the approach is frontier-RESEARCH but not unseen. Way past for India: no India product + ABDM aggregation is a wedge, but the science is not a fresh unlock — it is a port. Weak novelty escape.",
+        "kept": true,
+        "verdict": "KEEP technically, but it is dominated by CareGraph for THIS brief and ranks last on fit. It shares CareGraph's exact temporal-KG + provenance core, then narrows the audience to rare-disease patients — by definition the SMALLEST consumer population, directly against the 'largest number of Indian consumers / breadth of pain' mandate. The evidence-traceable provenance trail (every hypothesis cites the exact finding) is a genuinely strong, safety-relevant insight and demoable in 36hr, but global tools already do phenotype-to-disease ranking well, so it wins on rigor, not surprise. Recommendation: fold its provenance-trail mechanic into CareGraph as a feature rather than build it standalone; as a solo product its market breadth is too thin to win a 'breadth of consumer pain' judging rubric.",
+        "sources": [
+          "https://www.nature.com/articles/s41746-025-01452-1",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13045663/",
+          "https://arxiv.org/pdf/2511.14638"
+        ]
+      }
+    ],
+    "dropped": [
+      {
+        "name": "RetinaEcho",
+        "why": "HARD PHYSICS BARRIER with no software way past: a BARE smartphone camera physically cannot image the retina. Every credible smartphone retinal system in the literature (D-EYE, Remidio, the medRxiv smartphone-device work) uses added optics — a clip-on lens or adapter to focus through the pupil. Super-resolution/restoration cannot recover diagnostic retinal signal that optics never captured; you can't restore what was never imaged. The 'no clip-on lens, plain phone to the eye' claim is the exact part that can't ship — and the 36hr slice quietly retreats to 'feed low-quality retinal IMAGES' (i.e. existing fundus datasets), which does NOT demonstrate the promised hardware-free capture. That is sci-fi-that-can't-demo."
+      },
+      {
+        "name": "JourneyAgent",
+        "why": "Barrier is NOT algorithmic — it is rail access + regulation + trust. UHI/ABDM/NHCX are live as building blocks but real endpoints are gated, sparsely populated, and consent/claims flows are bureaucratically heavy; the actual moat (live multi-rail integration + RMP accountability under TPG-2020) cannot be obtained or demonstrated in 36hr. The 36hr slice therefore runs against MOCK endpoints, which reduces the demoable artifact to an LLM planner emitting a plan/trace over fake APIs — i.e. the wrapper-shaped part is what ships and the moat-shaped part is what you can't show. Every health super-app (Practo, Tata 1mg, PharmEasy) has attacked whole-journey orchestration and stalled on the same walled-garden/business-access barrier; agentic LLM planning does not unlock that barrier."
+      }
+    ],
+    "report": "# Tech for Good 2026 — Ranked Product Research: AI for Good Health & Well-being (India)\n\n**Ranking basis:** technical ambition + novelty + wow + defensibility, gated on *\"can a small team ship a credibility-closing demo in 36 hours.\"* Because the qualifier **\"that still ships\"** is load-bearing, the single most *novel* idea (MetaTwin) is deliberately demoted — it is the highest-ambition build but the only one whose demo cannot prove it works in a hackathon window. Consumer-pain breadth (the brief's mandate) is used as the tie-breaker among the shippable deep-tech ideas.\n\n## Summary table\n\n| Idea | Novelty | Technical depth | Wow | Defensibility | 36hr-feasible | Market pull | Overall |\n|---|---|---|---|---|---|---|---|\n| **1. ShelfSense** | 4 | 5 | 5 | 4 | 3 | Strong | **Highest ambition-that-ships. Deepest pure-CV core + self-proving visceral demo + widest concrete ₹-pain.** |\n| **2. CareGraph** | 3 | 5 | 4 | 4 | 4 | Strong | **Top builder-fit + breadth. Temporal contradiction detection no Indian app ships; demos cleanly.** |\n| **3. ClaimPilot** | 4 | 4 | 4 | 4 | 4 | Strong | **Largest angry consumer surface (claim denials); real NHCX integration engineering.** |\n| **4. PolyGuard** | 4 | 4 | 4 | 4 | 5 | Strong | **Best all-rounder + safest ship (feas 5). Broadest mass-market safety net.** |\n| **5. MetaTwin** | 5 | 5 | 4 | 4 | 2 | Strong | **The moonshot. #1 on raw novelty/depth, demoted: demo cannot prove correctness in 36hr.** |\n| **6. ResistNet** | 4 | 5 | 3 | 5 | 3 | Weak | **Strongest moat + deep tech, but B2B, wow-in-demo is abstract, resolves little direct patient pain.** |\n| **7. OdysseyAI** | 3 | 5 | 4 | 4 | 4 | Weak | **Technically excellent but dominated by CareGraph; smallest audience. Fold in as a feature.** |\n\n---\n\n## 1. ShelfSense — *highest technical-ambition that still ships*\n\n**One-line pitch:** Sweep a phone across a chemist's shelf for 20 seconds and get back a full expiry-and-reorder ledger — for stores that have never owned a single piece of software or scanned a barcode.\n\n**The unsolved problem (why still open in India):** The unorganized-pharmacy majority runs on no inventory software and bleeds ₹20,000–50,000/month in expired-stock write-offs. India's government drug-QR scheme (barcoding on the top ~300 brands under DCGI's H2 mandate) only covers the largest brands and requires a *genuine printed code* — it does nothing for the long tail of strips a small chemist actually stocks. Existing \"pharmacy software\" (PharmaStok, MedLens, ElySpace) sidesteps the physical shelf entirely by ingesting *distributor invoices/PDFs*, not the medicine itself. So reading *any* strip visually off a shelf, offline, is genuinely unsolved.\n\n**The hard technical core:** On-device computer vision that reads Indian medicine strips and boxes — glare foil, curled packaging, tiny mixed-script (Latin + Devanagari) fonts, dense visual clutter — from a shelf-sweep video, extracts *name + batch number + expiry*, and builds an inventory-and-expiry ledger with **zero barcodes**, then forecasts min/max reorder points, running **offline on a low-end Android**. Concretely: a mobile detector (YOLO-class / MobileNet backbone) for strip/box localization + tracking across video frames to avoid double-counting, feeding a specialized OCR head (Gemini-Nano-class multimodal on-device, or a fine-tuned lightweight scene-text recognizer) hardened for lot-code/expiry patterns and glare. The batch/expiry field extraction is the true difficulty — see Roboflow's lot-code/expiry OCR work and 2026 scene-text robustness research; generic OCR fails on foil glare and curl.\n\n**90-second wow demo:** Sweep the phone across a *messy real medicine tray* (not a flat lineup) for 20 seconds. Instantly a live list appears: \"3 strips expiring in 18 days worth ₹2,400 — reorder these 5 now.\" From a store that has never had inventory software. The demo *proves itself* — the judge can see the strips.\n\n**Why it's hard to clone (moat):** Robust on-device OCR of cluttered, glare-heavy Indian pharma packaging under real shelf conditions is a genuine CV problem, not a prompt. The field-captured strip corpus (real batch/expiry crops under real glare) becomes a compounding data moat a weekend clone cannot assemble.\n\n**36hr MVP slice (provable core):** Shelf-/tray-sweep video → live detected drug + batch + expiry table → expiry alerts + reorder list, on a real tray of strips. This is the hard core, demoed live.\n\n**Real Indian impact + market:** Fewer expired-medicine sales and fewer stockouts for patients; the tool *funds itself* by recovering the chemist's write-off losses — an ROI sell, not a new fee. Target market is the ~hundreds-of-thousands of unorganized retail pharmacies with no software today.\n\n**Regulatory notes:** Inventory tooling — low regulatory surface. No clinical decision-making, so outside Telemedicine Practice Guidelines 2020. DPDP is light here (business inventory, minimal personal data). Positioning as a compliance *aid* to the DCGI top-300 QR mandate is a bonus, not a dependency.\n\n**Technical feasibility & risks (honest — what could fail the demo):** (1) Glare-foil/curled-strip OCR robustness is exactly where demos cherry-pick a curated tray while real shelves generalize poorly — **mitigate by demoing on a deliberately messy real tray.** (2) The \"sweep across a shelf\" framing may not match how kirana chemists physically store stock (drawers/bins, not camera-facing shelves) — **MVP must handle tray/drawer capture.** Incumbent invoice-OCR is the fallback baseline to beat, not a competitor doing the same thing.\n\n**Sources:** https://pharmastok.com/ · https://medlens.in/blog-medical-shop-software-india.html · https://blog.roboflow.com/ocr-lot-code-and-expiry-date-verification/ · https://www.nature.com/articles/s41598-026-38215-1\n\n---\n\n## 2. CareGraph — *top builder-fit + consumer breadth*\n\n**One-line pitch:** A patient's scattered records from every hospital, lab and handwritten script fused into one queryable, contradiction-aware clinical timeline — the reasoning layer ABDM never built.\n\n**The unsolved problem:** ABDM crossed 100 crore linked records with live HIU consent APIs (2025), and apps like Eka Care store and *display* records — but none build a *reasoning graph* that resolves entities, harmonizes lab values, and detects temporal contradictions across providers. Eka's BODHI KG is clinician-curated structuring/display; cross-*provider* entity resolution + temporal contradiction/decay detection over messy handwritten Indian scripts is the un-shipped layer. TIMER-class temporal reasoning over longitudinal records is 2025-2026 frontier research, unbuilt as an India consumer product.\n\n**The hard technical core:** Temporal clinical knowledge-graph construction fusing FHIR bundles (via ABDM HIU consent), OCR'd handwritten/printed prescriptions and lab PDFs, and vernacular free-text into one provenance-stamped timeline. Hard parts: entity resolution (brand→molecule→ATC; lab-value harmonization to LOINC with unit/reference-range normalization), typed edges over SNOMED/ICD/LOINC, **time-aware inference with confidence decay for stale records**, and **cross-source contradiction detection**. This is explicitly *not* RAG-over-PDF chat.\n\n**90-second wow demo:** Drop three hospitals' worth of messy PDFs + phone photos of handwritten scripts; ~10 seconds later one interactive timeline appears and flashes: \"Doctor A's amlodipine and Doctor C's later drug were never reconciled — conflict here.\" Every fact clicks back to its exact source page.\n\n**Why it's hard to clone (moat):** An entity-resolution + ontology + OCR + temporal-graph pipeline tuned to genuinely messy Indian records. A weekend LLM wrapper cannot reliably harmonize thousands of brand names, normalize lab units, or distinguish a stale finding from a current one.\n\n**36hr MVP slice:** Ingest 3-5 real-shaped record sets (FHIR JSON + lab PDFs + handwritten-script photos) for one synthetic patient → build the graph → render a clickable provenance timeline → live-demo **one caught drug contradiction + one duplicate-test flag.**\n\n**Real Indian impact + market:** Every multi-doctor household — especially elderly and chronic-disease patients across the 100-crore-record ABDM base — finally gets one intelligible history, killing repeat tests and catching conflicts. Directly in the builder's telemedicine wheelhouse.\n\n**Regulatory notes:** Consumes ABDM/ABHA HIU consent flows (the intended, sanctioned rail). DPDP consent-manager rails arrive Nov 2026 — build to consent-artifact model now. Framed as record-organization + decision *support* (surfacing conflicts for a clinician), it stays clear of prescribing under Telemedicine Practice Guidelines 2020.\n\n**Technical feasibility & risks:** Eka's BODHI KG means *novelty is dented* — the demo **must** show the caught contradiction, not just a pretty timeline, or a judge sees \"a nicer Eka.\" Handwritten-OCR accuracy and lab-unit harmonization are the fragile pieces; use curated real-shaped inputs. 36hr slice is realistic.\n\n**Sources:** https://www.eka.care/services/leveraging-ontologies-in-health-care · https://yourstory.com/2025/11/healthtech-startup-eka-care-ai-standardise-medical-records-doctor-patient · https://arxiv.org/pdf/2602.12828\n\n---\n\n## 3. ClaimPilot — *largest angry consumer surface*\n\n**One-line pitch:** An agent that reads your insurance policy and your discharge summary, predicts the claim will be denied before you submit it, tells you exactly why, and hands back a fixed, submission-ready claim.\n\n**The unsolved problem:** Health-claim rejection runs ~11-15% repudiation and 15-30% first-submission rejection across India, with a 21% YoY grievance surge and out-of-pocket shock at discharge for tens of millions of insured Indians. US revenue-cycle tools do denial prediction, but India only just got the **NHCX rail (live 2024-25)** — and there is *no* patient- or hospital-side denial-*prevention* agent on it. Incumbents monetize distribution, not claims.\n\n**The hard technical core:** An agentic pipeline that reasons over policy wording + the patient's structured record, scores denial risk *before* submission, auto-assembles an **NHCX-compliant claim bundle**, drafts appeals matched to insurer behavior, and tracks the **IRDAI cashless clock (T+1h auth, T+3h discharge)** with escalation. The real engineering is NHCX bundle assembly + the timer/escalation engine + policy-clause reasoning — not the (partly aspirational) denial-pattern ML.\n\n**90-second wow demo:** Upload a policy PDF + a discharge summary; under a minute later: \"82% denial risk: pre-auth is missing document X and this exclusion applies — here is the corrected, submission-ready claim,\" with the live cashless timer ticking.\n\n**Why it's hard to clone (moat):** Agentic policy reasoning + real NHCX integration + a compounding denial-pattern dataset is both an integration moat and a data moat that grows with usage.\n\n**36hr MVP slice:** Policy + claim documents → denial-risk score with itemized reasons → auto-assembled claim bundle → live cashless timer, on a sample case.\n\n**Real Indian impact + market:** Attacks the ~11% rejection rate, 21% grievance surge, and discharge-time out-of-pocket shock felt by tens of millions of insured Indians. One of the largest, angriest consumer pain surfaces in Indian health.\n\n**Regulatory notes:** NHCX + ABHA integration makes claims API-addressable in India for the first time; IRDAI's 2024 cashless timelines (T+1h/T+3h) are the compliance backbone. DPDP applies (handling policy + health data) — consent-first. Not clinical, so outside Telemedicine Guidelines.\n\n**Technical feasibility & risks:** The labeled denial dataset does not yet exist, so pure-ML denial *prediction* is partly aspirational — **if \"prediction\" is just an LLM reading the policy, the idea thins into a wrapper.** The NHCX bundle assembly + IRDAI timer are what keep it real engineering; sandbox/real NHCX access in 36hr may force a simulated exchange endpoint.\n\n**Sources:** https://en.wikipedia.org/wiki/National_Health_Claims_Exchange · https://caladriushealth.ai/what-is-nhcx/ · https://righttoinformation.wiki/health-insurance-claim-rejected-irdai-complaint-india\n\n---\n\n## 4. PolyGuard — *best all-rounder + safest ship*\n\n**One-line pitch:** Scan the shoebox of medicine strips an elderly patient actually takes — across four specialists who never talk — and instantly catch the duplicate molecule and the dangerous interaction nobody checked.\n\n**The unsolved problem:** Every DDI checker (Micromedex, Medscape, drugs.com, Lexicomp) assumes a *clean molecule list*. The unsolved 90% is reconstructing the real Indian patient's list from brand-named, code-switched, handwritten, multi-doctor + OTC + AYUSH reality — a problem even Indian physicians fail at (>50% don't recognize herb-drug interactions per the literature). Academic GNN-based DDI models are not productized for Indian consumers.\n\n**The hard technical core:** Graph-based drug-drug + drug-disease + drug-in-renal-impairment interaction inference over a *reconstructed* real-world medication list. The difficulty is upstream: robust brand→molecule normalization across code-switched handwritten Indian prescriptions plus OTC and AYUSH additions, **deduplicating same-molecule-different-brand**, then severity ranking and safe substitution. The interaction table is the easy 10%; multimodal LLM OCR now reads cluttered strips, and the curated Indian brand→molecule + AYUSH normalization corpus is the actual unlock.\n\n**90-second wow demo:** Photograph the actual pile of strips (brand names, not molecules) an elderly patient takes; the app flags \"these two are the same molecule taken twice\" and \"this pair risks hyperkalemia,\" spoken back in the patient's language.\n\n**Why it's hard to clone (moat):** The brand/AYUSH normalization corpus + real-world med-list reconstruction across tens of thousands of Indian SKUs — a curation slog, not the public interaction data. A weekend clone can't assemble it.\n\n**36hr MVP slice:** Photo of a strip pile → molecule extraction → interaction/duplicate flags with severity → substitute suggestion, over a curated set of the most common Indian brands.\n\n**Real Indian impact + market:** India's 90M+ diabetics plus its vast hypertensive/elderly polypharmacy population (documented ~50%+ polypharmacy in 70-79yr Indians) face adverse drug reactions as a leading avoidable harm. A lifelong, mass-market safety net at the point of purchase — the broadest consumer pain of the set.\n\n**Regulatory notes:** Bhashini delivers the free vernacular explanation layer. Frame as decision *support* / safety flags for the patient/pharmacist — surfacing risks, not prescribing — to stay within Telemedicine Practice Guidelines 2020. DPDP: minimal, on-device-first medication data.\n\n**Technical feasibility & risks:** Highest feasibility of the set (score 5). **The one risk is laziness:** if built as a thin Gemini call it collapses into a wrapper — the corpus and real-world-list reconstruction (dedup of same-molecule-different-brand across fragmented multi-specialist + OTC + AYUSH inputs) are what keep it real.\n\n**Sources:** https://pmc.ncbi.nlm.nih.gov/articles/PMC12893539/ · https://www.business-standard.com/health/is-it-safe-to-mix-ayurveda-with-modern-medicine-here-s-what-doctors-say-125091800324_1.html · https://www.researchgate.net/publication/381339956_DRUG_INTERACTIONS_BETWEEN_AYURVEDIC_DRUGS_AND_ALLOPATHIC_DRUGS · https://intuitionlabs.ai/articles/drug-interaction-checkers-comparison-lexicomp-medscape\n\n---\n\n## 5. MetaTwin — *the moonshot (raw #1 on novelty/depth, demoted for shippability)*\n\n**One-line pitch:** A physiological digital twin that titrates diet and dose and warns of hypoglycemia hours ahead — from a meal photo and an occasional finger-prick, with no expensive continuous glucose monitor.\n\n**The unsolved problem:** Twin Health mandates a CGM + human coaches at a premium price. There is **no** low-cost, sparse-data metabolic twin for India's ~90M price-sensitive diabetics, of whom ~66% sit at low medication adherence. Every 2025 twin paper (PhysioSeq2Seq, simulation-based-inference twins) still relies on CGM streams or simulators for validation.\n\n**The hard technical core:** A personalized mechanistic/Bayesian metabolic simulation that estimates glucose dynamics and predicts hypoglycemia from *sparse, noisy* inputs (intermittent finger-pricks + meal photos) rather than continuous CGM — probabilistic physiological state estimation under heavy missingness. Food-photo nutrition estimation feeds a physiological ODE/Bayesian filter (state estimation under uncertainty), producing a forward 6-hour glucose trajectory with a hypo-alert threshold.\n\n**90-second wow demo:** Log a meal photo + one glucose reading; the twin simulates the next six hours and warns \"likely hypo around 4pm — eat now or reduce your dose,\" with no CGM anywhere in sight.\n\n**Why it's hard to clone (moat):** Accurate physiological simulation under sparse, noisy data is genuinely hard modeling — a fast-follower can't reproduce the state-estimation engine over a weekend.\n\n**36hr MVP slice:** Sparse glucose + meal-photo inputs → simulated glucose curve → hypo alert → dose/diet suggestion, **framed strictly as decision support.**\n\n**Real Indian impact + market:** Mass-affordable diabetes titration and hypoglycemia safety for a CGM-free price point — directly at the adherence gap of India's ~90M diabetics.\n\n**Regulatory notes:** This is the landmine. Dose/diet *suggestion* invites the question \"how do you know it won't harm someone?\" — under Telemedicine Practice Guidelines 2020, dosing is prescribing and needs an RMP in the loop. **Must** be positioned as decision-support surfaced to a clinician, never autonomous titration. DPDP: sensitive health data, consent-first.\n\n**Technical feasibility & risks (why it's demoted despite #1 ambition):** Physiological state estimation under sparse/noisy inputs has **no ground truth to calibrate against without a CGM** — in 36hr you can *render* a plausible curve and a hypo alert, but you **cannot prove the curve is right.** The demo cannot close the credibility loop, and the judge's \"how do you know it won't harm someone?\" has no answer in a hackathon. Highest novelty/wow ceiling, lowest demo-provability — treat as a moonshot, not the safe bet.\n\n**Sources:** https://arxiv.org/pdf/2605.16860 · https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11615876/ · https://usa.twinhealth.com/\n\n---\n\n## 6. ResistNet — *strongest moat, weakest demo-wow (B2B outlier)*\n\n**One-line pitch:** A live, hyperlocal antibiogram — crowdsourced across labs without any of them sharing raw data — that tells a doctor which antibiotic will actually work in this pincode this month, instead of a year-old hospital chart.\n\n**The unsolved problem:** Antibiograms in India today are annual, single-hospital, WHONET/paper artifacts. ICMR's i-AMRSS already occupies the *centralized* surveillance slot with automated antibiogram generation — so the only novel wedge is **federated + hyperlocal-pincode**: raw isolates never leaving the lab could unlock labs that refuse central pooling. AMR is a declared national health crisis under the ICMR AMR initiative.\n\n**The hard technical core:** Privacy-preserving federated aggregation of culture-sensitivity results across labs into a live spatiotemporal antibiogram, with Bayesian resistance-trend modeling to recommend an empiric antibiotic before the culture returns. Only encrypted model updates move (federated learning + differential privacy); raw isolate data never centralizes.\n\n**90-second wow demo:** Enter a syndrome + drop a location pin; a live resistance map renders — \"in your pincode this month, E. coli is 70% resistant to X, use Y\" — and visibly updates as a new lab's data streams in, with an on-screen monitor proving no raw patient data ever centralized.\n\n**Why it's hard to clone (moat):** A data-network moat + privacy-preserving plumbing — value only appears once many labs feed the federation. Strongest defensibility of the set (score 5).\n\n**36hr MVP slice:** Simulate five labs pushing sensitivity data via federated updates → live antibiogram + empiric recommendation for one syndrome, with on-screen proof raw data stays local.\n\n**Real Indian impact + market:** Better empiric prescribing → fewer treatment failures and slower AMR, a driver of lakhs of avoidable deaths India-wide. **But market pull is weak: it's a clinician/lab tool that resolves almost no direct patient pain** — against the brief's breadth mandate.\n\n**Regulatory notes:** Federated + differential-privacy design is DPDP-friendly by construction (raw data never leaves the lab). Aligns with ICMR AMR surveillance policy; not a prescribing tool if framed as empiric guidance to an RMP.\n\n**Technical feasibility & risks:** Classic data-network cold-start — worthless until many labs join, and a hackathon team can only *simulate* five labs, so the \"how?!\" moment is abstract math, not visceral (wow 3). ICMR i-AMRSS already does real-time reporting + automated antibiograms, shrinking the novel wedge to federation + pincode granularity.\n\n**Sources:** https://iamrsn.icmr.org.in/ · https://www.medrxiv.org/content/10.64898/2025.12.27.25343078.full.pdf\n\n---\n\n## 7. OdysseyAI — *technically excellent, dominated by CareGraph*\n\n**One-line pitch:** For the rare-disease patient who has seen seven doctors over four years, an engine that reads the whole scattered record and spots the pattern no single rushed consult ever could — with every clue traceable to its source.\n\n**The unsolved problem:** Rare-disease patients endure 7+ doctors over years, and no India product exists. **But the science is not a fresh unlock:** PhenoBrain (top-10 recall 0.813, beating 50 specialists), AMELIE, and a Nature npj 2025 phenotype pipeline already outperform human experts. This is frontier *research* that's been done globally — for India it's a *port*, not an invention.\n\n**The hard technical core:** A provenance-traceable temporal knowledge graph over the fragmented record + HPO phenotype extraction from unstructured multi-visit notes, matched against rare-disease knowledge bases with evidence-traceable reasoning — every hypothesis cites the exact finding that supports it; stale/contradictory findings are down-weighted.\n\n**90-second wow demo:** Feed four years of scattered reports; the system surfaces \"this cluster of findings across three visits fits [rare condition] — confirm with test X,\" each clue hyperlinked to the precise report line it came from.\n\n**Why it's hard to clone (moat):** Temporal KG + phenotype matching + rigorous provenance is hard and safety-critical.\n\n**36hr MVP slice:** Ingest a synthetic multi-year record → HPO extraction → ranked rare-disease hypotheses each with a clickable evidence trail.\n\n**Real Indian impact + market:** 70M+ Indians live with rare diseases and face a brutal diagnostic odyssey — but by definition the **smallest** consumer population, directly against the \"largest number of Indian consumers\" mandate.\n\n**Regulatory notes:** Diagnostic hypothesis generation for an RMP (never autonomous diagnosis) to stay within Telemedicine Guidelines. DPDP consent-first on longitudinal records.\n\n**Technical feasibility & risks:** It shares CareGraph's exact temporal-KG + provenance core, then narrows to the smallest audience; global tools already do phenotype→disease ranking well, so it wins on rigor, not surprise. **Recommendation: fold its evidence-traceable provenance-trail mechanic into CareGraph as a feature** rather than build standalone — as a solo product its market breadth is too thin for a \"breadth of consumer pain\" rubric.\n\n**Sources:** https://www.nature.com/articles/s41746-025-01452-1 · https://pmc.ncbi.nlm.nih.gov/articles/PMC13045663/ · https://arxiv.org/pdf/2511.14638\n\n---\n\n## Bottom line for the pitch\n\n- **To win on \"deepest engineering + visceral self-proving demo + widest concrete ₹-pain\":** build **ShelfSense**. The hardest pure-CV core that still ships, and the demo proves itself in front of the judge.\n- **Safest high-scoring hackathon bet with the broadest consumer pain:** **PolyGuard** (feasibility 5) or **CareGraph** (best builder-fit, telemedicine wheelhouse). Both demo a real \"hard core,\" not a wrapper.\n- **Biggest angry-consumer TAM story:** **ClaimPilot** — but make the NHCX bundle + IRDAI timer the on-stage engineering, not the LLM.\n- **Skip as primary:** MetaTwin (can't prove correctness in 36hr — moonshot only), ResistNet (weak wow + B2B), OdysseyAI (fold into CareGraph).\n\n**One de-risking move across all builds:** the judge's kill-question is always \"isn't this just a Gemini wrapper?\" — every top idea must put its *non-LLM hard core* on stage (ShelfSense: on-device glare-OCR on a messy tray; CareGraph: the caught temporal contradiction; PolyGuard: same-molecule dedup across brands+AYUSH; ClaimPilot: NHCX bundle + live cashless timer). Show the corpus/pipeline, not the prompt."
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Research"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 3,
+      "title": "Score"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 4,
+      "title": "Report"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "res:consumer/patient",
+      "phaseIndex": 1,
+      "phaseTitle": "Research",
+      "agentId": "a7076397cfc10e4fc",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147308910,
+      "lastProgressAt": 1785147308910,
+      "cached": true,
+      "resultPreview": "{\"dimension\":\"consumer/patient pain points\",\"findings\":[{\"point\":\"Out-of-pocket medicine cost is still the single biggest financial pain in Indian healthcare\",\"detail\":\"Even after a decade of decline, ~40% of all health spending still comes straight out of patients' pockets, and medicines are the largest driver of that — pushing families toward catastrophic health expenditure. Consumers have no ea…",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "res:healthcare-worker",
+      "phaseIndex": 1,
+      "phaseTitle": "Research",
+      "agentId": "a85fd5c0f7b6ee5fc",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147308910,
+      "lastProgressAt": 1785147308910,
+      "cached": true,
+      "resultPreview": "{\"dimension\":\"healthcare-worker & clinic pain points\",\"findings\":[{\"point\":\"Doctors get ~2 minutes per patient in high-volume OPDs — no time to read history, so care is rushed and error-prone\",\"detail\":\"India's doctor-population ratio is 1:836 nationally (July 2024) but soars to 1:11,082 in rural areas. Super-specialty OPDs (gastro, neuro, onco) see 200+ patients/day with an average consult of jus…",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "res:competitors",
+      "phaseIndex": 1,
+      "phaseTitle": "Research",
+      "agentId": "add5ca9a3a18475f2",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147308910,
+      "lastProgressAt": 1785147308910,
+      "cached": true,
+      "resultPreview": "{\"dimension\":\"competitors & global proxies\",\"findings\":[{\"point\":\"India's big consumer-health apps are broad but shallow — every incumbent has a 1-2 star trust wall on the exact patient pain they claim to solve\",\"detail\":\"Tata 1mg and PharmEasy sit at ~1.2/5 on Trustpilot despite dominating e-pharmacy; documented complaints cluster around delivery delays (Apollo orders placed 11 AM undelivered by …",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "res:regulation",
+      "phaseIndex": 1,
+      "phaseTitle": "Research",
+      "agentId": "a8600ba487e258eb4",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147308910,
+      "lastProgressAt": 1785147308910,
+      "cached": true,
+      "resultPreview": "{\"dimension\":\"regulation & public rails\",\"findings\":[{\"point\":\"ABDM/ABHA is now a mature, mass-scale rail — a product can plug into a real health-record backbone, not build one\",\"detail\":\"Ayushman Bharat Digital Mission has crossed critical adoption thresholds: it doubled linked health records from 50 crore (Feb 2025) to over 100 crore in ~15 months, with ~10 crore new records linked every 2-3 mon…",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "res:GTM",
+      "phaseIndex": 1,
+      "phaseTitle": "Research",
+      "agentId": "af3030004ddf284d2",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147308910,
+      "lastProgressAt": 1785147308910,
+      "cached": true,
+      "resultPreview": "{\"dimension\":\"GTM & distribution norms\",\"findings\":[{\"point\":\"D2C paid acquisition is getting brutally expensive in India — a health app cannot afford to buy users at scale\",\"detail\":\"CAC inflation on Meta/Google is structural, not cyclical. For a consumer health PWA/app, blended paid CAC in the ₹1,800–2,500 range against thin or zero per-user revenue means pure D2C download-and-monetize is a mone…",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "res:pricing",
+      "phaseIndex": 1,
+      "phaseTitle": "Research",
+      "agentId": "ae458d6078d8cd284",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147308910,
+      "lastProgressAt": 1785147308910,
+      "cached": true,
+      "resultPreview": "{\"dimension\":\"pricing power & willingness-to-pay\",\"findings\":[{\"point\":\"Teleconsult fees are low and anchored cheap (~₹200-500) — pure per-consult monetization has weak pricing power\",\"detail\":\"Apollo 24/7 online consults start at ₹200; teleconsult replaces a ₹2,000 in-person visit (incl. travel) for ₹300-500. eSanjeevani (govt) is free and has done 43 crore consults, setting a ₹0 reference price …",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 7,
+      "label": "ideate:candidates",
+      "phaseIndex": 2,
+      "phaseTitle": "Ideate",
+      "agentId": "a2622a66f94b29900",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147311658,
+      "queuedAt": 1785147308911,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…",
+      "lastProgressAt": 1785147713842,
+      "tokens": 57772,
+      "toolCalls": 16,
+      "durationMs": 402184,
+      "resultPreview": "{\"ideas\":[{\"name\":\"CareGraph\",\"pitch\":\"A patient's scattered records from every hospital, lab and handwritten script fused into one queryable, contradiction-aware clinical timeline — the reasoning layer ABDM never built.\",\"technicalCore\":\"Temporal clinical knowledge-graph construction that fuses FHIR bundles pulled via ABDM HIU consent, OCR'd handwritten/printed prescriptions and lab PDFs, and ver…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 8,
+      "label": "score:batch1",
+      "phaseIndex": 3,
+      "phaseTitle": "Score",
+      "agentId": "af48b2ca2a70dfb96",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147719634,
+      "queuedAt": 1785147715930,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…",
+      "lastProgressAt": 1785147861231,
+      "tokens": 29338,
+      "toolCalls": 7,
+      "durationMs": 141597,
+      "resultPreview": "{\"scored\":[{\"name\":\"CareGraph\",\"novelty\":3,\"technicalDepth\":5,\"wowFactor\":4,\"defensibility\":4,\"feasibility36hr\":4,\"marketPull\":\"strong\",\"isWrapper\":false,\"tarpitRisk\":\"Barrier: incumbents (Eka Care/BODHI) already structure longitudinal records + run clinician-curated KGs, so 'we build a graph' is not the moat. Way past: the un-shipped layer is cross-PROVIDER entity resolution + temporal contradict…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 9,
+      "label": "score:batch2",
+      "phaseIndex": 3,
+      "phaseTitle": "Score",
+      "agentId": "a213d37fc653015e0",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147719915,
+      "queuedAt": 1785147715930,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…",
+      "lastProgressAt": 1785147906357,
+      "tokens": 31214,
+      "toolCalls": 8,
+      "durationMs": 186442,
+      "resultPreview": "{\"scored\":[{\"name\":\"PolyGuard\",\"novelty\":4,\"technicalDepth\":4,\"wowFactor\":4,\"defensibility\":4,\"feasibility36hr\":5,\"marketPull\":\"strong\",\"isWrapper\":false,\"tarpitRisk\":\"Barrier: every DDI checker (Micromedex, Medscape, drugs.com) assumes a CLEAN molecule list — the unsolved 90% is reconstructing the real Indian patient's list from brand-named, code-switched, handwritten, multi-doctor + OTC + AYUSH …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 10,
+      "label": "score:batch3",
+      "phaseIndex": 3,
+      "phaseTitle": "Score",
+      "agentId": "a4541808178d869a8",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147720139,
+      "queuedAt": 1785147715930,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…",
+      "lastProgressAt": 1785147859989,
+      "tokens": 26981,
+      "toolCalls": 6,
+      "durationMs": 139849,
+      "resultPreview": "{\"scored\":[{\"name\":\"ScribeSync\",\"novelty\":4,\"technicalDepth\":4,\"wowFactor\":5,\"defensibility\":3,\"feasibility36hr\":4,\"marketPull\":\"strong\",\"isWrapper\":false,\"tarpitRisk\":\"Barrier: documented ASR accuracy collapse on code-switched Indian clinical speech (Hinglish mid-sentence, noisy clinic, drug names) — off-the-shelf Whisper/Google fail. Way past is REAL: 2025 open corpora and fine-tunes now exist (…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 11,
+      "label": "report:write",
+      "phaseIndex": 4,
+      "phaseTitle": "Report",
+      "agentId": "ac00fa3d821b863bb",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1785147910672,
+      "queuedAt": 1785147908366,
+      "attempt": 1,
+      "promptPreview": "PRODUCT IDEA RESEARCH — for the \"Tech for Good 2026\" hackathon (GRD College, Coimbatore) but the PRODUCT is meant to be a\nreal, scalable startup, NOT a hackathon toy. Judged for pilot + incubation (TiE Kovai / Startup Culture).\nTRACK: \"AI for Good Health & Well-being\" — building AI systems to streamline clinical operations, track medicine stock,\nand assist healthcare workers in resource-constraine…",
+      "lastProgressAt": 1785148074549,
+      "tokens": 26178,
+      "toolCalls": 0,
+      "durationMs": 163877,
+      "resultPreview": "# Tech for Good 2026 — Ranked Product Research: AI for Good Health & Well-being (India)\n\n**Ranking basis:** technical ambition + novelty + wow + defensibility, gated on *\"can a small team ship a credibility-closing demo in 36 hours.\"* Because the qualifier **\"that still ships\"** is load-bearing, the single most *novel* idea (MetaTwin) is deliberately demoted — it is the highest-ambition build but …"
+    }
+  ],
+  "totalTokens": 171483,
+  "totalToolCalls": 37
+}

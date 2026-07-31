@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# never commit credentials
+.env
+.env.*
+*.pem
+*.key
+secrets/
+**/serviceAccount*.json
+**/*-adminsdk-*.json
+
+# build artefacts and scratch
+.playwright-mcp/
+*.bak
+*.bak.*
+.DS_Store
