@@ -48,18 +48,15 @@ One of us also runs mycyclesafe.ai, a cycle tracker whose predictions fail on ex
 ## Proposed solution
 
 ```
-The goal, stated as the person: Priya, 28, in Coimbatore, logs her day in under thirty seconds by voice or tap. On day one the app stops telling her she is late. By week four she walks into an appointment with an export instead of her memory. By week six it tells her something true she did not know: "your skin flares two to three days after nights under six hours. 12 observations, weak signal." We will know we got it right if she keeps logging past week three and takes the export to a real appointment.
+A daily companion built on one idea: her irregular cycle is signal, not error.
 
-The smallest version that delivers that, and what we build first in the 24 hours:
+Thirty seconds a day of logging, by voice or tap, feeds an on-device correlation engine that finds HER patterns and states its own uncertainty: "your skin flares two to three days after nights under six hours. 12 observations, weak signal." When there is not enough data it says so rather than inventing something.
 
-1. A 30-second check-in, roughly 12 dimensions, voice or tap
-2. An irregular-native cycle view that never says "late". Day-one value, and the reason she stops deleting apps
-3. The correlation engine at its simplest: lagged correlation over a fixed symptom set with a confidence floor, and an honest "still learning" when the data is thin
-4. A doctor export as PDF: cycle history, symptom timeline, medications, and the tests she can ask for by name
+Value arrives before the patterns do. Day one, a cycle view that never says "late". Week one, a symptom timeline she can read. Week four, a doctor-ready export. Week six, first patterns. Patterns are the reward for staying, not the entry price.
 
-That is a complete loop. Log, see herself honestly, learn something, hand it to a doctor. Nothing in it depends on anything else shipping.
+Underneath sits a safety layer nobody in the category ships: a 90-day cycle sentinel for endometrial risk, monthly mental-health screening with immediate escalation on any self-harm response and routing to Tele-MANAS, and a sleep-apnoea screen. The camera reads lab reports so she stops typing them.
 
-Everything else is additive and comes after that loop works: lab report capture, the safety layer with Tele-MANAS routing, Experiment Mode, the support circle. We would rather demo four things working than nine things half-built.
+Weight-neutral by guideline. No supplements sold, which is the only reason we can grade the evidence on inositol honestly.
 ```
 
 ## High-level architecture
@@ -102,17 +99,15 @@ https://github.com/Dhodraj/pmos-companion
 ## Anything else (optional)
 
 ```
-On scope, which the coach rightly pushed on. The four things above are what we commit to having working by Sunday: check-in, irregular-native cycle view, correlation engine, doctor export. That is the complete loop and it stands alone. Lab report capture, the safety layer, Experiment Mode and the support circle come after it works, in that order, and we would rather cut them live than demo them half-built.
+Phase 1 is the complete core product, built across the two days: onboarding and consent, the 30-second check-in with voice entry, the irregular-native cycle view, the correlation engine, the doctor export, the safety layer, and lab report capture. Phase 2 is enhancement on a working system rather than the missing half of one.
 
-On what Gemini does, since it is a fair question when the correlation engine is deterministic statistics and the OCR is ML Kit on device. Gemini handles language, not inference about her body. The engine finds the association numerically; Gemini turns it into "your skin flares two to three days after nights under six hours" while preserving the uncertainty, and writes the doctor-facing summary from structured data. It never computes a pattern, scores a risk, or suggests a dose. We would rather it do one job well than be sprinkled across the product.
+To be straight about what will actually be running by Sunday: the cycle engine, check-in, cycle view and doctor export as working code; the correlation engine working but with false-discovery-rate correction only partially implemented; lab capture working on report layouts we have tested, not every one; crisis routing with real numbers and scripts, though the 24-hour follow-up may not be finished. We are not going to present a mock as a build.
 
-We ran a feasibility audit against platform policy and primary literature before writing anything, and cut ten features that would not have survived. Camera blood oxygen and blood pressure are forbidden by App Store guideline 1.4.1. Passive capture on unlock is an OS-vendor privilege. CGM costs around Rs 8,400 a month in India. Facial-expression stress inference fails on evidence.
-
-A practising clinician then reviewed the proposal and killed an eleventh: we had planned camera-based heart rate, and they asked what a resting heart rate would tell a woman with PMOS. It would not change her care.
+We ran a feasibility audit against platform policy and primary literature before writing anything, and cut ten features that would not have survived. Camera blood oxygen and blood pressure are forbidden by App Store guideline 1.4.1. Passive capture on unlock is an OS-vendor privilege. CGM costs around ₹8,400 a month in India. Facial-expression stress inference fails on evidence.
 
 One open question we would value mentorship on: classification. Running validated screeners on a cadence and escalating at a clinical threshold may tip this from wellness software into a medical device under CDSCO. We plan to seek a pre-submission opinion rather than assume, and would welcome a steer from anyone who has been through it.
 
-Full PRD, data model, feasibility audit and clinician review pack: https://github.com/Dhodraj/pmos-companion
+Full PRD, data model, feasibility audit and the clinician review pack are in the repo.
 ```
 
 ---

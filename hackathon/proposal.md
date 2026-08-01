@@ -121,11 +121,7 @@ Patterns are the reward for staying, not the price of entry. Logging is never st
 
 ## What we are building
 
-Phase 1 has a core that ships first and a set of additions that follow only once it works.
-
-**The core loop, and the first thing we build:** the 30-second check-in, the irregular-native cycle view, the correlation engine, and the doctor export. Four things that stand alone. Log, see herself honestly, learn something, hand it to a doctor.
-
-**Then, in order:** lab report capture, the safety layer, and the rest below. We would rather cut these live than demo them half-built.
+Phase 1 is the complete core product, built across the two days. Phase 2 is enhancement on top of a working system, not the missing half of one.
 
 | Module | What it is | Phase |
 |---|---|---|
