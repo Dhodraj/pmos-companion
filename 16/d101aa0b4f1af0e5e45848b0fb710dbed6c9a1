@@ -1,0 +1,23 @@
+README.md
+  s_d0bebf31341a3e::t_34f0c97f455650 25
+hackathon/build-plan.md
+  s_d0bebf31341a3e::t_1eed39f891f093 3,6-7,19,21,25,27,29,35,37-42,44-52,54,56-64,68,70,72,74,76-78,80,82,86-92,94,96-131,137-142,144,148,150,152,156,158,162-170,172,174,176,178,180,182-184,186,188,190,194,196,198,200,202-204,208,210,212,214,216,218,220-222,226,228-238,240,242,244-249,251,255,257-259,263,266,268-271
+product/.build/build-plan.py
+  s_d0bebf31341a3e::t_35f20f66511ee0 1-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.19",
+  "base_commit_sha": "16d101aa0b4f1af0e5e45848b0fb710dbed6c9a1",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-opus-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
