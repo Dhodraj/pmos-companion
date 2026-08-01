@@ -1,13 +1,10 @@
 # Build plan
 
-**PMOS Companion · Team War Room · TEAM-311**
-
-Single source of truth for who builds what and when. If this document and a WhatsApp message disagree, this document wins. If this document is wrong, change it here first.
-
-Directory paths below refer to the team repo, where the code gets written. This plan lives here.
+Single source of truth for who builds what and when. If this document and a message in the group disagree, this document wins. If this document is wrong, change it here first.
 
 **Lead:** Dhodraj. One person calls cuts and unblocks. That person is him.
-**Build:** Sat 8 to Sun 9 August, GRD College. **Prep:** Sun 2 to Fri 7 August.
+**Build:** Saturday 8 to Sunday 9 August, GRD College. **Prep:** Sunday 2 to Friday 7 August.
+**Code** is written in the team repo. **Planning** lives here.
 
 Everything below serves one sentence from the reviewer: *decide now which single one must be working when you demo, and build outward from it.*
 
@@ -19,157 +16,243 @@ Everything below serves one sentence from the reviewer: *decide now which single
 
 If that is true at the demo, we have a project. If it is not, the other six components are a period tracker with a nice export.
 
-Every schedule decision below follows from protecting it.
+Every decision below follows from protecting it.
 
-### The blind test, and why Rahul writes the data
+### The blind test
 
 The engine needs months of history to find anything, and we have none. So we generate fourteen months for a demo user.
 
-The generator is written by **Rahul**, not by the person writing the engine. Rahul plants one lagged relationship (working assumption: sleep under six hours leads to a skin flare two to three days later) and leaves one pair deliberately null. He does not tell Dhodraj which pair is which, or the lag, or the strength.
+Dhodraj writes the generator, because he is the only one who can. But he does not choose what goes in it. **Satheesh picks the planted pair from a list of six candidates, rolls for the lag and the strength, runs the generator with a random seed, and hands Dhodraj the dataset alone.** The parameters stay sealed in a file only Satheesh has until after the engine has reported.
 
-Dhodraj runs the engine on the dataset and reports what it found. Rahul then opens the sealed parameters.
+Blindness needs the author not to know the parameters. It does not need him to not know the code. This version fits the constraint and keeps the claim intact.
 
-This costs an extra half hour of coordination and buys the only sentence in the pitch that cannot be faked: *the person who wrote the engine did not know what was in the data.* Without the split, the positive control proves nothing, because the engine author could have fitted to it without meaning to.
+That claim is the one sentence in the pitch that cannot be faked: *the person who wrote the engine did not know what was in the data.* Without the split the positive control proves nothing, because the engine author could fit to it without meaning to.
 
 The negative control matters more than the positive one. Any engine can find a pattern. Ours has to be able to say there isn't one.
 
 ---
 
-## 2. Who owns what
+## 2. Who does what
 
-This changes the split we registered with. The old one had Rahul on coaching content and Satheesh on demo and pitch, which are ring 3 and ring 4 work, so both would have had nothing to do for the first ten hours while Dhodraj and Belson drowned. Dhodraj, push back on this now rather than at hour six.
+| | Scope | The one rule |
+|---|---|---|
+| **Dhodraj** | Everything complex. Data model, correlation engine, Worker, D1, Gemini proxy, integration | Never touches the toolchain or the UI. Not once, not for five minutes |
+| **Belson** | Frontend only. Every screen, in the order in section 7 | Never blocks on Dhodraj. Codes against the frozen types with hand-written fixtures |
+| **Rahul** | DevOps only. Build, deploy, device, CI, secrets, seeding, backups | Owns the sentence "it runs on the demo phone". Nobody else touches that |
+| **Satheesh** | Dhodraj's second. Pairs on the engine, takes mechanical work off him, holds the sealed parameters, runs the demo | Reviews every commit Dhodraj makes after hour twenty |
 
-| | Owns | Directory | Idle risk |
-|---|---|---|---|
-| **Dhodraj** | Data model, correlation engine, Worker, D1, Gemini proxy. Calls cuts | `src/core/`, `src/engine/`, `worker/` | None. He is the critical path |
-| **Belson** | Client shell, check-in, insight card, cycle view, offline behaviour | `src/app/`, `src/ui/` | None |
-| **Rahul** | Synthetic generator, then safety layer: 90-day sentinel, PHQ-4 and GAD-2, crisis routing, all clinical copy | `src/data/`, `src/safety/` | None, generator starts at hour zero |
-| **Satheesh** | Doctor export, dignity review, demo, pitch | `src/export/`, `docs/demo/` | None, export starts at hour zero against frozen types |
+Directory ownership is how four people share one repo without merge conflicts. `src/core/` and `worker/` are Dhodraj's. `src/app/` and `src/ui/` are Belson's. `ops/` and everything CI is Rahul's. Stay inside yours.
 
-Directory ownership is how four people share one repo for thirty-six hours without merge conflicts. Stay in your directory. If you need something in someone else's, ask them rather than editing it.
-
-Lab report capture (ring 4) has no owner on purpose. It goes to whoever is free on Sunday morning, and only if the hour-ten checkpoint passed on time.
+Lab report capture has no owner on purpose. It happens only if the hour-22 checkpoint passes early, and it is the first thing cut.
 
 ---
 
-## 3. Interface contracts, frozen Friday 7 August
+## 3. The real risk is that Dhodraj is the only one who can do the hard parts
 
-This is the part that decides whether the weekend works. Four people cannot build in parallel against types that do not exist yet. Everything in `src/types/` is frozen Friday evening and nobody changes it during the build without the lead agreeing out loud.
+That is the plan, not a complaint about it. But it means the project has a bus factor of one, and the failure it produces is specific and predictable: **the core developer gets pulled into something that is not core work, and the critical path stops for four hours.**
 
-Three contracts matter:
+It is almost never dramatic. It is a Gradle error, an expired token, a broken Capacitor sync, a teammate asking him to look at a CSS bug. Each costs twenty minutes. Six of them cost the engine.
 
-**The log entry.** What a check-in writes and what the engine reads. Owned by Dhodraj, needed by Belson and Rahul on day one.
+Four rules, and Rahul enforces all of them because he is the only person not cognitively loaded on product code:
 
-**The finding.** What the engine emits: the two variables, the lag in days, the direction, the strength, the observation count, and a confidence band that can be below the floor. Owned by Dhodraj, consumed by Belson's insight card and Satheesh's export. This is the contract with the most dependents, so it gets written first.
+**Dhodraj never debugs the build.** Android, Wrangler, npm, certificates, the device. All Rahul, always, even when Dhodraj thinks he can fix it faster himself. He probably can. That is not the point.
 
-**The export payload.** Everything the doctor summary renders from. Owned by Satheesh, filled by Dhodraj.
+**Dhodraj never writes UI.** Not even one card, not even when Belson is behind. If Belson is behind, something gets cut instead.
 
-A finding must be able to say *not enough data*. Build that state into the type on Friday, not into an `if` statement on Saturday night. The honesty of the product lives in that field.
+**Dhodraj commits every hour, minimum.** Nothing that matters lives only on his laptop. A dead battery at hour nineteen should cost sixty minutes, not the weekend.
+
+**Satheesh pairs on the engine from hour two.** Two people who understand it. If Dhodraj is unavailable for any reason at all, Satheesh can still explain it on stage, and explaining it is most of the demo.
 
 ---
 
-## 4. Sunday 2 to Friday 7 August
+## 4. Working without sleep
 
-Assume two to three hours a night on weekdays. Tomorrow, Sunday, is the only full day before the event. It carries the most weight of any day on this plan.
+The team has decided not to sleep. Taking that as given, the schedule is built around what actually degrades.
 
-**Before anything else, Dhodraj asks the organizers what pre-event code is permitted.** Both branches are written below. We hold to whatever they say, and if the answer is ambiguous we take the stricter reading.
+Reaction time and typing hold up reasonably well past twenty hours. Judgement does not. What goes first is the ability to notice that an approach is wrong, which is exactly the skill the engine needs and exactly the skill the last third of a hackathon punishes.
+
+So the work is ordered by how much thinking it takes, not by how the product is structured:
+
+**H0 to H16.** Everything genuinely hard. The engine is finished inside this window or it is not finished at all.
+**H16 to H22.** Assembly. Wiring things that already work to each other.
+**H22 onward.** Mechanical only. Copy, styling, seeding, rehearsal, deletion.
+
+**Hard rule: no new complex logic after H20.** If it is not working by then it gets cut instead of debugged. This is not a guideline, it is the cut trigger, and Rahul calls it because he will be the clearest-headed person in the room.
+
+Two cheap things that buy back real hours: fifteen minutes off-screen every four hours, which is not sleep and is not optional; and Satheesh reviewing every one of Dhodraj's commits after H20, because error rates roughly double past twenty hours awake and a second pair of eyes is the cheapest insurance available at that point.
+
+---
+
+## 5. Interface contracts, frozen Friday 7 August
+
+This is the part that decides whether the weekend works. Belson cannot build frontend in parallel against types that do not exist. Everything in `src/types/` is frozen Friday evening and nobody changes it during the build without Dhodraj agreeing out loud.
+
+**The log entry.** What a check-in writes and what the engine reads. Dhodraj owns it. Belson and Satheesh need it at hour zero.
+
+**The finding.** What the engine emits: the two variables, the lag in days, the direction, the strength, the observation count, and a confidence band that can fall below the floor. This has the most dependents, so it gets written first. Belson's insight card and the export both render from it.
+
+**The export payload.** Everything the doctor summary renders from.
+
+A finding must be able to say *not enough data* as a value of the type, not as an `if` statement written at three in the morning. The honesty of the whole product lives in that field.
+
+Once these are frozen, Belson builds every screen against hand-written fixtures and never waits for the engine. That is the single most valuable thing the pre-week produces.
+
+---
+
+## 6. Critical path
+
+```mermaid
+flowchart TB
+  T["Types frozen<br/>Friday 7 August"] --> SCH["Schema and write path<br/>Dhodraj, H0 to H2"]
+  T -.-> UI["Screens against fixtures<br/>Belson, H0 onward"]
+  T -.-> OPS["Build, device, deploy green<br/>Rahul, continuous"]
+
+  SCH --> ENG["Correlation engine<br/>Dhodraj, H2 to H10"]
+  SEAL["Sealed dataset<br/>Satheesh, H2 to H6"] --> ENG
+
+  ENG --> G1{"H10<br/>blind test"}
+  G1 -- "green" --> WIRE["Engine wired to screens<br/>H10 to H16"]
+  G1 -- "red" --> ALL["All hands to engine<br/>rings 2 to 4 abandoned"]
+  ALL --> WIRE
+
+  UI --> WIRE
+  WIRE --> G2{"H22<br/>clean install<br/>on demo phone"}
+  OPS --> G2
+  G2 --> FRZ["H28 freeze<br/>cut list applied"]
+  FRZ --> DEMO["Rehearse and present"]
+```
+
+---
+
+## 7. Sunday 2 to Friday 7 August
+
+Assume two to three hours a night on weekdays. Sunday the 2nd is the only full day before the event and carries more weight than any other day on this plan.
+
+**Before anything else, Dhodraj asks the organizers what pre-event code is permitted.** Both branches are below. We hold to whatever they say, and if the answer is ambiguous we take the stricter reading.
 
 ### If pre-event code is permitted
 
 | Day | Dhodraj | Belson | Rahul | Satheesh |
 |---|---|---|---|---|
-| **Sun 2** | Types frozen in draft. Engine algorithm on paper: per-phase baselines, 1 to 14 day lags, confidence floor, FDR correction | Vite + React + Capacitor building to a real Android device | Generator design. Which variables, which distributions, what a plausible PMOS cycle looks like | Export layout as static HTML with fake data |
-| **Mon 3** | Dexie schema against the frozen types | Check-in screen, tap only | Generator writing | Demo narrative v1. What are the five screens we show |
-| **Tue 4** | Engine skeleton, baselines working | Insight card against a hand-written finding | Generator writing | Export rendering from the frozen payload type |
-| **Wed 5** | Lagged correlation | Cycle view | 90-day sentinel logic. PHQ-4 and GAD-2 scoring tables | Dignity pass on Belson's screens |
-| **Thu 6** | Worker, D1 schema, Gemini key in Worker secrets | Offline behaviour verified with the radio off | Crisis copy written and fixed. Tele-MANAS 14416 dialled and confirmed live | Demo script v2 |
-| **Fri 7** | **Types frozen. Engine runs end to end on Rahul's dataset.** | Shell merged | **Dataset sealed and handed over** | Rehearsal against whatever exists |
+| **Sun 2** | Engine algorithm on paper: per-phase baselines, 1 to 14 day lags, confidence floor, FDR correction. Types drafted | Vite, React and Capacitor building to a real Android phone | Cloudflare account, Pages, Workers, D1 provisioned. Gemini key in Worker secrets | Candidate list of six variable pairs for the blind test |
+| **Mon 3** | Dexie schema against the types | Check-in screen, tap only, writing to fixtures | Android SDK verified on all four machines | Test fixtures for every type |
+| **Tue 4** | Engine skeleton, baselines working | Insight card against a hand-written finding | GitHub Action building on push | Engine test harness |
+| **Wed 5** | Lagged correlation | Export view | One-command deploy. One-command seed load | Clinical copy written and fixed: 90-day sentinel, PHQ-4, GAD-2, crisis text |
+| **Thu 6** | Worker, D1 schema, Gemini proxy | Cycle view | Demo phone chosen, set up, wiped, ready | Tele-MANAS 14416 dialled and confirmed live. Demo narrative v1 |
+| **Fri 7** | **Types frozen. Engine runs end to end** | Screens merged, all rendering from fixtures | **Green build, deployed, installed on the demo phone** | **Parameters sealed. Dataset handed over** |
 
-If this branch runs, Saturday becomes integration and polish rather than a scramble, and the checkpoint moves to hour four.
+If this branch runs, Saturday becomes integration rather than a scramble and the H10 gate moves to H4.
 
 ### If pre-event code is not permitted
 
-Same six days, no code. Design and decisions only.
+Same six days, no code, and it matters less than it sounds. Almost everything above that saves time on Saturday is not code.
 
-Type definitions written out on paper or in a markdown file. Engine algorithm specified to the point where writing it is transcription. Generator variables and distributions chosen and sealed. Wireframes for all five demo screens. Export layout drawn. Crisis copy written, because words are not code. Cloudflare account, D1 database and Gemini key provisioned, because accounts are not code either. Capacitor and Android toolchain installed and verified on everyone's machine, because losing four hours on Saturday to a broken SDK install has killed better teams than ours.
+Types written out in a markdown file. Engine algorithm specified to the point where writing it is transcription. The six candidate pairs chosen and the parameters sealed. Wireframes for all five demo screens. Every word of clinical copy written, because words are not code. Cloudflare account, D1 and Gemini key provisioned, because accounts are not code either. Android toolchain installed and verified on all four machines, because losing four hours on Saturday to a broken SDK has killed better teams than ours.
 
-Then the Saturday schedule in section 5 runs as written.
-
----
-
-## 5. Saturday 8 August
-
-Clock times assume a 09:00 start. **Dhodraj, confirm the real start time and shift every row by the difference.**
-
-| | Dhodraj | Belson | Rahul | Satheesh |
-|---|---|---|---|---|
-| **H0 to H2**<br>09:00 | Dexie schema live, types committed first thing so everyone unblocks | App shell, routing, running on a real phone | Generator | Export skeleton against the frozen payload |
-| **H2 to H6**<br>11:00 | Engine: per-phase baselines, then lagged correlation | Check-in, tap entry, writing to Dexie | Generator finished, dataset sealed | Export layout |
-| **H6 to H8**<br>15:00 | Confidence floor, FDR correction | Check-in done, starts insight card | Hands the sealed dataset to Dhodraj | Export rendering real fields |
-| **H8 to H10**<br>17:00 | **Blind test run** | Insight card | Safety layer starts | Export |
-
-### H10, around 19:00. Go or no-go
-
-Dhodraj runs the engine on Rahul's data and says out loud what it found. Rahul opens the sealed parameters.
-
-**Green.** The engine recovers the planted lag within a day either side, and reports no pattern on the null pair. Everyone stays on their ring, we carry on into the evening as scheduled.
-
-**Amber.** It finds the lag but also fires on the null pair. This is a threshold problem, not an engine problem. Dhodraj fixes the confidence floor alone while everyone else continues. Re-test at H13.
-
-**Red.** It finds nothing, or it finds the wrong thing. All hands collapse onto the engine. Belson and Satheesh stop their rings and take instruction from Dhodraj. Ring 2 onward is abandoned that evening and the demo becomes the engine, the check-in and the export, which is still a project. Rahul keeps going on safety because it has no dependency on the engine.
-
-The lead calls green, amber or red within ten minutes of the test. No debate. If people disagree they get five minutes, then he calls it.
-
-| | Dhodraj | Belson | Rahul | Satheesh |
-|---|---|---|---|---|
-| **H10 to H14**<br>19:00 | Worker, D1, Gemini proxy. Findings become sentences | Insight card finished, cycle view starts | 90-day sentinel, PHQ-4, GAD-2 | Export complete on seeded data |
-| **H14 to H17**<br>23:00 | Gemini phrasing preserves the uncertainty band. Verify it cannot invent a pattern | Cycle view | Crisis routing with fixed copy, nothing generated | Demo script against what now exists |
-
-### Sleep, 02:00 to 10:00
-
-Nobody builds well after twenty hours. Two shifts, and this is not optional.
-
-**02:00 to 06:00: Dhodraj and Satheesh sleep.** Belson and Rahul carry voice entry and safety-layer finishing.
-**06:00 to 10:00: Belson and Rahul sleep.** Dhodraj takes integration, Satheesh takes rehearsal.
-
-Dhodraj sleeps first because Sunday morning integration is the hardest thinking left and he should not do it at hour twenty-two.
+Then Saturday runs exactly as written in section 8.
 
 ---
 
-## 6. Sunday 9 August
+## 8. Saturday 8 to Sunday 9 August
 
-| Time | What |
-|---|---|
-| **06:00** | Dhodraj integrates. Everything on one branch, running on one phone |
-| **09:00** | Rahul's content QA: every clinical claim on a screen is checked against a source, or it comes off the screen |
-| **10:00** | Satheesh's dignity pass. Every screen, read as if she has just been diagnosed and is frightened |
-| **11:00** | Lab capture only if H10 was green and everything above is done. Otherwise it does not exist |
-| **13:00** | **Freeze.** Dhodraj applies the cut list. Nothing new after this line |
-| **13:00 to 16:00** | Three full rehearsals on the demo device, in flight mode for at least one of them |
-| **16:00** | Buffer. Something will have broken |
+Clock times assume a 09:00 Saturday start. **Confirm the real start time and shift every row by the difference.**
 
-### The cut list, in order
+| | Dhodraj | Belson | Rahul | Satheesh |
+|---|---|---|---|---|
+| **H0 to H4**<br>Sat 09:00 | Schema live and committed first, so nobody waits. Then engine baselines | Shell, routing, running on a real phone. Then check-in | Build green, demo phone claimed, CI running, seed script working | Types transcribed. Generator parameters sealed |
+| **H4 to H10**<br>Sat 13:00 | Engine: lagged correlation, confidence floor, FDR correction | Check-in done. Insight card against fixtures | Deploy pipeline. First signed APK cut as a rollback point | Test harness. Hands the dataset over at H6, then pairs on the engine |
+| **H10**<br>Sat 19:00 | **Blind test. See gates below** | continues | continues | Runs the test with Dhodraj, opens the sealed file |
+| **H10 to H16**<br>Sat 19:00 | Worker, D1, Gemini phrasing. Engine wired to real screens | Export view rendering real findings | APK every four hours. Offline path verified with the radio off | Seeding scripts, D1 migrations, Gemini prompt wiring |
+| **H16 to H22**<br>Sun 01:00 | Integration. Assembly only, no new architecture | Cycle view | Keeps the build green. Records a working run at H22 | Demo script v1 against what exists |
+| **H22 to H28**<br>Sun 07:00 | Mechanical only. Reviews, does not architect | Safety layer screens, pasting pre-written copy | Clean-install test, spare device, cables, adapter | Content QA. Every clinical claim on screen checked or removed |
+| **H28**<br>Sun 13:00 | **Freeze. Cut list applied. Nothing new after this line** | | | |
+| **H28 to H31** | Three full rehearsals on the demo phone, one of them in flight mode | | | |
+| **H31 onward** | Buffer. Something will have broken | | | |
 
-Lab capture. Then voice entry drops to tap. Then the safety-layer UI comes off while the logic stays and gets one slide. Then the cycle view degrades to a plain list.
+---
 
-The spine never gets cut: check-in, engine, insight card, doctor export. If those four are gone there is nothing to present.
+## 9. Five gates
+
+One checkpoint is a milestone. Five is a plan. Each has a trigger, a decision and a named owner, and each is decided within ten minutes. If people disagree they get five minutes, then Dhodraj calls it.
+
+**H4. The write path.** A check-in writes a real row and the engine can read it back. If not, Belson stops UI work and everyone lands on the write path until it works. Nothing else matters until data can move.
+
+**H10. The blind test.** Dhodraj runs the engine on Satheesh's data and says out loud what it found. Satheesh then opens the sealed file.
+
+- **Green.** The lag is recovered within a day either side, and the null pair returns nothing. Everyone stays on their track.
+- **Amber.** The lag is found but the null pair also fires. This is a threshold problem, not an engine problem. Dhodraj raises the confidence floor alone while everyone else continues. Retest at H13.
+- **Red.** Nothing found, or the wrong thing found. All hands to the engine. Belson and Satheesh take instruction from Dhodraj, rings 2 to 4 are abandoned that evening, and the demo becomes the engine, the check-in and the export. That is still a project.
+
+**H16. End to end.** A finding produced by the engine renders on a real screen from a real check-in. If not, the cycle view is cut on the spot to buy the hours back.
+
+**H22. Clean install.** Rahul installs the current APK on a wiped phone and the whole path works, including with the radio off. If not, the last good APK becomes the demo build and everything after H22 is polish on top of it.
+
+**H28. Freeze.** Cut list applied, no exceptions, no "it's nearly working". Rahul enforces this one, not Dhodraj, because by then Dhodraj will want to keep going and should not.
+
+---
+
+## 10. If everything goes wrong
+
+Decide this now, while everyone is rested, so that nobody has to decide it at hour thirty.
+
+**The minimum we present:** the engine running on the seeded dataset, showing the recovered lag and the correctly empty null pair, alongside the doctor export as a static file. No app, no phone, no live entry.
+
+That is still an honest demonstration of the only thing we claimed was hard, and it is a better outcome than a broken app being clicked through in front of a jury. Rahul's H22 screen recording exists so that this version is always available.
+
+The spine never gets cut: check-in, engine, insight card, export. If those four are gone there is nothing to present.
+
+**Cut list, in order:** lab capture, then voice entry drops to tap, then the safety layer UI comes off while the logic stays and gets one slide, then the cycle view degrades to a plain list.
 
 Dhodraj calls each cut. Not a vote.
 
-### The demo, five minutes
+---
 
-1. Her problem, in her words. Twenty seconds, no slides
-2. Log one entry live on the phone
-3. The seeded user's insight card. The planted finding, with its uncertainty stated
-4. **The null pair. The engine says it found nothing.** Then explain that the person who wrote the engine did not know what was in the data
-5. The doctor export
-6. What we cut and why, briefly, because it is the strongest thing about us
+## 11. Working rules
 
-Satheesh owns the laptop, the cable, the adapter, and a screen recording of a working run in case the live device fails.
+**Blocked for twenty minutes, say so.** Sitting quietly with a broken build is the most expensive thing anyone can do this weekend.
+
+**Commit to main every hour.** Small commits, your own directory. No long-lived branches, there is no time to merge them.
+
+**No new dependencies after H10** without Dhodraj agreeing. An `npm install` that breaks the build at hour twenty is how teams lose.
+
+**Nothing on a crisis path is generated.** Fixed text, real numbers, written in the pre-week. This is the one rule with no exceptions.
+
+**One phone is the demo phone,** and it is tested on from hour two. Not an emulator.
+
+**Nobody interrupts Dhodraj with anything Rahul could answer.** Route it through Rahul first.
 
 ---
 
-## 7. Definition of done
+## 12. Risks
+
+| Risk | Owner | Trigger | Response |
+|---|---|---|---|
+| Dhodraj pulled into toolchain or UI work | Rahul | Any | Rahul takes it back, immediately, even mid-sentence |
+| Engine finds nothing real | Dhodraj | H10 red | All hands to engine, rings 2 to 4 abandoned |
+| Engine fires on the null pair | Dhodraj | H10 amber | Raise the confidence floor, retest H13 |
+| Belson blocked waiting on the engine | Belson | Any | He should not be. Fixtures exist from Friday. If he is, the types were not frozen properly |
+| Capacitor or Android build breaks | Rahul | Any | Fall back to the PWA in a mobile browser and say so on stage rather than hiding it |
+| Gemini quota or latency | Dhodraj | Any | Pre-generated phrasing on the demo path. The engine is what we are showing, not the wording |
+| Judgement degrading past H20 | Rahul | H20 | No new complex logic. Cut instead of debug. Satheesh reviews every commit |
+| Demo device fails on stage | Satheesh | Sunday | H22 screen recording, spare device, and the section 10 fallback |
+| Lab OCR eats Sunday | whoever picked it up | Sun 11:00 | It was optional. Drop it without discussion |
+
+---
+
+## 13. The demo, five minutes
+
+1. Her problem, in her words. Twenty seconds, no slides
+2. Log one entry live on the phone
+3. The seeded user's insight card. The recovered finding, with its uncertainty stated
+4. **The null pair. The engine reports that it found nothing.** Then explain that the person who wrote the engine did not know what was in the data
+5. The doctor export
+6. What we cut and why, briefly, because it is the strongest thing about us
+
+Satheesh owns the laptop, the cable, the adapter, the spare device, and the recording of a working run.
+
+---
+
+## 14. Definition of done
 
 A thing is done when it runs on the demo phone from a clean install, works with the radio off if it is meant to, and someone other than the author has used it without being told how.
 
@@ -177,42 +260,15 @@ Not when it works on your laptop.
 
 ---
 
-## 8. Working rules
-
-**Blocked for twenty minutes, say so.** Post in the group. Sitting quietly with a broken build is the most expensive thing anyone can do this weekend.
-
-**Commit to main every two hours minimum.** Small commits, your own directory. No long-lived branches, we do not have time to merge them.
-
-**No new dependencies after H10** without asking the lead. An npm install that breaks the build at hour twenty is how teams lose.
-
-**Nothing on a crisis path is generated.** Fixed text, real numbers, reviewed by Rahul. This is the one rule with no exceptions.
-
-**One phone is the demo phone.** It gets tested on from hour two. Not an emulator.
-
----
-
-## 9. Risks
-
-| Risk | Owner | Trigger | Response |
-|---|---|---|---|
-| Engine finds nothing real | Dhodraj | H10 red | All hands to engine, abandon rings 2 to 4 |
-| Engine fires on the null pair | Dhodraj | H10 amber | Raise the confidence floor, retest H13 |
-| Generator is not plausible enough to be worth testing against | Rahul | Sat H6 | Simplify to fewer variables with a cleaner planted signal |
-| Capacitor Android build breaks | Belson | Any | Fall back to the PWA in a mobile browser. Say so on stage rather than hiding it |
-| Gemini quota or latency | Dhodraj | Any | Pre-generated phrasing for the demo path. The engine is what we are showing, not the wording |
-| Someone hits hour twenty-four awake | Dhodraj | Any | Send them to sleep. This is a call, not a suggestion |
-| Lab OCR eats Sunday | whoever picks it up | 11:00 Sun | It was ring 4 and optional. Drop it without discussion |
-
----
-
-## 10. Open items
+## 15. Open items
 
 - [ ] **Confirm the hackathon start time.** Every clock time above shifts with it
-- [ ] **Ask the organizers what pre-event code is permitted.** Section 4 has both branches
+- [ ] **Ask the organizers what pre-event code is permitted.** Section 7 has both branches
 - [ ] **Three collaborator invites are unaccepted.** Belson, Rahul, Satheesh, from GitHub notifications
-- [ ] **The repo is private, and the organizers' own README says to keep it public.** Ask them which is right
-- [ ] Everyone installs and verifies the Android toolchain before Friday
-- [ ] Confirm the role rebalance in section 2 with all four people
+- [ ] **The team repo is private and the organizers' own README says to keep it public.** Ask which is right
+- [ ] Android toolchain installed and verified on all four machines before Friday
+- [ ] Demo phone chosen and wiped
+- [ ] Confirm the four scopes in section 2 with all four people
 
 ---
 

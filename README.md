@@ -22,7 +22,7 @@ Medicine redefined this condition in May 2026. No product has caught up.
 
 | Document | What it is |
 |---|---|
-| [hackathon/build-plan.md](hackathon/build-plan.md) | **The master plan.** Who owns what, the schedule for 2 to 9 August, the go/no-go checkpoint, the cut list, the risk register |
+| [hackathon/build-plan.md](hackathon/build-plan.md) · [PDF](hackathon/PMOS-build-plan.pdf) | **The master plan.** Who owns what, the schedule for 2 to 9 August, five go/no-go gates, the cut list, the risk register |
 | [hackathon/proposal.md](hackathon/proposal.md) · [PDF](hackathon/PMOS-proposal.pdf) | The proposal. Problem, solution, architecture, what we cut and why |
 | [hackathon/form-fill.md](hackathon/form-fill.md) | The submitted answers, field by field |
 | [product/PMOS-PRD.pdf](product/PMOS-PRD.pdf) · [source](product/00-PRD.md) | Full requirements: 102 functional, 48 non-functional, 14 regulatory, 4 architecture decisions |
