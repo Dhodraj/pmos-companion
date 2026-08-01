@@ -22,6 +22,7 @@ Medicine redefined this condition in May 2026. No product has caught up.
 
 | Document | What it is |
 |---|---|
+| [hackathon/build-plan.md](hackathon/build-plan.md) | **The master plan.** Who owns what, the schedule for 2 to 9 August, the go/no-go checkpoint, the cut list, the risk register |
 | [hackathon/proposal.md](hackathon/proposal.md) · [PDF](hackathon/PMOS-proposal.pdf) | The proposal. Problem, solution, architecture, what we cut and why |
 | [hackathon/form-fill.md](hackathon/form-fill.md) | The submitted answers, field by field |
 | [product/PMOS-PRD.pdf](product/PMOS-PRD.pdf) · [source](product/00-PRD.md) | Full requirements: 102 functional, 48 non-functional, 14 regulatory, 4 architecture decisions |
@@ -44,11 +45,14 @@ The `research/` directory holds the raw outputs behind all of this, including th
 ## Repository layout
 
 ```
-hackathon/   proposal, submitted form answers, clinician review pack
+hackathon/   build plan, proposal, submitted form answers, clinician review pack
 product/     PRD, data model, feature specification, product definition
 research/    raw research outputs, one directory per run
 archive/     superseded directions, kept for their reasoning
 ```
+
+Planning and research live here. Code gets written in the team repo at
+[Build-with-AI-Code-for-Communities/health-team-311-war-room](https://github.com/Build-with-AI-Code-for-Communities/health-team-311-war-room).
 
 ## A note on the archive
 
