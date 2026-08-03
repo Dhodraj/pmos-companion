@@ -142,7 +142,14 @@ COACH-04, COACH-05, COMP-01, COMP-02, COMP-03, SKIN-01, REG-03
      routed to her doctor instead.
   4. A qualified clinician has signed off the health content and a mental-health professional has
      signed off the crisis content, before any of it reaches a user.
-**Plans**: TBD
+**Plans**: 6 plans
+Plans:
+- [ ] 05-01-PLAN.md — Crisis path tracer: red-flag trigger to Tele-MANAS 14416, count-only D1 event, 24h nudge
+- [ ] 05-02-PLAN.md — Screening: PHQ-2/GAD-2 plus the safety-net item SAFE-05 escalates on
+- [ ] 05-03-PLAN.md — Evidence-graded micro-actions and the graded-claim contract
+- [ ] 05-04-PLAN.md — Dignity guardrails: ED gate, food, movement, weight opt-in, no appearance scores
+- [ ] 05-05-PLAN.md — Companion: cited RAG answers behind a three-layer structural refusal boundary
+- [ ] 05-06-PLAN.md — Release gate: crisis-path availability proof and REG-03 clinical sign-off
 **UI hint**: yes
 
 ### Phase 6: Camera vitals — fingertip PPG
@@ -174,7 +181,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Hackathon weekend — blind test and ring 1 spine | 0/TBD | Not started | - |
 | 3. Irregular-native foundation | 0/TBD | Not started | - |
 | 4. The engine and the evidence she takes to a doctor | 0/TBD | Not started | - |
-| 5. Safety floor, coaching and companion | 0/TBD | Not started | - |
+| 5. Safety floor, coaching and companion | 0/6 | Planned | - |
 | 6. Camera vitals — fingertip PPG | 0/TBD | Not started | - |
 
 ## Coverage
