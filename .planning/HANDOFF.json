@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-08-03T11:43:29.274Z",
+  "phase": "01",
+  "phase_name": "pre-event-readiness-and-frozen-contracts",
+  "phase_dir": ".planning/phases/01-pre-event-readiness-and-frozen-contracts",
+  "plan": 1,
+  "task": 2,
+  "total_tasks": 4,
+  "status": "paused",
+  "completed_tasks": [
+    { "id": 1, "name": "Rahul confirms exact version pins before any npm install", "status": "done", "commit": "2ab64cb" },
+    { "id": 2, "name": "Rahul drives, Dhodraj stubs the type — tracer scaffold (build portion)", "status": "done", "commit": "d7dc310" },
+    { "id": 2, "name": "Physical-device verification of the debug APK", "status": "in_progress", "progress": "Blocked on no physical phone; emulator AVD 'pmos-demo' (Android 34, google_apis x86_64) created and fully booted, adb shows it as 'device' at serial emulator-5554. Executor was about to be resumed to install the APK on this emulator and verify both Finding states when the resume tool call was interrupted by the user (not a failure — user redirected to discuss Cursor handoff first)." }
+  ],
+  "remaining_tasks": [
+    { "id": 2, "name": "Finish verification against the emulator substitute: adb install the debug APK, confirm the app renders a pattern-found line and a still-learning line from src/types/, confirm the package via pm list packages, record the emulator-substitution explicitly in SUMMARY.md and STATE.md (HACK-11 real-hardware verification still required before the hackathon)", "status": "not_started" },
+    { "id": 3, "name": "Device-readiness matrix across the four team machines + the demo phone (substitute the same emulator wherever the plan calls for the physical demo phone specifically, recording the substitution the same way)", "status": "not_started" },
+    { "id": 4, "name": "Write and commit health-team-311-war-room/ops/branch-protocol.md", "status": "not_started" }
+  ],
+  "blockers": [
+    { "description": "No physical Android demo phone available on this machine", "type": "human_action", "workaround": "Android emulator AVD 'pmos-demo' created and booted (serial emulator-5554), approved by user as a temporary substitute for today's execution. Real hardware (for HACK-11's radio-off / real-device requirement) is still required before 8-9 August." }
+  ],
+  "async_jobs": [],
+  "human_actions_pending": [
+    { "action": "Get a physical Android phone attached before the hackathon and re-run Task 2/3's device verification against real hardware, not just the emulator", "context": "HACK-11 requires the whole spine to work with the radio off on real hardware; the emulator substitution only unblocks today's Phase 1 progress", "blocking": false },
+    { "action": "Formally record the organizer's pre-event-code permission answer in hackathon/pre-event-answers.md (Plan 01-02 Task 1)", "context": "User verbally confirmed approval was obtained ('I've got approval for setting up things in that repo itself') but this has not yet been executed as Plan 01-02's actual Task 1 checkpoint — Plan 01-02 hasn't started yet, it's Wave 3", "blocking": false }
+  ],
+  "decisions": [
+    { "decision": "App code builds in health-team-311-war-room (the org/war-room repo), not in pmos-companion", "rationale": "User initially asked to move it into pmos-companion; a large migration was done and then explicitly reverted once the user confirmed organizer approval was secured for the war-room repo — this is the final, twice-confirmed answer, do not re-litigate", "phase": "01" },
+    { "decision": "iOS is deferred; Android is primary and only verified platform for this build", "rationale": "No Mac exists anywhere on the four-person team, confirmed 2026-08-03", "phase": "01" },
+    { "decision": "GSD project-wide worktree isolation disabled (workflow.use_worktrees: false in .planning/config.json)", "rationale": "Phase 1 and 2 plans manage health-team-311-war-room's git state explicitly via their own branch-protocol.md choreography (pre-event-scaffold branch, borrow-main-and-hand-back). GSD's own per-plan worktree isolation only knows about THIS repo's own git tree — running both mechanisms together risks the orchestrator creating phantom worktrees while the real work happens in a repo GSD's merge-back logic can't see. Must stay false for Phase 1 and 2; do not re-enable without redesigning the git choreography.", "phase": "01" },
+    { "decision": "01-01's 7 package version pins approved as-is: Capacitor 6.2.1, React 18.3.1, TypeScript 5.9.3, Vite 6.4.3, Tailwind 3.4.19, Dexie 4.4.4, Vitest 4.1.10", "rationale": "All verified live against the npm registry: correct upstream org for every package, deliberate documented down-pins (Capacitor/React/TS) matching ADR reasoning, peer ranges satisfied, no package published within 24h", "phase": "01" },
+    { "decision": "Emulator substitution approved for today's Task 2/3 device verification", "rationale": "No physical phone available; user explicitly chose to proceed with an emulator rather than pause Phase 1 until a phone is available", "phase": "01" },
+    { "decision": "GSD installed globally for Cursor (~/.cursor), in addition to the existing Claude Code plugin install", "rationale": "User has Cursor on the same machine and wants the option to continue execution there without losing durable state — all of which already lives in the committed .planning/ files and this handoff, not in conversation memory", "phase": "01" }
+  ],
+  "uncommitted_files": [],
+  "next_action": "Resume gsd-core:gsd-executor for plan 01-01. Tell it explicitly: pins are approved, emulator 'pmos-demo' (serial emulator-5554) is booted and adb-visible right now, complete Task 2's verification against it (install the debug APK, confirm both Finding states render, record the emulator-substitution note), then continue directly into Task 3 (device matrix) and Task 4 (branch-protocol.md) without redoing Tasks 1-2's build work.",
+  "context_notes": "Six phases (49 plans total) are fully planned and independently checker-verified across .planning/phases/01-06 — this session's remaining work is EXECUTION of Phase 1, not planning. A large detour happened mid-session: an interactive HTML/CSS UI preview of the whole product was built (5 iterations, grounded in real research on cycle-tracking app design after the first 2-3 attempts were rejected), saved to product/05-ui-preview.html, and deployed to both pmos-companion-preview.surge.sh and a Claude Artifact. That detour is complete and committed; do not restart it unless the user asks. The very next concrete action, once resumed, is finishing Task 2's device verification on the emulator."
+}
