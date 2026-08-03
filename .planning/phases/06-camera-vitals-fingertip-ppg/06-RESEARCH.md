@@ -606,9 +606,21 @@ relying on this summary.
 into verification tasks (device-fleet testing, filter cross-validation, and — most importantly —
 routing PPG-07 to an actual clinician rather than treating this section as sufficient on its own).
 
-## Open Questions
+## Open Questions (RESOLVED)
+
+All three were carried into the phase plans rather than left open. Each item below now records the
+plan and task that closes it. They are kept here in full, with their original reasoning intact,
+because the reasoning is what makes the resolution auditable — a reader should be able to see what
+was unknown at research time and what was decided about it.
+
+| # | Question | Resolved by |
+|---|----------|-------------|
+| 1 | Second clinician and timeline | Plan 06-02 Task 2 — sends the position document to a named clinician in Wave 1 with a recorded send date, an agreed response window, and a named fallback reviewer; Plan 06-09 Task 2 incorporates the answer and gates release on it |
+| 2 | Concrete test devices | Plan 06-04 Tasks 2 and 3 — the named device fleet matrix at `docs/device-fleet.md`, including a budget Android at the affordability bar the product claims |
+| 3 | MEASUREMENT enum literals | Plan 06-08 Task 1 — adds the kind and source members following the existing naming convention, with a precondition to halt and escalate to the data-model owner rather than invent a value if the enumeration turns out to be frozen |
 
 1. **Who is the second clinician, and on what timeline?**
+   - **RESOLVED — Plan 06-02 Task 2, with Plan 06-09 Task 2 closing the loop.**
    - What we know: Satheeshkumar owns coordinating PPG-07. A first clinician's review already
      happened once (recorded in `hackathon/PMOS-clinical-review.pdf`) and can plausibly be asked a
      follow-up question rather than requiring an entirely new reviewer.
@@ -621,6 +633,7 @@ routing PPG-07 to an actual clinician rather than treating this section as suffi
      the phase's engineering work does not depend on waiting for — but release does.
 
 2. **What are the concrete test devices for the fleet-testing pitfalls above?**
+   - **RESOLVED — Plan 06-04 Tasks 2 and 3, producing `docs/device-fleet.md`.**
    - What we know: ADR-003 establishes "₹10,000 phone" as the affordability bar; CON-NFR-01
      establishes Android 8.0+ as the floor.
    - What's unclear: No specific device models are named anywhere in the project's planning docs.
@@ -630,6 +643,8 @@ routing PPG-07 to an actual clinician rather than treating this section as suffi
 
 3. **What literal enum values does the MEASUREMENT entity's `source`/`kind` field take for a PPG
    reading?**
+   - **RESOLVED — Plan 06-08 Task 1, whose precondition requires escalating to the data-model owner
+     rather than inventing a literal if the enumeration is frozen against addition.**
    - What we know: `product/04-data-model.md` defines `MEASUREMENT { enum kind; enum source; ... }`
      as a type placeholder in its ERD — confidence and source are mandatory fields
      [VERIFIED: `product/04-data-model.md:48-55`, quoted in full: `MEASUREMENT { uuid id PK; enum

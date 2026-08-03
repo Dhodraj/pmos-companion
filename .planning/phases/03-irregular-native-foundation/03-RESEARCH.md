@@ -435,22 +435,31 @@ function classifyCycleState(
 | A4 | Treating Phase 3's Dexie-stored structured data as satisfying "AES-256 at rest, keys in Secure Enclave/Keystore" via OS-level full-disk encryption alone (Pitfall #4, Option A) is an acceptable scope interpretation | Pitfall #4 | If a security/compliance review reads `PRIV-05`/`NFR-301` literally, Option B (native-keystore-backed key feeding `dexie-encrypted`) becomes mandatory, not optional, adding native-plugin work to this phase's estimate |
 | A5 | Vite version, exact TypeScript-5.x patch, and Tailwind major version can be safely deferred to "whatever Phase 1/2 already scaffolded" | Standard Stack | If Phase 1/2 in fact used Tailwind v3 or a pre-5.9 TypeScript, Phase 3 tasks should explicitly check `package.json` before adding new dependencies rather than assuming this research's point-in-time recommendations apply unmodified |
 
-## Open Questions
+## Open Questions (RESOLVED)
+
+All three questions below were carried into planning rather than answered by the planner. Two are
+resolved by `checkpoint:decision` gates that put the choice in front of the team with its tradeoffs
+attached; the third is resolved as a deliberate deferral, recorded as an assumption tied to the
+project's existing `OPEN-05`. Each question's resolution and its location are stated inline below.
+Nothing here is still open in the sense of "nobody has decided how this gets decided".
 
 1. **Which remediation path for on-device voice recognition (Pitfall #2, Options 1-3) should the team commit to?**
    - What we know: only `@capacitor-community/speech-recognition@6.0.1` is Capacitor-6-compatible, and it has no on-device-forcing API; native patching (Options 1/2) gives a code-enforced guarantee, the stock-plugin-plus-radio-off-testing path (Option 3) gives only an empirically-tested one.
    - What's unclear: whether the team has native Swift/Kotlin bandwidth in Phase 3's timeline for Option 1/2, given the team's fixed role scopes (Dhodraj: data model/sync, never UI; Belson: frontend only; Rahul: DevOps/build; Satheeshkumar: QA) don't cleanly include "patches a Capacitor plugin's native source" as anyone's stated scope.
    - Recommendation: raise this explicitly at `/gsd:discuss-phase` as an owner-assignment question, not just a technical one — this is exactly the kind of cross-cutting task (native code, not UI, not pure data-model/sync, not DevOps/CI) that falls outside all four fixed scopes as currently described and needs an explicit decision.
+   - **(RESOLVED)** — carried as a blocking `checkpoint:decision`, **plan `03-05-PLAN.md`, Task 1: "The on-device voice guarantee — one-way door"**, with the code-enforced and empirically-tested options laid out with their pros and cons rather than defaulted. The owner-assignment half of the question is answered in the same plan, which assigns the native patch explicitly rather than leaving it in the gap between four role scopes. The iOS-side verification this depends on branches on the runner answer produced by **`03-04-PLAN.md`, Task 3, item 3**.
 
 2. **Does `PRIV-05`'s "AES-256, keys in Secure Enclave or Android Keystore" language apply to Phase 3's structured cycle/check-in data, or was it written with Phase 6's raw camera frames in mind?**
    - What we know: Dexie/IndexedDB has no native hardware-keystore-backed encryption; achieving the literal requirement needs a native secure-storage plugin paired with `dexie-encrypted` (Pitfall #4, Option B).
    - What's unclear: whether the phase's success criteria consider OS-level full-disk encryption sufficient for this phase's data, deferring the stronger interpretation to Phase 6.
    - Recommendation: resolve explicitly in `/gsd:discuss-phase` rather than let the planner or executor pick a default silently — the effort difference between the two options is non-trivial (a native plugin vs. a documented scope note).
+   - **(RESOLVED)** — carried as a blocking `checkpoint:decision`, **plan `03-01-PLAN.md`, Task 3: "Encryption architecture — one-way door"**, placed before the tracer that builds on whichever answer comes back, and rated `one-way` because changing it later is a migration over eighteen months of health history. Whichever branch is chosen, the on-hardware evidence for it is produced by **`03-04-PLAN.md`, Task 3, item 1**, on Android and iOS separately.
 
 3. **Is a self-declared-birthdate hard-block sufficient for `REG-01`, or does the project's own `OPEN-05` pre-submission regulatory opinion need to cover this specifically before Phase 3 ships to any real user?**
    - What we know: identity-verification-industry sources characterize bare self-declaration as insufficient for DPDP compliance in general; this product's exclusion-only (not admission-with-lower-bar) posture is architecturally different from the scenarios those sources describe.
    - What's unclear: whether India's regulatory position specifically distinguishes "excluding declared-minors entirely" from "admitting minors under a lighter consent regime" — no source found addresses this exact distinction.
    - Recommendation: treat as `[ASSUMED]`, flag for the same pre-pilot regulatory opinion `OPEN-05` already calls for, and do not let Phase 3 planning quietly treat this as solved.
+   - **(RESOLVED as a recorded deferral)** — this one is not a decision Phase 3 can make, so it is not carried as a checkpoint. It is recorded as **assumption A-04 in `03-01-PLAN.md`**, which states in the tracer's own task action that the age gate is self-declared date of birth only, with no document upload and no third-party verifier, and ties that to the project-level `OPEN-05` pre-pilot regulatory opinion. Phase 3 builds the hard-block exclusion described above; whether that exclusion is legally sufficient is answered by the regulatory opinion before any real user sees it, not by this phase. Deferred deliberately and visibly — which is the opposite of quietly treating it as solved.
 
 ## Environment Availability
 

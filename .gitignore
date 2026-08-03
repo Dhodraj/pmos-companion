@@ -16,6 +16,9 @@ secrets/
 *.bak.*
 .DS_Store
 
+# GSD research-agent HTTP fetch cache, not part of the plan
+.planning/research/.cache/
+
 # local ops tooling, not part of the product
 hackathon/pull-metrics.mjs
 hackathon/package*.json
