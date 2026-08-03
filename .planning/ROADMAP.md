@@ -54,7 +54,16 @@ false or borrowed claim survives into the pitch.
      repo is public; all four machines build Android; the demo phone is chosen and wiped.
   4. No document in the repo states an unamended sleep-apnoea headline comparison, claims camera
      heart rate was cut, or uses the "Day 47" framing or the "Building My Case" label.
-**Plans**: TBD
+**Plans**: 7 plans across 3 waves
+
+Plans:
+- [ ] 01-01-PLAN.md — Tracer: scaffold to phone, contract path proven (wave 1, Rahul + Dhodraj)
+- [ ] 01-02-PLAN.md — Pre-event unknowns: organizers, repo, invites, scopes (wave 1, Dhodraj + Rahul)
+- [ ] 01-03-PLAN.md — DOCFIX sweep across both repositories, with a guard (wave 1, Satheesh)
+- [ ] 01-04-PLAN.md — Contract dry-run: five screens against the type sketches (wave 1, Belson)
+- [ ] 01-05-PLAN.md — Freeze the three interface contracts (wave 2, Dhodraj + Satheesh)
+- [ ] 01-06-PLAN.md — Belson builds the insight card against the frozen barrel alone (wave 3, Belson)
+- [ ] 01-07-PLAN.md — Blind-test generator and sealed parameters (wave 3, Dhodraj + Satheesh)
 
 ### Phase 2: Hackathon weekend — the blind test and the ring 1 spine
 **Goal**: At the 8–9 August demo the engine recovers a planted lagged relationship it was never
@@ -198,7 +207,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Pre-event readiness and frozen contracts | 0/TBD | Not started | - |
+| 1. Pre-event readiness and frozen contracts | 0/7 | Planned | - |
 | 2. Hackathon weekend — blind test and ring 1 spine | 0/TBD | Not started | - |
 | 3. Irregular-native foundation | 0/8 | Planned | - |
 | 4. The engine and the evidence she takes to a doctor | 0/TBD | Not started | - |
