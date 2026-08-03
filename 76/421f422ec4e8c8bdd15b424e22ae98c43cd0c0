@@ -1,0 +1,51 @@
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-01-PLAN.md
+  s_d0bebf31341a3e::t_33f785b751dceb 1-222,227-246,248-354
+  s_d0bebf31341a3e::t_5f27c1cda4aa9d 223-226
+  s_d0bebf31341a3e::t_63c1d8b082b307 247
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-10-PLAN.md
+  s_d0bebf31341a3e::t_73c36fc23e8af9 1-276
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-14-PLAN.md
+  s_d0bebf31341a3e::t_0b7643d0ccdd15 1-322
+.planning/ROADMAP.md
+  s_d0bebf31341a3e::t_ab18f925436217 227
+  s_d0bebf31341a3e::t_892104d9e22338 84-100
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-06-PLAN.md
+  s_d0bebf31341a3e::t_cb150d17cab15c 1-319
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-05-PLAN.md
+  s_d0bebf31341a3e::t_0bc736d135041e 1-311
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-11-PLAN.md
+  s_d0bebf31341a3e::t_cd0b73f1b10e1e 1-294
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-09-PLAN.md
+  s_d0bebf31341a3e::t_f25bcbaa71cdd4 1-298
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-08-PLAN.md
+  s_d0bebf31341a3e::t_7e3e51e97f95c1 1-309
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-02-PLAN.md
+  s_d0bebf31341a3e::t_5203a00652d88b 1-365
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-07-PLAN.md
+  s_d0bebf31341a3e::t_30dc295f273243 1-340
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-13-PLAN.md
+  s_d0bebf31341a3e::t_ad18fde5e464d8 1-297
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-03-PLAN.md
+  s_d0bebf31341a3e::t_979a896ad8bbf4 1-160,162-270
+  s_d0bebf31341a3e::t_36ac94e3de4903 161
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-12-PLAN.md
+  s_d0bebf31341a3e::t_894cca61f2cec6 1-300
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-04-PLAN.md
+  s_d0bebf31341a3e::t_844aca12f21373 1-362
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "76421f422ec4e8c8bdd15b424e22ae98c43cd0c0",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
