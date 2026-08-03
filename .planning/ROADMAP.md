@@ -113,7 +113,14 @@ clinician reads in seven minutes.
   4. She taps once and gets a PDF in under ten seconds with eighteen months of cycle history,
      interval statistics, a symptom timeline, her medication log and the named tests she can
      request — with every app-derived value labelled a wellness trend, not a clinical measurement.
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Tracer: one true lagged finding from her own data, IndexedDB to screen, on device
+- [ ] 04-02-PLAN.md — Product-grade engine: per-phase baselines, full pairwise sweep, declared FDR family, weekly cadence
+- [ ] 04-03-PLAN.md — The doctor export: 18 months compiled and rendered on device to a PDF in under ten seconds
+- [ ] 04-04-PLAN.md — Guarded Gemini phrasing, the AI-phrasing consent class, and "how do you know that?"
+- [ ] 04-05-PLAN.md — Clinician-acceptability review of the export copy and the explanation, in seven minutes
 **UI hint**: yes
 
 ### Phase 5: Safety floor, coaching and companion
