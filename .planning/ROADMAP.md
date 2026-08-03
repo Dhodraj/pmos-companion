@@ -94,7 +94,17 @@ NOTF-02, NOTF-03
      and offers a one-tap gynaecology export — suggesting no medication.
   4. She grants or revokes consent per data class independently, exports everything in one tap,
      deletes everything in one tap, and no under-18 account exists to profile.
-**Plans**: TBD
+**Plans**: 8 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Tracer: age gate to cycle view through the encrypted store (wave 1)
+- [ ] 03-02-PLAN.md — Schema v2, validators, and the rule-based cycle intelligence (wave 2)
+- [ ] 03-04-PLAN.md — CI, privacy guards, bundle budget, on-device keystore smoke (wave 2)
+- [ ] 03-03-PLAN.md — The 30-second check-in, cycle view, pause mode, disclaimer (wave 3)
+- [ ] 03-06-PLAN.md — Notification content gate, daily cap, quiet hours (wave 3)
+- [ ] 03-05-PLAN.md — On-device voice check-in via a native recognizer patch (wave 4)
+- [ ] 03-07-PLAN.md — 90-day sentinel, escalation flow, gynaecology export (wave 4)
+- [ ] 03-08-PLAN.md — Consent surface, one-tap export and delete, mycyclesafe import (wave 4)
 **UI hint**: yes
 
 ### Phase 4: The engine and the evidence she takes to a doctor
@@ -179,7 +189,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Pre-event readiness and frozen contracts | 0/TBD | Not started | - |
 | 2. Hackathon weekend — blind test and ring 1 spine | 0/TBD | Not started | - |
-| 3. Irregular-native foundation | 0/TBD | Not started | - |
+| 3. Irregular-native foundation | 0/8 | Planned | - |
 | 4. The engine and the evidence she takes to a doctor | 0/TBD | Not started | - |
 | 5. Safety floor, coaching and companion | 0/6 | Planned | - |
 | 6. Camera vitals — fingertip PPG | 0/TBD | Not started | - |
