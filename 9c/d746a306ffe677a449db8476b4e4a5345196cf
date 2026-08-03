@@ -1,0 +1,58 @@
+.planning/phases/03-irregular-native-foundation/03-01-PLAN.md
+  s_d0bebf31341a3e::t_0de5a4fe653f50 1-200,202-339,341-396,398,406,499-503
+  s_d0bebf31341a3e::t_9de36c7c17019b 201,340
+  s_d0bebf31341a3e::t_ae74bed9f79604 397,399-405
+  s_d0bebf31341a3e::t_f9fda4a580ac9f 407-498
+.planning/phases/03-irregular-native-foundation/03-08-PLAN.md
+  s_d0bebf31341a3e::t_46372d73b72993 1-136,138-198,200-262,264-348
+  s_d0bebf31341a3e::t_3d6af8f6cc6006 137,199,263
+.planning/phases/03-irregular-native-foundation/03-04-PLAN.md
+  s_d0bebf31341a3e::t_e280bac699fc8b 110,166
+  s_d0bebf31341a3e::t_5be8a7f5b74ad9 1-109,111-165,167-257
+.planning/phases/03-irregular-native-foundation/03-06-PLAN.md
+  s_d0bebf31341a3e::t_be2318e263c386 109,158,217
+  s_d0bebf31341a3e::t_0807fa8ac331d2 1-108,110-157,159-216,218-268
+.planning/phases/03-irregular-native-foundation/03-05-PLAN.md
+  s_d0bebf31341a3e::t_b172495fb8c7f6 12
+  s_d0bebf31341a3e::t_1db1e34112cf4a 242
+  s_d0bebf31341a3e::t_78cc96a438a25e 1-11,13-193,195-207,209-241,243-259,261-350
+  s_d0bebf31341a3e::t_4bd53d194ae87c 208
+  s_d0bebf31341a3e::t_32d42e05f8a21d 194,260
+.planning/ROADMAP.md
+  s_d0bebf31341a3e::t_b3b43aabdf1aa7 97-107
+  s_d0bebf31341a3e::t_59b2f39f9a849b 192
+.planning/phases/03-irregular-native-foundation/03-07-PLAN.md
+  s_d0bebf31341a3e::t_5214b0b0382107 149,204,268
+  s_d0bebf31341a3e::t_aa397b1895694b 1-148,150-203,205-267,269-360
+.planning/phases/03-irregular-native-foundation/03-02-PLAN.md
+  s_d0bebf31341a3e::t_89b6c9571ad3c4 152,209,278
+  s_d0bebf31341a3e::t_bf0902e333b93d 1-151,153-208,210-277,279-334
+.planning/phases/03-irregular-native-foundation/03-03-PLAN.md
+  s_d0bebf31341a3e::t_65129e93deb14c 132,196,244
+  s_d0bebf31341a3e::t_88950ba3cb1924 194
+  s_d0bebf31341a3e::t_8435a1ebc2113c 249,251-252
+  s_d0bebf31341a3e::t_3fcb66d1210bda 228-229
+  s_d0bebf31341a3e::t_b15ca5abfc81b8 165-169
+  s_d0bebf31341a3e::t_751cd0f5314dc6 314
+  s_d0bebf31341a3e::t_4a9fe17a486f08 1-15,19-45,47-50,52-131,133-146,148-164,170-193,195,197-227,230-243,245-248,250,253-313,315-318,321
+  s_d0bebf31341a3e::t_aea4f2e2c6dfa0 16-18
+  s_d0bebf31341a3e::t_20627f0e76ae44 319-320
+  s_d0bebf31341a3e::t_33485559bab0e4 147
+  s_d0bebf31341a3e::t_bce6bcaf8e3b08 46,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "9cd746a306ffe677a449db8476b4e4a5345196cf",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
