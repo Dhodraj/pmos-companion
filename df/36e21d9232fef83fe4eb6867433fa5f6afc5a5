@@ -1,0 +1,35 @@
+.planning/phases/04-the-engine-and-the-evidence-she-takes-to-a-doctor/04-03-PLAN.md
+  s_d0bebf31341a3e::t_4f08cb848a32aa 1-258,260-311,313-324,326-419
+  s_d0bebf31341a3e::t_d2413d032b7251 259
+  s_d0bebf31341a3e::t_51ce74abcd5cf8 312
+  s_d0bebf31341a3e::t_faf5b4a5549c3e 325
+.planning/ROADMAP.md
+  s_d0bebf31341a3e::t_f2c019a72b4e93 116-123
+.planning/phases/04-the-engine-and-the-evidence-she-takes-to-a-doctor/04-01-PLAN.md
+  s_d0bebf31341a3e::t_6ce4b314dd0973 1-392
+.planning/phases/04-the-engine-and-the-evidence-she-takes-to-a-doctor/04-05-PLAN.md
+  s_d0bebf31341a3e::t_4fa53d27136590 164
+  s_d0bebf31341a3e::t_bdb6e22ac9b265 1-163,165-306
+.planning/phases/04-the-engine-and-the-evidence-she-takes-to-a-doctor/04-02-PLAN.md
+  s_d0bebf31341a3e::t_48f9fd8d1ed5eb 1-369
+.planning/phases/04-the-engine-and-the-evidence-she-takes-to-a-doctor/04-04-PLAN.md
+  s_d0bebf31341a3e::t_a1b13831ad6597 1-285,287-371,373-467
+  s_d0bebf31341a3e::t_d1a1e9e92129e8 372
+  s_d0bebf31341a3e::t_0f90cbdb848d46 286
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "df36e21d9232fef83fe4eb6867433fa5f6afc5a5",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
