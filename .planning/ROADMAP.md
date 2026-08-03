@@ -81,7 +81,23 @@ and doctor export on a real phone around it.
      null pair, export as a static file — is always available.
   4. Every cut was called in the fixed order (lab capture, voice to tap, safety UI, cycle view to a
      list) by the named owner at the named gate, and the ring 1 spine survived all of them.
-**Plans**: TBD
+**Plans**: 14 plans in 8 waves, mapped to `hackathon/build-plan.md`'s H0–H28 timeline and its five gates
+
+Plans:
+- [ ] 02-01-PLAN.md — H0 launchpad: pinned Capacitor 6 shell on the wiped demo phone, frozen contracts on disk (Rahul, Satheesh)
+- [ ] 02-02-PLAN.md — Ring 1 tracer: tap → Dexie → engine → card → export, radio off; **gate H4** (Dhodraj, Belson)
+- [ ] 02-03-PLAN.md — CI on push, one-command seed and deploy, first signed rollback APK (Rahul)
+- [ ] 02-04-PLAN.md — The correlation engine: per-phase baselines, 1–14 day lag scan, bootstrap CI, BH-FDR (Dhodraj, Satheesh)
+- [ ] 02-05-PLAN.md — Thirty-second check-in and the honest insight card, against fixtures (Belson)
+- [ ] 02-06-PLAN.md — The blind test: custody, report-before-reveal, **gate H10** (Satheesh, Dhodraj)
+- [ ] 02-07-PLAN.md — Hono Worker, D1, Gemini phrasing behind a failure-silent client; **gate H16** (Dhodraj, Satheesh)
+- [ ] 02-08-PLAN.md — Ring 2: the doctor export as a client-side PDF in under ten seconds (Belson, Dhodraj)
+- [ ] 02-09-PLAN.md — Ring 3: irregular-native cycle view with a one-constant list degradation (Belson, Dhodraj)
+- [ ] 02-10-PLAN.md — Offline smoke in CI, APK cadence, working-run recording; **gate H22** (Rahul)
+- [ ] 02-11-PLAN.md — Ring 4: safety layer, fixed clinical copy, Tele-MANAS 14416, zero network (Belson)
+- [ ] 02-12-PLAN.md — Voice entry, English, on-device, verified in airplane mode (Belson)
+- [ ] 02-13-PLAN.md — Ring 5 (optional, no owner): lab capture via a custom Kotlin ML Kit plugin
+- [ ] 02-14-PLAN.md — Gate ledger, cut list applied in order, **gate H28 freeze**, three rehearsals (Rahul, Dhodraj, Satheesh)
 **UI hint**: yes
 
 ### Phase 3: Irregular-native foundation
@@ -208,7 +224,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Pre-event readiness and frozen contracts | 0/7 | Planned | - |
-| 2. Hackathon weekend — blind test and ring 1 spine | 0/TBD | Not started | - |
+| 2. Hackathon weekend — blind test and ring 1 spine | 0/14 | Planned | - |
 | 3. Irregular-native foundation | 0/8 | Planned | - |
 | 4. The engine and the evidence she takes to a doctor | 0/TBD | Not started | - |
 | 5. Safety floor, coaching and companion | 0/6 | Planned | - |
