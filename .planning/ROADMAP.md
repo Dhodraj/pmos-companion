@@ -177,8 +177,19 @@ the recorded clinical objection has been answered in writing.
      other feature still works.
   3. A written clinical rebuttal or a second clinical opinion answering "what would a resting heart
      rate tell a woman with PMOS?" exists in the repo before a single user sees this feature.
-**Plans**: TBD
+**Plans**: 9 plans
 **UI hint**: yes
+
+Plans:
+- [ ] 06-01-PLAN.md — Tracer: fingertip to a heart-rate range end to end on one Android phone, frozen native and result contracts, test harness and fixtures (Rahul)
+- [ ] 06-02-PLAN.md — PPG-07: draft the written clinical position, send it to a named clinician, and wire the CI release gate with the flag off (Satheesh, Rahul)
+- [ ] 06-03-PLAN.md — Bridge-payload contract, smoothness-priors detrending, and the scipy-validated Butterworth bandpass (Dhodraj)
+- [ ] 06-04-PLAN.md — iOS capture path at parity, fail-closed runtime capability probe, and the named device fleet matrix (Rahul)
+- [ ] 06-05-PLAN.md — Capture session, live pulse waveform, guidance copy and the non-visual capture path (Belson)
+- [ ] 06-06-PLAN.md — Peak detection cross-checked against FFT, confidence and range, quality gate, and the assembled capture analysis (Dhodraj)
+- [ ] 06-07-PLAN.md — Failure states with reason-specific guidance, the range-with-confidence result screen, and the capability-gated entry point (Belson)
+- [ ] 06-08-PLAN.md — Encrypted phase-tagged persistence, the n-of-1 engine input adapter, and the log-leak check (Dhodraj)
+- [ ] 06-09-PLAN.md — Anxiety-safety copy review, the reviewed clinical position, and the one-way release decision (Satheesh)
 
 ## Progress
 
@@ -192,7 +203,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Irregular-native foundation | 0/8 | Planned | - |
 | 4. The engine and the evidence she takes to a doctor | 0/TBD | Not started | - |
 | 5. Safety floor, coaching and companion | 0/6 | Planned | - |
-| 6. Camera vitals — fingertip PPG | 0/TBD | Not started | - |
+| 6. Camera vitals — fingertip PPG | 0/9 | Planned | - |
 
 ## Coverage
 
