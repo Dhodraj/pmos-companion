@@ -1,0 +1,19 @@
+.planning/phases/03-irregular-native-foundation/03-RESEARCH.md
+  s_d0bebf31341a3e::t_8641850587c6f6 1-575
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "d4deaf2a5dd7718396bb145d2a055dcaa4d723c2",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
