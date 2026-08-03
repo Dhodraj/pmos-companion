@@ -94,6 +94,12 @@ None yet. (`.planning/todos/pending/` not created.)
   him losing four hours to a toolchain error. Rahul takes that work back immediately.
 - **Retraction standing order:** the "500,000+ users across 120 countries" claim and its six
   dependent claims are false and may not appear as goal, metric, advantage or context anywhere.
+- **CANDIDATE (not yet a requirement, raised 2026-08-03 reviewing product/05-ui-preview.html):**
+  voice or text backfill for a woman with no prior digital cycle history at all — distinct from
+  PRIV-04's mycyclesafe.ai import, which only helps someone who already has data somewhere. Needs
+  design before it becomes a requirement: how far back can memory-recall data be trusted for the
+  correlation engine, and does an unreliable backfill corrupt NOF1-01's own-baseline model. Deferred
+  past the hackathon; revisit at Phase 3 planning.
 
 ## Deferred Items
 

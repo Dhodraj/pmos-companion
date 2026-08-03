@@ -1,0 +1,574 @@
+<title>PMOS Companion — App Preview</title>
+<style>
+:root{
+  --ink:#1A1D1B; --paper:#F0EFE9; --card:#FFFFFF;
+  --sage:#3E5B49; --sage-soft:#E1E9E1;
+  --plum:#6B3552; --plum-soft:#F0E1E7;
+  --muted:#6C6A5F; --line:#E1DED2;
+  --good:#3F7350; --good-soft:#E2ECE2;
+  --warn:#96721F; --warn-soft:#F1E6CE;
+  --critical:#AD3E3E;
+  --shadow: 0 8px 16px rgba(26,29,27,.10), 0 40px 80px -30px rgba(26,29,27,.4);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#E9E7DE; --paper:#0C0E0D; --card:#1B1F1C;
+    --sage:#8FB79B; --sage-soft:#1C2921;
+    --plum:#D394AC; --plum-soft:#33202A;
+    --muted:#8F8C7F; --line:#2E322D;
+    --good:#82B48D; --good-soft:#1D2A1F;
+    --warn:#D0AA5C; --warn-soft:#2E2717;
+    --critical:#DE8080;
+    --shadow: 0 8px 16px rgba(0,0,0,.5), 0 50px 90px -30px rgba(0,0,0,.75);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E9E7DE; --paper:#0C0E0D; --card:#1B1F1C;
+  --sage:#8FB79B; --sage-soft:#1C2921;
+  --plum:#D394AC; --plum-soft:#33202A;
+  --muted:#8F8C7F; --line:#2E322D;
+  --good:#82B48D; --good-soft:#1D2A1F;
+  --warn:#D0AA5C; --warn-soft:#2E2717;
+  --critical:#DE8080;
+  --shadow: 0 8px 16px rgba(0,0,0,.5), 0 50px 90px -30px rgba(0,0,0,.75);
+}
+:root[data-theme="light"]{
+  --ink:#1A1D1B; --paper:#F0EFE9; --card:#FFFFFF;
+  --sage:#3E5B49; --sage-soft:#E1E9E1;
+  --plum:#6B3552; --plum-soft:#F0E1E7;
+  --muted:#6C6A5F; --line:#E1DED2;
+  --good:#3F7350; --good-soft:#E2ECE2;
+  --warn:#96721F; --warn-soft:#F1E6CE;
+  --critical:#AD3E3E;
+  --shadow: 0 8px 16px rgba(26,29,27,.10), 0 40px 80px -30px rgba(26,29,27,.4);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--paper);}
+body{
+  font-family:-apple-system,"Segoe UI",system-ui,Roboto,sans-serif;
+  color:var(--ink); overflow:hidden; -webkit-font-smoothing:antialiased;
+  display:flex; align-items:center; justify-content:center; min-height:100vh;
+}
+.mono{font-family:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",monospace; font-variant-numeric:tabular-nums;}
+button{font:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; text-align:left;}
+button:active{ transform:scale(.97); }
+button:focus-visible{ outline:2px solid var(--sage); outline-offset:2px; }
+
+.stage{ height:100vh; height:100dvh; display:flex; align-items:center; justify-content:center; padding:16px; gap:22px; }
+
+.phone{
+  width:min(94vw, 390px); height:min(92vh, 830px); background:var(--card); border-radius:46px;
+  box-shadow:var(--shadow); border:1px solid var(--line); overflow:hidden; display:flex; flex-direction:column; position:relative;
+}
+.statusbar{ height:32px; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 26px; font-size:12px; font-weight:700; }
+.crumb{
+  flex:0 0 auto; padding:0 26px 8px; font-size:10.5px; font-weight:700; color:var(--muted);
+  letter-spacing:.07em; text-transform:uppercase; display:flex; align-items:center; gap:8px; min-height:14px;
+}
+.crumb .back{ background:none; border:0; color:var(--ink); font-weight:800; font-size:15px; padding:0 4px 0 0; letter-spacing:0; text-transform:none; }
+.crumb .dot{ width:5px; height:5px; border-radius:50%; background:var(--sage); flex:0 0 auto; }
+.crumb .priv{ margin-left:auto; display:flex; align-items:center; gap:5px; color:var(--sage); text-transform:none; letter-spacing:0; font-weight:700; }
+.crumb .priv svg{ width:10px; height:10px; }
+
+.view{ flex:1; padding:6px 26px 10px; overflow:hidden; display:none; flex-direction:column; }
+.view.active{ display:flex; animation:fade .2s ease; }
+@keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+@media (prefers-reduced-motion:reduce){ .view.active{ animation:none; } }
+.list-view{ overflow-y:auto; }
+
+.tabbar{ flex:0 0 auto; display:flex; border-top:1px solid var(--line); padding:9px 10px 16px; gap:3px; }
+.tabbtn{ flex:1; background:none; border:0; display:flex; flex-direction:column; align-items:center; gap:5px; padding:6px 2px; border-radius:12px; color:var(--muted); }
+.tabbtn.on{ color:var(--sage); }
+.tabbtn .ic{ font-size:19px; line-height:1; }
+.tabbtn .lb{ font-size:10px; font-weight:700; }
+
+.tag{ display:inline-flex; align-self:flex-start; font-size:11px; font-weight:700; padding:6px 12px; border-radius:100px; margin-bottom:14px; }
+.tag.weak{ background:var(--line); color:var(--muted); }
+.tag.good{ background:var(--good-soft); color:var(--good); }
+.tag.warn{ background:var(--warn-soft); color:var(--warn); }
+.tag.plum{ background:var(--plum-soft); color:var(--plum); }
+.tag.sage{ background:var(--sage-soft); color:var(--sage); }
+.scr-h{ font-size:23px; font-weight:800; letter-spacing:-.02em; line-height:1.15; margin:0 0 4px; }
+.scr-sub{ font-size:13px; color:var(--muted); margin:0; line-height:1.4; }
+.spacer{ flex:1; }
+.cta{ background:var(--sage); color:#fff; border-radius:18px; padding:16px; text-align:center; font-weight:700; font-size:14.5px; border:0; width:100%; }
+.cta.plumcta{ background:var(--plum); }
+.cta.ghost{ background:var(--card); border:1.5px solid var(--line); color:var(--ink); text-align:center; }
+
+/* onboarding */
+.ob-mark{ width:56px; height:56px; border-radius:18px; background:var(--sage); display:flex; align-items:center; justify-content:center; margin-bottom:26px; }
+.ob-mark svg{ width:26px; height:26px; stroke:#fff; }
+.ob-title{ font-size:28px; font-weight:800; letter-spacing:-.025em; line-height:1.15; margin:0 0 12px; max-width:15ch; }
+.ob-body{ font-size:14.5px; color:var(--muted); line-height:1.55; max-width:32ch; margin:0; }
+.ob-dots{ display:flex; gap:6px; margin:20px 0; }
+.ob-dot{ width:6px; height:6px; border-radius:50%; background:var(--line); }
+.ob-dot.on{ background:var(--sage); width:18px; border-radius:3px; }
+.dob-input{ font-size:26px; font-weight:800; font-family:ui-monospace,monospace; border:0; border-bottom:2px solid var(--line); background:none; color:var(--ink); width:100%; padding:8px 0; margin:18px 0; }
+.dob-input:focus{ outline:0; border-color:var(--sage); }
+
+/* consent list */
+.consent-list{ display:flex; flex-direction:column; gap:2px; margin-top:12px; }
+.crow{ display:flex; align-items:flex-start; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--line); gap:14px; }
+.crow:last-child{border-bottom:0;}
+.crow .name{ font-size:13.5px; font-weight:700; }
+.crow .desc{ font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.4; }
+
+/* ring / today */
+.ring-wrap{ display:flex; flex-direction:column; align-items:center; margin:10px 0 16px; }
+.ring{ width:170px; height:170px; }
+.ring-day{ font-size:38px; font-weight:800; letter-spacing:-.03em; margin-top:-110px; }
+.ring-cap{ font-size:11.5px; color:var(--muted); font-weight:600; margin-top:2px; text-align:center; max-width:24ch; }
+.today-row{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-top:1px solid var(--line); font-size:13.5px; font-weight:600; }
+.banner{ background:var(--warn-soft); border-radius:16px; padding:13px 15px; font-size:12px; font-weight:600; color:var(--warn); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; gap:8px; border:0; width:100%; }
+
+/* check-in */
+.checkin-face{ display:flex; gap:10px; margin:16px 0 20px; }
+.face-opt{ flex:1; aspect-ratio:1; border-radius:18px; background:var(--paper); border:2px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:24px; }
+.face-opt.sel{ border-color:var(--plum); background:var(--plum-soft); }
+.checkin-row{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-top:1px solid var(--line); font-size:13.5px; font-weight:600; }
+.bleed-chips{ display:flex; gap:6px; flex-wrap:wrap; }
+.chip{ font-size:10.5px; padding:6px 11px; border-radius:100px; border:1px solid var(--line); color:var(--muted); font-weight:700; background:none; }
+.chip.on{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.mic-cta{ margin-top:10px; align-self:stretch; background:var(--ink); color:var(--paper); border-radius:18px; padding:15px; text-align:center; font-weight:700; font-size:13.5px; border:0; width:100%; }
+
+/* insights */
+.finding-hero{ margin-top:12px; }
+.finding-text{ font-size:18px; font-weight:600; line-height:1.35; letter-spacing:-.005em; }
+.finding-stats{ display:flex; gap:22px; margin-top:18px; }
+.fstat b{ display:block; font-size:20px; font-weight:800; }
+.fstat span{ font-size:10.5px; color:var(--muted); font-weight:600; }
+.mini-nav{ display:flex; gap:7px; margin-top:16px; }
+.mini-nav button{ flex:1; text-align:center; font-size:11px; font-weight:700; padding:9px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--muted); }
+.mini-nav button.on{ background:var(--plum); color:#fff; border-color:var(--plum); }
+.chat-col{ display:flex; flex-direction:column; flex:1; overflow:hidden; margin-top:10px; }
+.bub{ padding:10px 14px; border-radius:16px; font-size:13px; line-height:1.4; margin-bottom:8px; max-width:86%; font-weight:500; }
+.bub.user{ align-self:flex-end; background:var(--ink); color:var(--paper); border-bottom-right-radius:4px; }
+.bub.bot{ align-self:flex-start; background:var(--paper); border-bottom-left-radius:4px; }
+.bub.bot .cite{ display:block; margin-top:5px; font-size:10px; color:var(--plum); font-weight:700; }
+
+/* list rows (Care / You tabs) */
+.row{ display:flex; align-items:center; justify-content:space-between; padding:15px 0; border-bottom:1px solid var(--line); background:none; border-left:0; border-right:0; border-top:0; width:100%; }
+.row:last-of-type{ border-bottom:0; }
+.row .rt{ font-size:14px; font-weight:700; }
+.row .rs{ font-size:11.5px; color:var(--muted); margin-top:2px; font-weight:500; }
+.row .arrow{ color:var(--muted); font-size:15px; }
+.sw{ width:40px; height:24px; border-radius:100px; background:var(--sage); position:relative; flex:0 0 auto; border:0; }
+.sw::after{ content:""; position:absolute; width:18px; height:18px; border-radius:50%; background:#fff; top:3px; right:3px; }
+.sw.off{ background:var(--line); }
+.sw.off::after{ left:3px; right:auto; }
+
+/* action card */
+.action-card{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:15px; margin-bottom:12px; }
+.action-card h5{ font-size:14px; font-weight:800; margin:0 0 4px; }
+.action-card p{ font-size:12px; color:var(--muted); margin:0 0 10px; line-height:1.45; }
+.action-card .rev{ font-size:10px; color:var(--muted); font-family:ui-monospace,monospace; }
+
+/* export */
+.export-sheet{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; }
+.export-sheet h4{ font-size:15px; font-weight:800; margin:0 0 2px; }
+.export-sheet .meta{ font-size:10.5px; color:var(--muted); margin:0 0 15px; font-weight:600; }
+.eline{ display:flex; justify-content:space-between; font-size:12.5px; padding:8px 0; border-top:1px solid var(--line); font-weight:600; }
+.etests{ margin-top:13px; display:flex; flex-wrap:wrap; gap:7px; }
+.etests span{ font-size:10.5px; font-weight:700; background:var(--paper); border-radius:7px; padding:5px 9px; }
+
+/* screening quiz */
+.q-progress{ display:flex; gap:5px; margin-bottom:18px; }
+.q-progress span{ flex:1; height:4px; border-radius:2px; background:var(--line); }
+.q-progress span.done{ background:var(--sage); }
+.q-opt{ display:block; width:100%; text-align:left; padding:14px 16px; border-radius:14px; border:1.5px solid var(--line); background:var(--card); font-size:13.5px; font-weight:600; margin-bottom:10px; }
+.q-opt.sel{ border-color:var(--plum); background:var(--plum-soft); }
+
+/* crisis */
+.crisis-view{ background:var(--ink); margin:0 -26px; padding:14px 26px 0; border-radius:0; flex:1; display:flex; flex-direction:column; }
+.crisis-view .scr-h, .crisis-view .scr-sub{ color:var(--paper); }
+.crisis-num{ font-size:40px; font-weight:800; color:#fff; background:var(--critical); border-radius:18px; text-align:center; padding:17px; margin:18px 0 13px; letter-spacing:-.02em; }
+.crisis-cta{ background:var(--paper); color:var(--ink); font-weight:800; text-align:center; padding:15px; border-radius:16px; font-size:14px; margin-bottom:10px; border:0; width:100%; }
+.crisis-cta.ghost{ background:transparent; border:1.5px solid #4a4a4a; color:var(--paper); }
+
+/* ppg */
+.ppg-wrap{ display:flex; flex-direction:column; align-items:center; text-align:center; flex:1; justify-content:center; }
+.ppg-range{ font-size:46px; font-weight:800; letter-spacing:-.03em; }
+.ppg-unit{ font-size:12.5px; color:var(--muted); font-weight:700; margin-top:5px; }
+.ppg-conf{ font-size:12px; color:var(--muted); margin-top:18px; max-width:24ch; line-height:1.5; }
+canvas{ display:block; width:100%; height:64px; margin:10px 0 4px; }
+
+/* scan (lab/medicine) */
+.scan-frame{ flex:1; border:2.5px dashed var(--line); border-radius:20px; display:flex; align-items:center; justify-content:center; margin:8px 0 16px; position:relative; overflow:hidden; }
+.scan-line{ position:absolute; left:6%; right:6%; height:2px; background:var(--sage); border-radius:2px; box-shadow:0 0 12px var(--sage); }
+.scan-icon{ font-size:34px; opacity:.35; }
+.scan-result{ background:var(--good-soft); border-radius:16px; padding:14px; }
+.scan-result .rt{ font-size:13px; font-weight:800; color:var(--good); margin-bottom:6px; }
+.scan-result .rv{ font-size:12.5px; font-weight:600; }
+
+.back-link{ font-size:12.5px; font-weight:700; color:var(--muted); background:none; border:0; padding:0; margin-top:12px; align-self:flex-start; }
+.crisis-view .back-link{ color:var(--paper); opacity:.7; padding-bottom:16px; }
+
+@media (max-height:760px){
+  .ring{ width:140px; height:140px; }
+  .ring-day{ margin-top:-90px; font-size:32px; }
+  .scr-h{ font-size:20px; }
+}
+
+/* right-side legend */
+.legend{ width:250px; max-height:92vh; overflow-y:auto; padding-right:4px; }
+.legend h3{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:800; margin:0 0 14px; }
+.legend .grp{ margin-bottom:18px; }
+.legend .grp-t{ font-size:11px; font-weight:800; color:var(--sage); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; }
+.legend button.item{ display:block; width:100%; background:none; border:0; padding:7px 9px; margin:0 0 2px; border-radius:9px; font-size:12.5px; font-weight:600; color:var(--ink); }
+.legend button.item:hover{ background:var(--card); }
+.legend button.item.cur{ background:var(--sage); color:#fff; }
+@media (max-width:920px){ .legend{ display:none; } }
+</style>
+
+<div class="stage">
+  <div class="phone">
+    <div class="statusbar"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+    <div class="crumb">
+      <button class="back" id="backbtn" onclick="back()" style="display:none">&larr;</button>
+      <span class="dot" id="crumb-dot"></span><span id="crumb-label">Welcome</span>
+      <span class="priv" id="priv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>On this device</span>
+    </div>
+
+    <!-- ===================== ONBOARDING ===================== -->
+    <div class="view active" data-view="ob1">
+      <div class="spacer"></div>
+      <div class="ob-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg></div>
+      <p class="ob-title">Your cycle isn't broken. It's just yours.</p>
+      <p class="ob-body">PMOS Companion learns your own patterns instead of assuming a 28&#8209;day cycle.</p>
+      <div class="ob-dots"><span class="ob-dot on"></span><span class="ob-dot"></span><span class="ob-dot"></span></div>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('ob2')">Continue</button>
+    </div>
+
+    <div class="view" data-view="ob2">
+      <div class="spacer"></div>
+      <div class="ob-mark" style="background:var(--plum)"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M12 20v-8M12 12 7 7M12 12l5-5"/></svg></div>
+      <p class="ob-title">Thirty seconds a day is the whole job.</p>
+      <p class="ob-body">Tap or speak. Patterns show up on their own once there's enough history &mdash; never guessed early.</p>
+      <div class="ob-dots"><span class="ob-dot"></span><span class="ob-dot on"></span><span class="ob-dot"></span></div>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('ob3')">Continue</button>
+    </div>
+
+    <div class="view" data-view="ob3">
+      <p class="ob-title" style="margin-top:12px">Before we begin</p>
+      <p class="ob-body">18+ only. Consent is per data type &mdash; nothing is on unless you choose it.</p>
+      <div class="dob-input mono">DD / MM / YYYY</div>
+      <div class="ob-dots"><span class="ob-dot"></span><span class="ob-dot"></span><span class="ob-dot on"></span></div>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('consent')">Continue</button>
+    </div>
+
+    <div class="view list-view" data-view="consent">
+      <p class="scr-h">Your data, your call</p>
+      <p class="scr-sub">Four independent switches. None are on by default.</p>
+      <div class="consent-list">
+        <div class="crow"><div><div class="name">Cycle &amp; symptom log</div><div class="desc">Required to use the app at all</div></div><button class="sw"></button></div>
+        <div class="crow"><div><div class="name">Voice check-in</div><div class="desc">Audio is transcribed on-device, never uploaded</div></div><button class="sw"></button></div>
+        <div class="crow"><div><div class="name">Camera vitals</div><div class="desc">A 30-second optional pulse reading</div></div><button class="sw off"></button></div>
+        <div class="crow"><div><div class="name">Skin &amp; medicine photos</div><div class="desc">Read on-device, then discarded</div></div><button class="sw off"></button></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('today')">Start using PMOS Companion</button>
+    </div>
+
+    <!-- ===================== TODAY ===================== -->
+    <div class="view" data-view="today">
+      <button class="banner" onclick="go('sentinel')"><span>Day 92 &mdash; a gentle check is due</span><span>&rarr;</span></button>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="var(--line)" stroke-width="9"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="var(--sage)" stroke-width="9" stroke-linecap="round"
+            stroke-dasharray="264" stroke-dashoffset="90" transform="rotate(-90 50 50)"/>
+        </svg>
+        <p class="ring-day mono">47</p>
+        <p class="ring-cap">days &mdash; inside your own 30&ndash;61 day range</p>
+      </div>
+      <div class="today-row"><span>Last logged</span><span class="mono" style="font-weight:700">Today, 8:12am</span></div>
+      <div class="today-row"><span>Next check-in</span><span style="font-weight:700;color:var(--sage)">Now</span></div>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('checkin')">Log today &middot; 30 seconds</button>
+    </div>
+
+    <div class="view" data-view="checkin">
+      <p class="scr-h">How's today?</p>
+      <p class="scr-sub">Tap, or just say it.</p>
+      <div class="checkin-face">
+        <button class="face-opt" onclick="pick(this)">&#128531;</button>
+        <button class="face-opt sel" onclick="pick(this)">&#128528;</button>
+        <button class="face-opt" onclick="pick(this)">&#128522;</button>
+      </div>
+      <div class="checkin-row"><span>Bleeding today?</span></div>
+      <div class="bleed-chips">
+        <button class="chip on" onclick="chip(this)">Period</button><button class="chip" onclick="chip(this)">Spotting</button>
+        <button class="chip" onclick="chip(this)">Withdrawal</button><button class="chip" onclick="chip(this)">Breakthrough</button>
+      </div>
+      <button class="mic-cta">&#127908; Or just speak it</button>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('today')">Done</button>
+    </div>
+
+    <div class="view" data-view="sentinel">
+      <p class="tag warn">Day 92</p>
+      <p class="scr-h">A gentle check before this goes further</p>
+      <p class="scr-sub" style="margin:8px 0 0">Prolonged gaps can leave the lining unprotected. Not an emergency &mdash; three quick questions, then an optional one-tap note for your gynaecologist.</p>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('today')">Answer three questions</button>
+      <button class="back-link" style="margin-top:14px" onclick="go('today')">Not now</button>
+    </div>
+
+    <!-- ===================== INSIGHTS ===================== -->
+    <div class="view" data-view="insights">
+      <p class="scr-h">Insights</p>
+      <div class="mini-nav">
+        <button class="on" onclick="ins(this,'found')">Pattern found</button>
+        <button onclick="ins(this,'learning')">Still learning</button>
+        <button onclick="ins(this,'ask')">Ask</button>
+      </div>
+      <div id="ins-found">
+        <div class="finding-hero">
+          <p class="tag plum">Weak signal</p>
+          <p class="finding-text">Your skin flares two to three days after nights under six hours.</p>
+        </div>
+        <div class="finding-stats"><div class="fstat"><b class="mono">12</b><span>observations</span></div><div class="fstat"><b class="mono">2&ndash;3d</b><span>lag</span></div></div>
+        <div class="spacer"></div>
+        <p class="scr-sub">How do you know that? &rarr;</p>
+      </div>
+      <div id="ins-learning" style="display:none">
+        <p class="tag weak">Still learning</p>
+        <p class="finding-text">Not enough history yet to connect skin and sleep. A few more check-ins and this updates on its own.</p>
+        <div class="finding-stats"><div class="fstat"><b class="mono">4</b><span>logged</span></div><div class="fstat"><b class="mono">~10</b><span>needed</span></div></div>
+      </div>
+      <div id="ins-ask" style="display:none" class="chat-col">
+        <div class="bub user">Should I lower my dose?</div>
+        <div class="bub bot">That's for your doctor &mdash; I can help you write down what to ask them.</div>
+        <div class="bub bot">Inositol: moderate evidence for insulin sensitivity, weaker for cycles.<span class="cite">NICE guideline, 2024</span></div>
+      </div>
+    </div>
+
+    <!-- ===================== CARE (hub) ===================== -->
+    <div class="view list-view" data-view="care">
+      <p class="scr-h">Care</p>
+      <p class="scr-sub" style="margin-bottom:6px">Today's actions, screening, and what to bring your doctor.</p>
+      <button class="row" onclick="go('coaching')"><div><div class="rt">Today's actions</div><div class="rs">2 evidence-graded suggestions</div></div><span class="arrow">&rarr;</span></button>
+      <button class="row" onclick="go('screen1')"><div><div class="rt">Monthly check-in</div><div class="rs">Two-minute screening, private</div></div><span class="arrow">&rarr;</span></button>
+      <button class="row" onclick="go('doctor')"><div><div class="rt">Export for your doctor</div><div class="rs">18-month summary, one tap</div></div><span class="arrow">&rarr;</span></button>
+    </div>
+
+    <div class="view" data-view="coaching">
+      <p class="scr-h">Today's actions</p>
+      <p class="scr-sub" style="margin-bottom:14px">One or two a day. Never calories, never weight, unless you opt in.</p>
+      <div class="action-card">
+        <h5>10 min walk after dinner</h5>
+        <p>May help insulin sensitivity over weeks, not days.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="tag good" style="margin:0">Moderate evidence</span><span class="rev mono">2026-06</span></div>
+      </div>
+      <div class="action-card">
+        <h5>Magnesium glycinate, evening</h5>
+        <p>Small trials only. Worth discussing with your doctor.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="tag warn" style="margin:0">Limited evidence</span><span class="rev mono">2026-06</span></div>
+      </div>
+    </div>
+
+    <div class="view" data-view="screen1">
+      <p class="scr-h">A private check-in</p>
+      <p class="scr-sub" style="margin-bottom:16px">Two minutes. Nobody sees your answers but you.</p>
+      <div class="q-progress"><span class="done"></span><span></span><span></span><span></span></div>
+      <p style="font-size:14.5px;font-weight:700;margin:0 0 14px">Over the last two weeks, how often have you felt little interest in doing things?</p>
+      <button class="q-opt" onclick="qpick(this)">Not at all</button>
+      <button class="q-opt sel" onclick="qpick(this)">Several days</button>
+      <button class="q-opt" onclick="qpick(this)">More than half the days</button>
+      <button class="q-opt" onclick="qpick(this)">Nearly every day</button>
+      <div class="spacer"></div>
+      <button class="cta" onclick="go('care')">Continue</button>
+    </div>
+
+    <div class="view" data-view="doctor">
+      <p class="scr-h">For your doctor</p>
+      <p class="scr-sub" style="margin-bottom:16px">Eighteen months, one tap, under ten seconds.</p>
+      <div class="export-sheet">
+        <h4>Clinical Summary</h4>
+        <p class="meta">18-MONTH RECORD &middot; WELLNESS TREND, NOT A DIAGNOSIS</p>
+        <div class="eline"><span>Cycle length, median</span><span class="mono">52 days</span></div>
+        <div class="eline"><span>Range</span><span class="mono">30&ndash;61 days</span></div>
+        <div class="eline"><span>Bleeds / 12 mo</span><span class="mono">7</span></div>
+        <div class="etests"><span>Fasting insulin</span><span>Free testosterone</span><span>DHEAS</span><span>75g OGTT</span><span>AMH</span></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="cta plumcta">Share as PDF</button>
+    </div>
+
+    <!-- ===================== YOU (hub) ===================== -->
+    <div class="view list-view" data-view="you">
+      <p class="scr-h">You</p>
+      <p class="scr-sub" style="margin-bottom:6px">Every one of these is your call, individually.</p>
+      <div class="crow"><span class="name" style="font-weight:600;font-size:13.5px">Camera vitals</span><button class="sw off"></button></div>
+      <button class="row" onclick="go('ppgcap')"><div><div class="rt">Take a reading</div><div class="rs">30-second pulse check</div></div><span class="arrow">&rarr;</span></button>
+      <button class="row" onclick="go('scan')"><div><div class="rt">Scan a lab report or strip</div><div class="rs">Reads values, discards the photo</div></div><span class="arrow">&rarr;</span></button>
+      <button class="row" onclick="alert('Exports everything as a zip — no confirmation needed, no dark pattern.')"><div><div class="rt">Export everything</div><div class="rs">Full local backup</div></div><span class="arrow">&darr;</span></button>
+      <button class="row" onclick="alert('Deletes everything on this device immediately — no recovery, by design.')"><div><div class="rt" style="color:var(--critical)">Delete everything</div><div class="rs">Immediate, irreversible</div></div><span class="arrow" style="color:var(--critical)">&times;</span></button>
+      <div style="height:14px"></div>
+      <button class="cta ghost" onclick="go('crisis')">Need to talk to someone now?</button>
+    </div>
+
+    <div class="view" data-view="ppgcap">
+      <div class="ppg-wrap">
+        <p class="scr-h" style="font-size:19px;align-self:flex-start">Hold still</p>
+        <canvas id="wave" width="280" height="64"></canvas>
+        <p class="scr-sub">Torch on &middot; reading for 30 seconds&hellip;</p>
+        <div style="height:18px"></div>
+        <button class="cta" onclick="go('ppgres')" style="max-width:220px">Simulate: capture done</button>
+      </div>
+    </div>
+
+    <div class="view" data-view="ppgres">
+      <div class="ppg-wrap">
+        <span class="ppg-range mono">68&ndash;74</span>
+        <span class="ppg-unit">beats / min</span>
+        <p class="ppg-conf">One reading among many the engine uses &mdash; not a diagnosis, not a target.</p>
+      </div>
+    </div>
+
+    <div class="view" data-view="scan">
+      <p class="scr-h">Scan a report</p>
+      <p class="scr-sub" style="margin-bottom:10px">Point at the printed values. The photo is discarded once they're read.</p>
+      <div class="scan-frame">
+        <div class="scan-icon">&#128196;</div>
+        <div class="scan-line" style="top:38%"></div>
+      </div>
+      <div class="scan-result">
+        <div class="rt">Fasting insulin &mdash; read</div>
+        <div class="rv mono">18.4 &micro;IU/mL</div>
+      </div>
+    </div>
+
+    <!-- ===================== CRISIS (reachable from anywhere) ===================== -->
+    <div class="view" data-view="crisis">
+      <div class="crisis-view">
+        <p class="scr-h">You're not alone</p>
+        <p class="scr-sub">Free, confidential, right now.</p>
+        <div class="crisis-num mono">14416</div>
+        <button class="crisis-cta">Call Tele-MANAS</button>
+        <button class="crisis-cta ghost">Message someone you trust</button>
+        <div class="spacer"></div>
+        <p class="scr-sub">No login. No paywall. We'll check in again in 24 hours.</p>
+      </div>
+    </div>
+
+    <div class="tabbar" id="tabbar">
+      <button class="tabbtn on" data-tab="today" onclick="go('today')"><span class="ic">&#9678;</span><span class="lb">Today</span></button>
+      <button class="tabbtn" data-tab="insights" onclick="go('insights')"><span class="ic">&#10022;</span><span class="lb">Insights</span></button>
+      <button class="tabbtn" data-tab="care" onclick="go('care')"><span class="ic">&#10084;</span><span class="lb">Care</span></button>
+      <button class="tabbtn" data-tab="you" onclick="go('you')"><span class="ic">&#9673;</span><span class="lb">You</span></button>
+    </div>
+  </div>
+
+  <div class="legend">
+    <h3>Every screen, one tap away</h3>
+    <div class="grp"><div class="grp-t">Onboarding</div>
+      <button class="item" onclick="go('ob1')">Welcome</button>
+      <button class="item" onclick="go('ob2')">How it works</button>
+      <button class="item" onclick="go('ob3')">Age gate</button>
+      <button class="item" onclick="go('consent')">Consent, per class</button>
+    </div>
+    <div class="grp"><div class="grp-t">Today</div>
+      <button class="item" onclick="go('today')">Cycle view</button>
+      <button class="item" onclick="go('checkin')">Check-in</button>
+      <button class="item" onclick="go('sentinel')">90-day sentinel</button>
+    </div>
+    <div class="grp"><div class="grp-t">Insights</div>
+      <button class="item" onclick="go('insights')">Pattern / learning / ask</button>
+    </div>
+    <div class="grp"><div class="grp-t">Care</div>
+      <button class="item" onclick="go('coaching')">Coaching actions</button>
+      <button class="item" onclick="go('screen1')">Monthly screening</button>
+      <button class="item" onclick="go('doctor')">Doctor export</button>
+    </div>
+    <div class="grp"><div class="grp-t">You</div>
+      <button class="item" onclick="go('you')">Privacy hub</button>
+      <button class="item" onclick="go('ppgcap')">Camera vitals capture</button>
+      <button class="item" onclick="go('ppgres')">Camera vitals result</button>
+      <button class="item" onclick="go('scan')">Lab / medicine scan</button>
+    </div>
+    <div class="grp"><div class="grp-t">Always reachable</div>
+      <button class="item" onclick="go('crisis')">Crisis support</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var labels = {ob1:'Welcome',ob2:'How it works',ob3:'Age gate',consent:'Consent',today:'Today', checkin:'Check-in', insights:'Insights', care:'Care', coaching:"Today's actions", screen1:'Monthly check-in', doctor:'For your doctor', you:'You', sentinel:'Sentinel', ppgcap:'Camera vitals', ppgres:'Result', scan:'Scan a report', crisis:'Crisis support'};
+var tabMap = {today:'today', checkin:'today', sentinel:'today', insights:'insights', care:'care', coaching:'care', screen1:'care', doctor:'care', you:'you', ppgcap:'you', ppgres:'you', scan:'you', crisis:'you'};
+var stack = ['ob1'];
+var waveStarted = false;
+
+function render(view){
+  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
+  var target = document.querySelector('.view[data-view="'+view+'"]');
+  if(target) target.classList.add('active');
+  document.getElementById('crumb-label').textContent = labels[view] || view;
+  var activeTab = tabMap[view];
+  document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.toggle('on', activeTab && b.dataset.tab === activeTab); });
+  document.getElementById('tabbar').style.opacity = activeTab ? '1' : '.35';
+  document.getElementById('tabbar').style.pointerEvents = activeTab ? 'auto' : 'none';
+  document.getElementById('backbtn').style.display = view.indexOf('ob')===0 && view!=='ob1' ? 'inline' : (stack.length>1 && !activeTab ? 'inline' : 'none');
+  document.getElementById('crumb-dot').style.display = activeTab ? 'inline-block' : 'none';
+  document.getElementById('priv-badge').style.display = view==='ob1' ? 'none' : 'flex';
+  if(view==='ppgcap' && !waveStarted){ waveStarted = true; startWave(); }
+  document.querySelectorAll('.legend .item').forEach(function(it){ it.classList.toggle('cur', it.getAttribute('onclick') === "go('"+view+"')"); });
+}
+function go(view){
+  stack.push(view);
+  render(view);
+}
+function back(){
+  if(stack.length>1){ stack.pop(); }
+  render(stack[stack.length-1]);
+}
+document.getElementById('backbtn').onclick = back;
+
+function pick(el){
+  el.parentNode.querySelectorAll('.face-opt').forEach(function(f){ f.classList.remove('sel'); });
+  el.classList.add('sel');
+}
+function chip(el){
+  el.parentNode.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+}
+function qpick(el){
+  el.parentNode.querySelectorAll('.q-opt').forEach(function(o){ o.classList.remove('sel'); });
+  el.classList.add('sel');
+}
+function ins(btn, which){
+  document.querySelectorAll('.mini-nav button').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  ['found','learning','ask'].forEach(function(k){ document.getElementById('ins-'+k).style.display = (k===which)?'':'none'; });
+}
+function startWave(){
+  var c = document.getElementById('wave');
+  if(!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var w = 280, h = 64;
+  c.width = w*dpr; c.height = h*dpr;
+  ctx.scale(dpr,dpr);
+  var accent = getComputedStyle(document.documentElement).getPropertyValue('--sage').trim() || '#3E5B49';
+  var t = 0;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.beginPath(); ctx.lineWidth = 2.4; ctx.strokeStyle = accent; ctx.lineCap='round';
+    for(var x=0;x<w;x++){
+      var v = Math.sin((x+t)*0.085)*15 + Math.sin((x+t)*0.2)*5;
+      var y = h/2 + v;
+      if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    t += reduced ? 0 : 1.5;
+    if(!reduced && document.querySelector('.view[data-view="ppgcap"]').classList.contains('active')) requestAnimationFrame(draw);
+    else if(!reduced) setTimeout(function(){ if(document.querySelector('.view[data-view="ppgcap"]').classList.contains('active')) requestAnimationFrame(draw); }, 500);
+  }
+  draw();
+}
+render('ob1');
+</script>
