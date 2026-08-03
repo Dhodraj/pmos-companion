@@ -562,12 +562,14 @@ type Finding =
     };
 ```
 
-**Open design question, flagged not resolved (see Open Questions):** FR-403's wording ("suppress any
-pattern below threshold") reads as one unified gate covering both "too few observations" and "enough
-observations but a weak/absent effect." The sketch above treats these as the *same* `still-learning`
-variant for that reason. If Dhodraj wants to distinguish "we don't know yet" from "we checked thoroughly
-and found nothing" as two separate variants, that is a deliberate three-way union instead of two — cheap
-to decide now, expensive to change after Friday's freeze.
+**Open design question — RESOLVED as one variant (Open Question 1; plan 01-05 recorded assumption 1
+and task 1's freeze checkpoint):** FR-403's wording ("suppress any pattern below threshold") reads as
+one unified gate covering both "too few observations" and "enough observations but a weak/absent
+effect." The sketch above treats these as the *same* `still-learning` variant for that reason. The
+three-way alternative — distinguishing "we don't know yet" from "we checked thoroughly and found
+nothing" — was raised explicitly before the freeze and declined, so it is a decision rather than a
+default. It was cheap to decide then and expensive to change after Friday's freeze, which is why it
+was decided then.
 
 ### `LogEntry` — grounded in `product/04-data-model.md`'s existing CHECKIN/SYMPTOM_ENTRY entities
 
@@ -632,7 +634,12 @@ reading the cited file or running the cited command this session, and is not in 
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
+
+All five were carried into the Phase 1 plan set and closed there. Each carries a `**RESOLVED —**`
+line naming the plan and task that closed it. The question text above each resolution is left exactly
+as it was written during research, so the record shows what was unclear at the time rather than a
+retrofit.
 
 1. **Should "still learning" cover both "too few observations" and "enough observations, weak effect" as
    one variant, or two?**
@@ -641,6 +648,12 @@ reading the cited file or running the cited command this session, and is not in 
      if the UI renders them the same way.
    - Recommendation: ship the two-variant design in Code Examples above (matches FR-403 literally); raise
      the three-way alternative explicitly before Friday's freeze so it's a choice, not a default.
+   - **RESOLVED — one variant.** Recorded as a decision rather than a default in plan 01-04 recorded
+     assumption 1 and plan 01-05 recorded assumption 1, with FR-403's wording as the authority. The
+     three-way alternative is explicitly declined and closed. Plan 01-05 task 1 (the freeze
+     checkpoint) is where it could still have been reopened; plan 01-04's Gaps mechanism was the
+     route for any screen that needed the distinction to say so before Friday. If the engine later
+     needs it internally, it lives in the engine's working types, not the frozen surface.
 
 2. **Is "Capacitor 6" in ADR-001 a hard version pin or shorthand for "current Capacitor"?**
    - What we know: the registry's current stable is 8.5.0, two majors ahead.
@@ -648,6 +661,12 @@ reading the cited file or running the cited command this session, and is not in 
    - Recommendation: confirm explicitly with whoever owns ADR-001 before Rahul scaffolds; default to
      current stable (8.5.0) absent a stated reason otherwise, since this is a brand-new scaffold with no
      existing v6 investment to protect.
+   - **RESOLVED — literal pin, 6.2.1.** Plan 01-01 recorded assumption 1 reads ADR-001's "Capacitor 6"
+     as a hard pin, and plan 01-01 task 1 is a blocking human checkpoint that makes Rahul confirm that
+     down-pin by name before any install runs. Plan 01-01's task 2 verify asserts the installed
+     `@capacitor/core` matches `^6\.` (T-01-04), so drift to 8.x or a 9.x alpha fails the tracer
+     rather than surfacing on demo day. Two sibling down-pins were resolved the same way at the same
+     checkpoint: React 18.3.1 and TypeScript 5.9.3.
 
 3. **Repo visibility (HACK-12, OPEN-12) — additional technical wrinkle found this session.** The `gh`
    CLI on this machine is authenticated as two accounts (`work-account`, active; `Dhodraj`, inactive).
@@ -659,10 +678,23 @@ reading the cited file or running the cited command this session, and is not in 
    - Recommendation: resolve repo visibility and the three pending collaborator invites using whichever
      account actually has org access (`gh auth switch`), rather than assuming the currently-active
      account's view is authoritative — it visibly is not, for this repo.
+   - **RESOLVED — routed to plan 01-02, identity first.** Task 3 step 1 records the active account,
+     step 2 switches to `Dhodraj` and proves org-repo resolution before any mutating call (T-02-01),
+     and step 4 closes the three invites by chasing the existing links rather than re-issuing them.
+     Visibility itself is a one-way act, so it sits behind the task 2 `checkpoint:decision`
+     (T-02-02) rather than being decided by research. The related question of whether the scaffold
+     may be published at all is the same checkpoint's second axis, and the mechanics of that push —
+     explicit refspec, asserted commit range, no checkout — are fixed by
+     `ops/branch-protocol.md`, written by plan 01-01 task 4.
 
 4. **Hackathon start time** — not stated anywhere in either repository (checked `registration.md`,
    `track-analysis.md`, `form-fill.md`, `README.md`, `build-plan.md`). Genuinely unresolved; must be
    asked of organizers, exactly as HACK-12 already states.
+   - **RESOLVED as a process, not as a value.** Plan 01-02 task 1 is a `checkpoint:human-action` that
+     asks the organizers and records the verbatim reply; task 4 step 1 writes it into
+     `hackathon/pre-event-answers.md` and step 3 reshifts every clock in build-plan.md section 8 from
+     it. The plan forbids a guessed time and requires a named chaser if no answer has come back.
+     Nothing in the phase proceeds on an assumed 09:00.
 
 5. **Role-scope drift between the submitted registration and the current build-plan** — concrete
    evidence, not speculation, for why HACK-12's "confirm four scopes with all four people" matters:
@@ -675,6 +707,13 @@ reading the cited file or running the cited command this session, and is not in 
    Whatever Rahul and Satheesh last saw in writing (the registration) says something materially different
    from what they're actually being asked to do now. Recommend HACK-12's confirmation task literally show
    each person `build-plan.md` §2, not assume they've independently converged on the same understanding.
+   - **RESOLVED — plan 01-02 task 4 step 5.** Adopted verbatim: the Role Scopes section quotes
+     build-plan.md section 2's Scope and "one rule" cells for each of the four people, shows each
+     person their own row rather than assuming convergence, and records a dated confirmation from
+     that person. The acceptance criteria require four rows with ISO dates, and the plan forbids
+     Rahul answering on anyone else's behalf. The two drifts this question surfaced — Rahul's
+     evidence-base description versus DevOps-only, and Satheesh's UX description versus engine
+     second and sealed-parameter custodian — are named in the task text so neither is glossed.
 
 ---
 

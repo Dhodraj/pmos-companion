@@ -54,16 +54,22 @@ false or borrowed claim survives into the pitch.
      repo is public; all four machines build Android; the demo phone is chosen and wiped.
   4. No document in the repo states an unamended sleep-apnoea headline comparison, claims camera
      heart rate was cut, or uses the "Day 47" framing or the "Building My Case" label.
-**Plans**: 7 plans across 3 waves
+**Plans**: 7 plans across 5 waves
+
+The team repo `health-team-311-war-room` is a sibling checkout with its own remote, one working tree
+and one HEAD, outside GSD's worktree isolation. Waves are therefore ordered by who may move that
+HEAD: 01-01 creates the `pre-event-scaffold` branch and records the contract in
+`ops/branch-protocol.md`, 01-03 is the only other plan permitted to change the checked-out branch,
+and every plan after them asserts `pre-event-scaffold` before writing and halts rather than switching.
 
 Plans:
-- [ ] 01-01-PLAN.md — Tracer: scaffold to phone, contract path proven (wave 1, Rahul + Dhodraj)
-- [ ] 01-02-PLAN.md — Pre-event unknowns: organizers, repo, invites, scopes (wave 1, Dhodraj + Rahul)
-- [ ] 01-03-PLAN.md — DOCFIX sweep across both repositories, with a guard (wave 1, Satheesh)
-- [ ] 01-04-PLAN.md — Contract dry-run: five screens against the type sketches (wave 1, Belson)
-- [ ] 01-05-PLAN.md — Freeze the three interface contracts (wave 2, Dhodraj + Satheesh)
-- [ ] 01-06-PLAN.md — Belson builds the insight card against the frozen barrel alone (wave 3, Belson)
-- [ ] 01-07-PLAN.md — Blind-test generator and sealed parameters (wave 3, Dhodraj + Satheesh)
+- [ ] 01-01-PLAN.md — Tracer: scaffold to phone, contract path proven, branch protocol recorded (wave 1, Rahul + Dhodraj)
+- [ ] 01-03-PLAN.md — DOCFIX sweep across both repositories, with a guard (wave 2, Satheesh)
+- [ ] 01-02-PLAN.md — Pre-event unknowns: organizers, repo, invites, scopes (wave 3, Dhodraj + Rahul)
+- [ ] 01-04-PLAN.md — Contract dry-run: five screens against the type sketches (wave 3, Belson)
+- [ ] 01-05-PLAN.md — Freeze the three interface contracts (wave 4, Dhodraj + Satheesh)
+- [ ] 01-06-PLAN.md — Belson builds the insight card against the frozen barrel alone (wave 5, Belson)
+- [ ] 01-07-PLAN.md — Blind-test generator and sealed parameters (wave 5, Dhodraj + Satheesh)
 
 ### Phase 2: Hackathon weekend — the blind test and the ring 1 spine
 **Goal**: At the 8–9 August demo the engine recovers a planted lagged relationship it was never
@@ -125,7 +131,7 @@ Plans:
 - [ ] 03-01-PLAN.md — Tracer: age gate to cycle view through the encrypted store (wave 1)
 - [ ] 03-02-PLAN.md — Schema v2, validators, and the rule-based cycle intelligence (wave 2)
 - [ ] 03-04-PLAN.md — CI, privacy guards, bundle budget, on-device keystore smoke (wave 2)
-- [ ] 03-03-PLAN.md — The 30-second check-in, cycle view, pause mode, disclaimer (wave 3)
+- [ ] 03-03-PLAN.md — The 30-second check-in, the four-type bleed control, cycle view, pause mode, disclaimer (wave 3)
 - [ ] 03-06-PLAN.md — Notification content gate, daily cap, quiet hours (wave 3)
 - [ ] 03-05-PLAN.md — On-device voice check-in via a native recognizer patch (wave 4)
 - [ ] 03-07-PLAN.md — 90-day sentinel, escalation flow, gynaecology export (wave 4)
@@ -212,7 +218,7 @@ Plans:
 - [ ] 06-04-PLAN.md — iOS capture path at parity, fail-closed runtime capability probe, and the named device fleet matrix (Rahul)
 - [ ] 06-05-PLAN.md — Capture session, live pulse waveform, guidance copy and the non-visual capture path (Belson)
 - [ ] 06-06-PLAN.md — Peak detection cross-checked against FFT, confidence and range, quality gate, and the assembled capture analysis (Dhodraj)
-- [ ] 06-07-PLAN.md — Failure states with reason-specific guidance, the range-with-confidence result screen, and the capability-gated entry point (Belson)
+- [ ] 06-07-PLAN.md — Failure states with reason-specific guidance, the range-with-confidence result screen, the capability-gated entry point, and the wiring of the live capture flow to the pipeline, both end screens and persistence (Belson, with Dhodraj on the call signatures)
 - [ ] 06-08-PLAN.md — Encrypted phase-tagged persistence, the n-of-1 engine input adapter, and the log-leak check (Dhodraj)
 - [ ] 06-09-PLAN.md — Anxiety-safety copy review, the reviewed clinical position, and the one-way release decision (Satheesh)
 
