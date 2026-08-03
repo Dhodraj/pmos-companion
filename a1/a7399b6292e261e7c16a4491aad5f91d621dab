@@ -1,0 +1,43 @@
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-04-PLAN.md
+  s_d0bebf31341a3e::t_5400ae219d2651 1-291
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-03-PLAN.md
+  s_d0bebf31341a3e::t_36a9272913c1b0 340
+  s_d0bebf31341a3e::t_e0ce3e37c73b9b 1-249,251-339,341-426
+  s_d0bebf31341a3e::t_8a2a945f227e9f 250
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-06-PLAN.md
+  s_d0bebf31341a3e::t_e02a47cdf1091e 1-303
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-05-PLAN.md
+  s_d0bebf31341a3e::t_c6a93fb355ed4f 1-400
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-07-PLAN.md
+  s_d0bebf31341a3e::t_1648fee5feb713 1-308,325-363,371-454
+  s_d0bebf31341a3e::t_a3f7ebc4c8af5c 364-370
+  s_d0bebf31341a3e::t_8df4bf012ab4e9 324
+  s_d0bebf31341a3e::t_1582899e497346 309-323
+.planning/ROADMAP.md
+  s_d0bebf31341a3e::t_2c8734c55c471e 57-66
+  s_d0bebf31341a3e::t_ff432ceec7133b 210
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-01-PLAN.md
+  s_d0bebf31341a3e::t_2cf8fc089ea413 8-26,31-32,38-40,42-43,45-50,52,54,56,58-60,66,68,73-76,101,105,107-111,120,122-123,126-131,135-140,143,145-151,154-158,164,166-181,184-187,191-194,198-200,203,206,208-209,211-214,216-220,222-238,242-257,260-401
+  s_d0bebf31341a3e::t_7ed13111437cf2 1-7,27-30,33-37,41,44,51,53,55,57,61-65,67,69-72,77-100,102-104,106,112-119,121,124-125,132-134,141-142,144,152-153,159-163,165,182-183,188-190,195-197,201-202,204-205,207,210,215,221,239-241,258-259
+.planning/phases/01-pre-event-readiness-and-frozen-contracts/01-02-PLAN.md
+  s_d0bebf31341a3e::t_ce16443ca93cae 135-141
+  s_d0bebf31341a3e::t_eee4595fdb4664 107-118
+  s_d0bebf31341a3e::t_73a2323ffe1d55 119
+  s_d0bebf31341a3e::t_3c0ca6ec69a339 1-106,120-134,142-382
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "a1a7399b6292e261e7c16a4491aad5f91d621dab",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
