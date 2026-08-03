@@ -1,0 +1,20 @@
+.planning/phases/02-hackathon-weekend-the-blind-test-and-the-ring-1-spine/02-RESEARCH.md
+  s_d0bebf31341a3e::t_545b43a15d23a7 1-152,154-567
+  s_d0bebf31341a3e::t_b1e95d66750d77 153
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "0d39011fbd6b65bb5af8ee9678930a48797d52b5",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
