@@ -59,9 +59,9 @@ text (SAFE-02) — on any mismatch, timeout, or quota failure.
 | Correlation engine (baselines, lag search, bootstrap, FDR) | Browser/Client (on-device, in a Web Worker) | — | ADR-004 locked: the engine reads the user's full history and must stay local; CON-BUILD-02 requires it be "deterministic... in TypeScript, not a neural black box" |
 | Confidence-floor / "still learning" decision | Browser/Client | — | Part of the engine's own output, not a display-only concern — the gate reads the FDR-adjusted p-value and observation count, both computed on device |
 | Insight-sentence phrasing | API/Backend (Cloudflare Worker) → Gemini | Browser/Client (deterministic template fallback) | Locked: "Gemini API called only from the Cloudflare Worker, and only for language" |
-| "How do you know that?" explainer | Browser/Client | — | Recommendation (not yet locked by the team — see Open Questions/Assumption A6): fixed methodology text + the already-computed structured numbers, not a second live Gemini round-trip |
+| "How do you know that?" explainer | Browser/Client | — | Recommendation: fixed methodology text + the already-computed structured numbers, not a second live Gemini round-trip. **Put to the team as a blocking decision in Plan 04-04 Task 2** rather than assumed — see Open Question 3/Assumption A6 |
 | Doctor-export compilation (assemble 18 months of data) | Browser/Client | — | DOC-01 states the export is "generated client-side"; keeps the full raw health history off the network entirely |
-| Doctor one-pager narrative prose | API/Backend (Worker) → Gemini | Browser/Client (template fallback) | Locked: Gemini "writes the doctor summary from structured data" — language only, same guardrail as the insight sentence |
+| Doctor one-pager narrative prose | Browser/Client (deterministic, on device) — **Gemini variant deferred beyond Phase 4** | — | The project pitch says Gemini "writes the doctor summary from structured data", and that remains the eventual intent. **Phase 4 ships the deterministic `renderDoctorNarrative` only** (Plan 04-03), and the model-phrased variant is explicitly descoped — see Plan 04-04's "Descoped from this phase" for the reasoning (a second guarded schema plus a network round trip inside DOC-01's measured ten-second export budget) and for what re-adding it requires. DOC-02 is satisfied without it |
 | PDF rendering | Browser/Client (in a Web Worker where possible) | — | DOC-01/NFR-105: client-side, ≤10s; avoids the Worker's CPU-time budget and its cold-start latency entirely |
 | PDF file save + OS share sheet | Native bridge (Capacitor plugin) | Browser/Client (triggers it) | Filesystem/Share cross the Capacitor bridge per ADR-001; must run on the main thread, not inside the Web Worker (see Common Pitfalls) |
 | Accounts, admin metrics | API/Backend (Worker) → D1 | — | Established in `hackathon/proposal.md`'s own "what runs where" table; D1 never holds health data |
@@ -725,8 +725,18 @@ planning, several explicitly flagged for confirmation with specific team members
 
 ## Open Questions
 
+> **Resolution status (added during Phase 4 planning, revision 2):** all six questions below are
+> resolved by the plan set. Each carries a `(RESOLVED)` line naming the plan and task that closes
+> it. Questions 1, 3 and 6 are closed by blocking `checkpoint:decision` tasks rather than by a
+> planner's assumption, because each is a decision with consequences the team has to own — and
+> question 3 in particular was flagged in this research for team confirmation and had been silently
+> assumed by the first planning pass.
+
 1. **Does `PRIV-01`'s consent architecture (Phase 3) cover sending abstracted pattern data to
    Gemini?**
+   - **(RESOLVED)** by Plan 04-04 Task 1, a blocking `checkpoint:decision` put to Dhodraj and
+     Satheesh before any phrasing call is wired in. The plan implements a seventh consent class
+     `ai_phrasing` with a first-use disclosure unless the checkpoint redirects it.
    - What we know: `PRIV-01` requires "purpose-bound granular consent... per data class," and lists
      exactly six data classes — cycle and symptom data, camera sensing, skin images, mental-health
      screeners, mycyclesafe import, microphone `[VERIFIED: REQUIREMENTS.md:181-184]`.
@@ -737,6 +747,10 @@ planning, several explicitly flagged for confirmation with specific team members
      Gemini call into the reveal path.
 
 2. **What is the exact shape of the frozen `finding` and `export payload` types?**
+   - **(RESOLVED)** by Plan 04-01 Task 1 and Plan 04-03 Task 1, both of which read the real
+     `src/types/finding.ts` and `src/types/export-payload.ts` from Phase 1 before writing anything,
+     extend them additively only, and state in their `<interfaces>` blocks that the frozen file on
+     disk wins over any shape written in this research.
    - What we know: `HACK-01` (Phase 1) freezes three types; the finding type must express "not
      enough data" as a value of the type. `product/04-data-model.md`'s `INSIGHT` entity
      (`pattern`, `lag_days`, `strength`, `observations`, `surfaced`) `[VERIFIED:
@@ -747,10 +761,22 @@ planning, several explicitly flagged for confirmation with specific team members
      and treat this research's Code Example 5 as illustrative, not authoritative.
 
 3. **Is "how do you know that?" a static disclosure or a live follow-up Q&A?**
-   - See Assumption A6. Recommendation: confirm with Satheesh/Dhodraj during planning or
-     discuss-phase before committing to either UX.
+   - **(RESOLVED)** by Plan 04-04 Task 2, a blocking `checkpoint:decision` put to Satheesh and
+     Dhodraj — the two people this research named — immediately before the panel is built in
+     Plan 04-04 Task 4. Assumption A6 is therefore a recommendation carried into a checkpoint, not
+     a design silently inherited. Worth recording why the checkpoint exists: the first Phase 4
+     planning pass baked the static-panel design straight in, and a plan review caught that the
+     team had never actually been asked. If the checkpoint selects a live Q&A, Task 4 is replanned
+     rather than edited — it is a different schema, a different guard and a different threat model.
+   - See Assumption A6. Recommendation carried into the checkpoint: the static panel, because a
+     generated explanation of a deterministic method cannot be echo-guarded against anything and
+     would be the only path in the phase where her free text crosses the network.
 
 4. **Does `@google/genai` actually work inside a Cloudflare Worker with `nodejs_compat` enabled?**
+   - **(RESOLVED — question retired rather than answered)** by Plan 04-04 Task 3: the route calls
+     the Gemini REST endpoint with a plain `fetch`, the SDK is not installed, and an acceptance
+     criterion asserts it is absent from `package.json`. The SDK's SUS legitimacy verdict and its
+     unconfirmed edge-runtime story both stop mattering.
    - What we know: the SDK states a Node.js ≥20 requirement; Workers now polyfill many Node
      built-ins behind that compatibility flag.
    - What's unclear: no direct confirmation either way was found this session.
@@ -759,11 +785,20 @@ planning, several explicitly flagged for confirmation with specific team members
      REST endpoint, which this research recommends as the default regardless.
 
 5. **What is the current, correct Gemini structured-output request shape?**
+   - **(RESOLVED procedurally — the answer is fetched, not stored)** by Plan 04-04 Task 3, which
+     requires the live `ai.google.dev` shape to be confirmed at implementation time, treats this
+     research's Code Example 6 as illustrative only, records the confirmation date at the top of
+     `worker/routes/phrase-finding.ts`, and has a verify gate reading that date back. If the shape
+     cannot be confirmed, the task stops rather than guesses.
    - See Assumption A4 and State of the Art. Recommendation: re-verify against live
      `ai.google.dev` docs immediately before implementation; do not trust either pattern surfaced
      in this research session without a fresh check on the day of coding.
 
 6. **Should FDR correction apply per-pair (at its best lag) or per-pair-per-lag (the full grid)?**
+   - **(RESOLVED)** by Plan 04-02 Task 1, a blocking `checkpoint:decision` put to Dhodraj and
+     Satheesh, whose selected family is then implemented and named with its size in
+     `docs/engine-methodology.md` by Plan 04-02 Task 2. The choice is marked one-way in that plan,
+     because it fixes what `INSIGHT.surfaced` means for every finding already stored or exported.
    - What we know: with ~15 symptom dimensions `[VERIFIED: REQUIREMENTS.md:103-104]`, naively
      testing all pairs (~105) × 14 lags ≈ 1,470 tests, versus ~105 tests if corrected per-pair at
      the best lag.
