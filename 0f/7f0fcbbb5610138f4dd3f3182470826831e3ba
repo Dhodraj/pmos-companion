@@ -1,0 +1,49 @@
+.planning/phases/06-camera-vitals-fingertip-ppg/06-02-PLAN.md
+  s_d0bebf31341a3e::t_8ccf0e50f13808 1-13,15-20,23-28,31-80,82-86,88-97,100-102,104-107,110-114,117,120-132,144-150,153-154,156-158,160,164-168,170,172-174,176-178,187-191,195,198,248-249
+  s_d0bebf31341a3e::t_fa3d2ecb99b7de 155,250
+  s_d0bebf31341a3e::t_eb47bbe48b2b88 14,21-22,29-30,81,87,98-99,103,108-109,115-116,118-119,133-143,151-152,159,161-163,169,171,175,179-186,192-194,196-197,199-247,251-314
+.planning/phases/06-camera-vitals-fingertip-ppg/06-08-PLAN.md
+  s_d0bebf31341a3e::t_b6fe43824f31e2 1-267
+.planning/phases/06-camera-vitals-fingertip-ppg/06-05-PLAN.md
+  s_d0bebf31341a3e::t_026444f034fdeb 1-276
+.planning/phases/06-camera-vitals-fingertip-ppg/06-09-PLAN.md
+  s_d0bebf31341a3e::t_c6cb3c41fe43bb 1-274
+.planning/phases/06-camera-vitals-fingertip-ppg/06-06-PLAN.md
+  s_d0bebf31341a3e::t_21ef8cade9ed1b 1-75,78-88,90-161,163-274
+  s_d0bebf31341a3e::t_d965e07474bb60 76-77
+  s_d0bebf31341a3e::t_54b49d9d70ed5f 89
+  s_d0bebf31341a3e::t_dbac03e4eea280 162
+.planning/phases/06-camera-vitals-fingertip-ppg/06-07-PLAN.md
+  s_d0bebf31341a3e::t_d1c722e4b421f3 227-292
+  s_d0bebf31341a3e::t_da0352eca3d7c0 1-226
+.planning/phases/06-camera-vitals-fingertip-ppg/06-04-PLAN.md
+  s_d0bebf31341a3e::t_048e79aa742d1e 1-206,209-272
+  s_d0bebf31341a3e::t_ce50b40e88bf0e 207-208
+.planning/phases/06-camera-vitals-fingertip-ppg/06-01-PLAN.md
+  s_d0bebf31341a3e::t_0c03d3d4e28e6c 155-156
+  s_d0bebf31341a3e::t_131614cbc19858 262-263
+  s_d0bebf31341a3e::t_790a9a84140750 239-240
+  s_d0bebf31341a3e::t_1a59afc6b780d5 1-154,157-238,241-261,264-329
+.planning/phases/06-camera-vitals-fingertip-ppg/06-03-PLAN.md
+  s_d0bebf31341a3e::t_9590e5998c7690 1-269
+.planning/ROADMAP.md
+  s_d0bebf31341a3e::t_88d1e6147a7d23 180,183-192
+  s_d0bebf31341a3e::t_f38e8ef34b3c40 206
+  s_d0bebf31341a3e::t_51bfe105bd4f89 193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "0f7f0fcbbb5610138f4dd3f3182470826831e3ba",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
