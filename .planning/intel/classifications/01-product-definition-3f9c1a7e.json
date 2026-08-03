@@ -1,0 +1,36 @@
+{
+  "source_path": "~/Documents/Personal/t4g-hackathon-2026/product/01-product-definition.md",
+  "type": "DOC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "PMOS Companion — Final Product Definition",
+  "summary": "Product definition for a PMOS (formerly PCOS) companion app: positioning, differentiator stack, MVP/v1 feature set, anti-features, coaching scope, open decisions.",
+  "scope": [
+    "PMOS companion app",
+    "irregular-native cycle engine",
+    "n-of-1 pattern engine and Experiment Mode",
+    "30-second unified check-in",
+    "daily micro-action coach",
+    "cycle-interval sentinel and gynae-ready export",
+    "doctor-visit one-pager and advocacy kit",
+    "mental-health floor (PHQ-4/GAD-2, PHQ-9/GAD-7, Tele-MANAS)",
+    "dignity-first weight-neutral defaults",
+    "self-relative skin/hair vision trend",
+    "guideline screening ledger",
+    "sleep regularity and OSA screen-and-refer",
+    "prescribed-treatment companion (metformin/GLP-1)",
+    "vernacular Hindi/Tamil",
+    "mycyclesafe.ai funnel and consent airlock",
+    "DPDP/GDPR consent architecture",
+    "non-SaMD boundaries",
+    "evidence-graded coaching levers",
+    "anti-features list",
+    "pricing and open product decisions"
+  ],
+  "cross_refs": [
+    "hackathon/proposal.md"
+  ],
+  "locked": false,
+  "precedence": 6,
+  "notes": "RETRACTED CONTENT — DO NOT PROPAGATE. This document contains a FALSE traction claim of '500,000+ users across 120 countries' for mycyclesafe.ai. Verified reality: ~63 unique visitors/day, 52 countries, 2.8% India traffic, 2 registered users. The claim survives in the document in three places and every one is retracted: (1) Section 1 Positioning Statement, the phrase \"mycyclesafe.ai's 500K-user privacy-first brand\"; (2) Section 2 differentiator #2 \"The mycyclesafe.ai funnel\", which the document itself marks SUPERSEDED; (3) Section 5 'The mycyclesafe.ai Funnel Play', where the 500K/120-country figure appears only inside an explicit correction note kept as the record of an error. The correction note text in Section 5 is the authoritative statement and is the only part of this material that may be carried forward, and only as a correction, never as traction. Synthesizer MUST NOT emit the 500K/120-country figure as a requirement, goal, success metric, or context anywhere. DEPENDENT CLAIMS ALSO FLAGGED (each rests on the inflated figure and must be treated as unverified, not as fact): 'zero CAC' distribution via the in-app bridge; 'brand trust transfers / from the makers of mycyclesafe' as a moat; 'no competitor can buy or rebuild this' and 'no competitor can shortcut this' regarding the funnel asset; the cold-start-kill assumption that imported histories arrive at meaningful volume (with 2 registered users there is effectively no history to import); the segmentation step that presumes a user base large enough to algorithmically segment irregular-cycle cohorts; and any framing of the funnel as a defensible differentiator. Downstream planning should treat mycyclesafe.ai as an unmarketed asset with negligible current usage. TYPE RATIONALE: manifest declared DOC (precedence 6), treated as authoritative per manifest_override. Note for synthesizer awareness only: content signals are strongly PRD-like (MVP/v1/Later feature tables, goals and non-goals via anti-features, positioning, open decisions), so if the manifest tag is ever revisited this file is a strong PRD candidate. Manifest is honored here as instructed."
+}

@@ -1,0 +1,27 @@
+{
+  "source_path": "~/Documents/Personal/t4g-hackathon-2026/product/00-PRD.md",
+  "type": "PRD",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "PMOS Companion — Product Requirements Document",
+  "summary": "Single source of truth PRD for PMOS Companion, a phone-only daily well-being companion for women with PMOS.",
+  "scope": [
+    "PMOS Companion",
+    "Experiment Mode (n-of-1 trials)",
+    "camera PPG vitals capture",
+    "on-device inference",
+    "Capacitor shell with native plugins",
+    "clinical safety routing and screening ledger",
+    "doctor-facing evidence export",
+    "mycyclesafe.ai distribution funnel",
+    "functional requirements",
+    "non-functional requirements",
+    "regulatory and compliance",
+    "release plan",
+    "risks"
+  ],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": 0,
+  "notes": "MANIFEST_TYPE=PRD applied as authoritative; content confirms PRD (goals, success metrics, users, scope, 102 FRs, 48 NFRs, 14 regulatory requirements, release plan). Section 6 embeds four architecture decisions (ADR-001 Capacitor shell with native plugins, ADR-002 camera capture always foreground and user-initiated, ADR-003 no external devices, ADR-004 on-device inference as the privacy position) with no explicit Status field; per instruction these embedded ADRs are to be treated as LOCKED decisions by the synthesizer even though the document-level type is PRD (doc-level locked=false). Document states it supersedes the prior product definition, build spec, and complete-features spec and governs on conflict. No markdown file cross-references present; ADR references are internal anchors."
+}

@@ -1,0 +1,58 @@
+# GSD ingest manifest for PMOS Companion
+#
+# The repo does not use docs/adr/ or docs/prd/ conventions, so directory
+# discovery finds nothing. This lists the docs explicitly.
+#
+# precedence: lower wins. 00-PRD.md is 0 because it consolidates everything
+# that came before it and carries the four ADRs as locked decisions.
+# 01-product-definition.md is last because it deliberately retains a retracted
+# traction claim inside a correction note.
+
+docs:
+  - path: product/00-PRD.md
+    type: PRD
+    precedence: 0
+    note: >-
+      Single source of truth. 102 functional, 48 non-functional, 14 regulatory
+      requirements, 4 ADRs. The ADRs are locked decisions.
+
+  - path: product/04-data-model.md
+    type: SPEC
+    precedence: 1
+    note: Entity model and design rules, extracted from the PRD.
+
+  - path: product/03-complete-features-spec.md
+    type: SPEC
+    precedence: 2
+    note: >-
+      Feature catalogue. Section 0 carries the feasibility rulings that cut ten
+      features on platform-policy and evidence grounds.
+
+  - path: product/02-build-spec.md
+    type: SPEC
+    precedence: 3
+    note: Predates the PRD. Lower precedence where the two disagree.
+
+  - path: hackathon/proposal.md
+    type: DOC
+    precedence: 4
+    note: >-
+      Carries the clinician review outcomes, including the removal of camera
+      heart rate, and the record of what was cut and why.
+
+  - path: hackathon/build-plan.md
+    type: DOC
+    precedence: 5
+    note: >-
+      Ownership, schedule, five gates, cut list, risk register. Source of the
+      ring ordering and the correlation engine as the must-work component.
+
+  - path: product/01-product-definition.md
+    type: DOC
+    precedence: 6
+    note: >-
+      RETRACTED CONTENT. Retains a "500,000+ users across 120 countries" claim
+      inside an explicit correction note, kept as the record of the error.
+      Real figures: roughly 63 unique visitors a day, 52 countries, 2.8% India,
+      2 registered users. Do not propagate the retracted claim as a requirement,
+      a goal, or context.

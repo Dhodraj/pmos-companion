@@ -1,0 +1,33 @@
+{
+  "source_path": "~/Documents/Personal/t4g-hackathon-2026/product/04-data-model.md",
+  "type": "SPEC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "PMOS Companion: Data Model",
+  "summary": "Entity-relationship data model and schema design rules for PMOS Companion, companion to the PRD.",
+  "scope": [
+    "USER",
+    "CYCLE",
+    "CHECKIN",
+    "SYMPTOM_ENTRY",
+    "MEASUREMENT",
+    "EXPERIMENT",
+    "VERDICT",
+    "INSIGHT",
+    "CONSENT",
+    "BASELINE_SET",
+    "BLEED_EVENT",
+    "INTERVENTION",
+    "QUALITY_GATE",
+    "n-of-1 engine",
+    "confidence gate",
+    "phase estimation",
+    "pause mode"
+  ],
+  "cross_refs": [
+    "./00-PRD.md"
+  ],
+  "locked": false,
+  "precedence": 1,
+  "notes": ""
+}

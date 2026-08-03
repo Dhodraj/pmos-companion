@@ -1,0 +1,34 @@
+{
+  "source_path": "~/Documents/Personal/t4g-hackathon-2026/hackathon/build-plan.md",
+  "type": "DOC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "Build plan",
+  "summary": "Execution plan for the 8-9 August hackathon: ownership, hour-by-hour schedule, five gates, frozen interface contracts, cut list, and fallback demo.",
+  "scope": [
+    "correlation engine",
+    "blind test (sealed dataset, planted pair, null pair)",
+    "check-in write path",
+    "insight card",
+    "doctor export",
+    "cycle view",
+    "safety layer",
+    "lab report capture",
+    "frozen types (log entry, finding, export payload)",
+    "Worker, D1, Gemini proxy",
+    "Android/Capacitor build and demo phone",
+    "role ownership (Dhodraj, Belson, Rahul, Satheesh)",
+    "five gates (H4, H10, H16, H22, H28)",
+    "cut list",
+    "demo script"
+  ],
+  "cross_refs": [
+    "./proposal.md",
+    "../product/00-PRD.md",
+    "../research/05-feasibility-audit/",
+    "./clinician-review-brief.md"
+  ],
+  "locked": false,
+  "precedence": 5,
+  "notes": "Type set by manifest (DOC, precedence 5); heuristic content signals were mixed (planning/runbook prose plus schedule and gate tables) and manifest is authoritative. Sequencing constraints to carry forward: (1) Ring ordering - ring 1 spine (check-in, engine, insight card, export) first, then ring 2 doctor export, then ring 3 cycle view, then ring 4 safety layer, then ring 5 lab report capture; rings 2 to 4 are abandoned if the H10 blind test is red. (2) Cut list, in order - lab capture, then voice entry drops to tap, then safety layer UI comes off (logic stays, one slide), then cycle view degrades to a plain list; the spine is never cut. (3) The correlation engine is the single component that must be working at the demo, and all sequencing exists to protect it. (4) Hard ordering rule - no new complex logic after H20; freeze at H28 with the cut list applied."
+}

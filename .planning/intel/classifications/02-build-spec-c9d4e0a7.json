@@ -1,0 +1,27 @@
+{
+  "source_path": "~/Documents/Personal/t4g-hackathon-2026/product/02-build-spec.md",
+  "type": "SPEC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "PMOS (formerly PCOS) Well-Being Companion — Build-Ready Spec",
+  "summary": "Build-ready spec for a PMOS/PCOS daily well-being companion: n-of-1 personalization engine, irregular-cycle model, skin-signal vision, nudges, MVP scope.",
+  "scope": [
+    "PMOS/PCOS well-being companion (working name Cyster)",
+    "irregular-cycle probabilistic phase model",
+    "n-of-1 lagged-correlation personalization engine",
+    "on-device skin/acne change detection",
+    "adaptive nudge engine",
+    "mental-health screener layer",
+    "Gemini + RAG evidence base",
+    "36-hour hackathon MVP scope",
+    "90-second demo script",
+    "competitive positioning",
+    "DPDP Act 2023 / SaMD regulatory framing",
+    "GTM and monetization",
+    "hackathon registration answers"
+  ],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": 3,
+  "notes": "Manifest-declared SPEC (precedence 3); heuristics agree — implementation contracts (AI stack, model choices, MVP cut, data-handling constraints) dominate. Predates the PRD: where they conflict, PRD wins. Content here likely NOT in the PRD, flagged for synthesizer: (1) the 12 May 2026 PCOS→PMOS Lancet rename hook and PMOS-primary naming rule; (2) specific AI stack choices — interpretable per-user time-series stats over neural nets, Gemini+RAG grounding, closed-source multimodal vision with fixed numeric rubric for hackathon, TFLite on-device as production end state; (3) demo mechanics — seeded 60-day synthetic 'Priya' history and the 90-second demo beat sheet; (4) explicit cut list (community, doctor-share export, wearable import, multi-language depth); (5) competitive table (Flo/Clue, Posiva/Cysterly, Veera Health, Allara); (6) regulatory framing — well-being companion not diagnostic, DPDP Act 2023, SaMD/CDSCO avoidance; (7) named risks — small-n credibility trap, body-image harm, cloud skin-photo privacy gap, escalation duty, churn; (8) GTM — community-led near-zero CAC vs Rs 1,800 CAC, freemium with correlation engine as paid tier; (9) team split and track/role registration answers; (10) sourced evidence stats (anxiety 6x, depression 4x, 84.5% appearance distress, 7-month diagnostic delay)."
+}

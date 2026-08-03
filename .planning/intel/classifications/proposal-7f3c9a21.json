@@ -1,0 +1,37 @@
+{
+  "source_path": "~/Documents/Personal/t4g-hackathon-2026/hackathon/proposal.md",
+  "type": "DOC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "Project proposal: full version",
+  "summary": "Full hackathon proposal for PMOS Companion: problem, solution modules, architecture, tech stack, scope cuts, clinical review outcomes and business model.",
+  "scope": [
+    "PMOS Companion",
+    "PMOS (Polyendocrine Metabolic Ovarian Syndrome)",
+    "daily check-in",
+    "cycle view",
+    "n-of-1 correlation engine",
+    "doctor export",
+    "safety layer (PHQ-4, GAD-2, Tele-MANAS, 90-day sentinel)",
+    "lab report capture",
+    "medicine strip capture",
+    "Experiment Mode",
+    "grounded companion",
+    "support circle",
+    "skin tracking",
+    "on-device OCR",
+    "Capacitor / React PWA",
+    "Cloudflare Pages, Workers, D1",
+    "Gemini API",
+    "IndexedDB",
+    "DPDP Act",
+    "CDSCO classification",
+    "mycyclesafe.ai"
+  ],
+  "cross_refs": [
+    "./proposal-short.md"
+  ],
+  "locked": false,
+  "precedence": 4,
+  "notes": "Manifest-declared DOC (precedence 4); content is prose-heavy narrative proposal with roadmap tables, consistent with DOC. Contains clinician-review outcomes to capture as constraints: camera heart rate cut (passive version blocked by OS vendors; active version removed after clinical review because resting heart rate is not a PMOS marker and would not change care); sleep-apnoea headline comparison removed in favour of pooled prevalence ~37%, OR 9.52 with confounder caveat; Indian prevalence stated as a criteria-tied range 13.6-19.6% (AE-PCOS / Rotterdam); 90-day cycle sentinel behaviour specified with clinician (asks about pregnancy, hormonal medication, existing treatment; 'discuss with your healthcare provider' wording; 2-4 week re-reminder with snooze); mental-health protocol and screen-and-refer language clinician-specified, with instruction that the crisis pathway as written is the right scope and not to build beyond it. Other recorded cuts: blood oxygen and blood pressure from camera (App Store guideline 1.4.1), overnight ballistocardiography, facial-expression stress inference, voice mood biomarkers, automated hirsutism scoring, CGM integration, multi-device sync and platform health-store integration (deferred). Additional constraints stated: under-18 users excluded at launch under DPDP; no supplement sales or affiliate revenue; no 'late' badge; no calorie counting; weight opt-in; skin tracking off by default; drug information limited to attributed approved patient leaflet; Gemini handles language only, never computes patterns or doses; API key held in Worker secret binding; health data stays on device. Referenced supporting documents (PRD with 102 functional / 48 non-functional / 14 regulatory requirements, four ADRs, data model, feasibility audit, feature specification) are mentioned without paths, so not listed in cross_refs."
+}
