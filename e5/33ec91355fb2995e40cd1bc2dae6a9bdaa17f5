@@ -1,0 +1,21 @@
+product/05-ui-preview.html
+  s_d0bebf31341a3e::t_aa89129429cbf4 1-574
+.planning/STATE.md
+  s_d0bebf31341a3e::t_297c0305e5e58f 97-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "e533ec91355fb2995e40cd1bc2dae6a9bdaa17f5",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
