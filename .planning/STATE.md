@@ -74,9 +74,20 @@ None yet. (`.planning/todos/pending/` not created.)
   competitor copy. All three need document amendments before the pitch.
 - **OPEN-05:** CDSCO classification unresolved. Pre-submission opinion required before any pilot
   with real users.
-- **OPEN-12 (Phase 1, time-critical — 5 days to the event):** hackathon start time, permitted
-  pre-event code, repo visibility, three unaccepted collaborator invites, toolchain on four
-  machines, demo phone.
+- **OPEN-12 (Phase 1, time-critical — 5 days to the event) — narrowed 2026-08-03:** the only
+  remaining question for organizers is what pre-event code is permitted. Start time and repo
+  visibility are no longer blocking — the team decides visibility itself, and the switch between
+  `gh` identities (`Dhodraj` / `work-account`) happens as needed, not as a pre-flight gate.
+  Three unaccepted collaborator invites, toolchain on four machines, and demo-phone selection are
+  still open.
+- **IOS-DEFERRED (decided 2026-08-03, resolves the `macos-runner`/`team-machine`/`ios-deferred`
+  checkpoint in Phase 3 and Phase 6):** no Mac exists anywhere on the four-person team. Android is
+  the primary and only verified platform for this build. Every iOS branch in Phase 3
+  (03-04's keystore smoke, 03-05's on-device voice verification) and Phase 6 (06-04's device-
+  capability detection and native plugin parity) is answered `ios-deferred` — recorded as pending
+  with this reason, not silently skipped. If a Mac becomes available later, these sections have an
+  explicit "what to run" path already written into the plans; nothing needs re-planning, only
+  execution.
 - **OPEN-13:** Belson's H22–H28 allocation is tight — six screens plus voice entry plus the
   safety-layer screens.
 - **Bus factor:** Dhodraj is the only person who can do the hard parts; the predictable failure is
