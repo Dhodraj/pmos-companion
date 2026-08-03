@@ -1,0 +1,19 @@
+.planning/phases/04-the-engine-and-the-evidence-she-takes-to-a-doctor/04-RESEARCH.md
+  s_d0bebf31341a3e::t_d1d9af2937ad59 1-929
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "d744acb2a5c2578f134d7cd7bfed7e73246ba0ab",
+  "prompts": {},
+  "sessions": {
+    "s_d0bebf31341a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8bb15d4f-ab2d-4a06-8202-6e02a5c528c0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "dhodraj <dhodraj@users.noreply.github.com>"
+    }
+  }
+}
